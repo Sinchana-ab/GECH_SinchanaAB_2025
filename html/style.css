@@ -1,0 +1,17 @@
+*{
+    padding: 20%;
+    width: auto;
+    background-image:"C:\Users\Admin\Pictures\cat.png" ;
+}
+    label, input, select,button{
+        display:block;
+        margin: 10px auto;
+        font-style: italic;
+        font-size: medium;
+        background-color: antiquewhite;
+        text-align: center;
+}
+div{
+    text-align: center;
+    text-decoration-color: blue;
+}

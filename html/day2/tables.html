@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td, tr{
+            border: 2px solid red;
+        }
+        th{
+            border: 3px groove blue;
+            
+        }
+        th, td{
+            padding: 20px;
+        }
+        table{
+            border-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- tables examples -->
+     <table>
+        <tr>
+            <th>name</th>
+            <th>usn</th>
+            <th>age</th>
+        </tr>
+        <tr>
+            <td> sinchana </td>
+            <td> 4GH21CS044 </td>
+            <td>20</td>
+        </tr>
+     </table>
+<br>
+<br>
+     <table>
+        <tr>
+            <th>name</th>
+            <td> sinchana </td>
+        </tr>
+        <tr>
+            <th>usn</th>
+            <td> 4GH21CS044 </td>
+        </tr>
+        <tr>
+            <th>age</th>
+            <td>20</td>
+        </tr>
+     </table>
+
+
+     <h1>Time table</h1>
+
+<!-- tbody>thead>tr>td*7 -->
+ <!-- merge column colspan="2" -->
+     <table >
+        <thead>
+            <tr>
+            <th>mon</th>
+            <th>Tues</th>
+            <th>wed</th>
+            <th>thrus</th>
+            <th>fri</th>
+            <th>sat</th>
+            <th>sunday</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td colspan="2">2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td rowspan="3">6</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    
+                </tr>
+            </tbody>
+     </table>
+</body>
+</html>

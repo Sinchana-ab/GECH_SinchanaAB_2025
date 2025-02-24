@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First application</title>
+    <link src="style.css">
+    <script src="script.js>"></script>
+    <style>
+        p{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            color: aqua;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style=" text-align:center; color:slateblue "><i>My First application</i></h1>
+    <margin></margin>
+    <p>a simple application for calculation</p>
+    <div class="calculator">
+    <label>a: <input type="number" placeholder="Enter a number"></label><span></span>
+    <label>b: <input type="number" placeholder="Enter another number" ></label>
+    <br />
+    <select id="operators">
+        <option value="add">addition</option>
+        <option value="sub">Substracte</option>
+        <option value="multi">multiply</option>
+        <option value="divid">divid</option>
+    </select>
+    <br /><br>
+    <button onclick="calculate()">calculate</button>
+    <br><span>
+
+    </span>
+    <br />
+    <p id="result">Result:</p>
+</div> 
+</body>
+</html>

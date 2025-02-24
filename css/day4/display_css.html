@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            height: 20vh;
+            width: 20vw;
+            margin: 30px;
+            padding: 20px; /*inline elements don't get margin css*/
+        } 
+        .first{
+            border: 2px solid black;
+            /* display: none; */
+            display: inline-block;
+            /* visibility: hidden; */
+            /* display: inline-block; */
+            /* padding: 20px; */
+        }
+        .sec{
+            border: 2px solid rebeccapurple;
+            /* display: block; */
+            display: inline-block;
+        }
+        .thi{
+            border: 2px solid red;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="div first">
+        Lorem ipsum dolor sit amet.
+    </div>
+    <div class="div sec">Lorem ipsum dolor sit amet consectetur.</div>
+    <div class="div thi">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    </div>
+</body>
+</html>

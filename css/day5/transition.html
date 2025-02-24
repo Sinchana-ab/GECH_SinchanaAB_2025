@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition in css</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            width: 30vw;
+            height: 20vh;
+        }
+        .first{
+            background-color: aqua;
+            border: 2px solid rgb(230, 230, 13);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10vw;
+            height: 20vh;
+            /* transition: background-color 1s;*/
+            transition: all 3s;
+            transition-delay: 3s;
+
+        }
+        .first:hover{
+            background-color: blue;
+            transform: translate(100px,250px) scale(2);
+        }
+    </style>
+</head>
+<body>
+    <div class="first">
+        <span>1</span>
+    </div>
+    <iframe src="" frameborder="0"></iframe>
+</body>
+</html>

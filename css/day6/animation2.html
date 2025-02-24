@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        .container{
+            width: 80vw;
+            height: 80vh;
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgb(47, 0, 255);
+        }
+        .fir{
+            background-color: aqua;
+            animation-name: change_bg;
+            animation-duration: 2s;
+            position:absolute;
+            animation-timing-function: ease-in-out;
+             animation-iteration-count: 5; 
+             /* animation-delay: 5s; */
+        }
+        @keyframes change_bg {
+           0%{
+            background-color: yellowgreen;
+            top: 0;
+            left: 0;
+           }
+           25%{
+                background-color: violet;
+                top: 0;
+                left: 200px;
+            }
+            50%{
+                background-color: turquoise;
+                top: 300px;
+                right: 300px;
+            }
+            100%{
+                background-color: tomato;
+                top: 300px;
+                /* right: -200px; */
+                left: 0;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="child fir">1</div>
+    </div>
+</body>
+</html>

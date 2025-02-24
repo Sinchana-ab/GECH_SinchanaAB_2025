@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid in css</title>
+    <style>
+        .grid-container{
+            width: 50vw;
+            height: 90vh;
+            margin: 20px auto;
+            border: 1px solid black;
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            /* grid-template-columns: 300px 150px 100px; */
+            align-items: center;
+            justify-items: center;
+        }
+        .child{
+            border: 2px solid red;
+            background-color: aqua; 
+            width: 40px;
+            height: 40px;  
+            /* text-align: center;    */
+            /* align-items: center;       */
+        }
+        .first{
+            align-self: self-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="child first">1</div>
+        <div class="child second">2</div>
+        <div class="child third">3</div>
+        <div class="child four">4</div>
+        <div class="child five">5</div>
+    </div>
+</body>
+</html>

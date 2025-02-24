@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float css</title>
+    <style>
+        .container{
+            border: 2px solid red;
+            padding: 20px;
+            display: flow-root;
+            width: 500px;
+            height: 500px;
+        }
+        .child{
+            border: 2px solid aqua;
+        }
+        .container img{
+            float: right;
+        }
+        .sec{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./nature2.png" alt="image not found" width="100px" height="100px">
+        <div class="child">
+            Lorem ipsum dolor sit amet consectetur.
+        </div>
+        <div class="child sec">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, neque.</div>
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed pariatur repudiandae suscipit molestiae?</div>
+    </div>
+</body>
+</html>

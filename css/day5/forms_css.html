@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form in css</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
+                        rgba(125,125,195,1) 38%, rgba(38,185,237,1) 81%,
+                         rgba(0,212,255,1) 100%);
+            background-repeat: no-repeat;
+            height: 100vh;
+            background-size: cover;
+
+        }
+        .container{
+            background-color: rgb(209, 229, 222);
+            width: 40vw;
+            height: 60vh;
+            margin: 20px auto;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 3px 3px 5px black;
+            }
+        h1{
+            text-align: center;
+            margin-bottom: auto;
+            text-shadow: 1px 1px red;
+        }
+        .input-group{
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-group input{
+            width: 100%;
+            outline: none;
+            border: 1px solid gray;
+            padding: 3px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        .icon{
+            font-size: 15px;
+            position: absolute;
+            right: 10px;
+            top: 5px
+        }
+        #submit{
+            width: 100%;
+            font-size: 25px;
+            border: 2px solid rgb(107, 107, 215);
+            background-color: beige;
+            border-radius: 5px;
+            color: rgb(78, 78, 174);
+            transition: all 1s;
+            /* transition: background-color 1s, border 1s ; */
+            /* transition: border 1px; */
+        }
+        #submit:hover{
+            cursor: copy;
+            background-color: rgb(210, 210, 233);
+            border: 2px solid rgb(232, 16, 102);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact form</h1>
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="text" name="name" id="name" placeholder="username" />
+                    <i class="fa-solid fa-user icon"></i>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" id="email" placeholder="Email">
+                    <i class="fa-solid fa-envelope icon"></i>
+                </div>
+                <input type="button" value="submit" id="submit">
+            </form>
+    </div>
+    
+</body>
+</html>

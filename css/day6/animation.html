@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        .container{
+            width: 80vw;
+            height: 80vh;
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgb(47, 0, 255);
+        }
+        .fir{
+            background-color: aqua;
+            animation-name: change_bg;
+            animation-duration: 3s;
+            position:absolute;
+            animation-timing-function: ease-out;
+             /* animation: change_bg 3s ease-in 1s 5 ;  */
+             animation-iteration-count: 5; 
+            animation: move_block 5s ease-in-out 1s 2 left forwards;
+        }
+        @keyframes move_block {
+            0%{
+                left: 0;
+            }
+            50%{
+                right: 0;
+            }
+            100%{
+                left: 0;
+                transform: scaleX(-1);
+            }
+        }
+        @keyframes change_bg {
+            form{
+
+            }
+            to{
+                background-color: yellowgreen;
+            }
+        }
+        /* .sec{
+            background-color: yellowgreen;
+        }
+        .thi{
+            background-color: violet;
+        }
+        .fou{
+            background-color: tomato;
+        }
+        .fiv{
+            background-color: springgreen;
+        }
+        @media screen and (max_width: 500px) {
+            .container{
+                flex-direction: col;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="child fir">1</div>
+        <!-- <div class="child sec">2</div>
+        <div class="child thi">3</div>
+        <div class="child fou">4</div>
+        <div class="child fiv">5</div> -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Positions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f6fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    text-align: center;
+    border: 2px solid black;
+    padding: 30px;
+}
+
+h2 {
+    color: #1d1d1f;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Card Styles */
+.card {
+    background: white;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Header (Icon + Text Layout) */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #1d1d1f;
+}
+
+/* Open Positions Text */
+.positions {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 14px;
+    color: #1d1d1f;
+}
+.highlighted {
+    border: 2px solid #1d1d1f;
+}
+
+.highlighted-text {
+    background-color: #1d1d1f;
+    color: white;
+    font-weight: bold;
+}
+.icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+}
+
+.design { background: linear-gradient(45deg, #d9b4fc, #7c5fea); }
+.engineering { background: linear-gradient(45deg, #ffccd5, #ff6b81); }
+.operations { background: linear-gradient(45deg, #c2e9fb, #a1c4fd); }
+.people { background: linear-gradient(45deg, #c3f0ca, #74c69d); }
+.sales { background: linear-gradient(45deg, #d9e2fc, #647acb); }
+.university { background: linear-gradient(45deg, #f8d3a3, #e77e23); }
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Open Positions</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon design"><i class="fas fa-paintbrush"></i></div>
+                    <h3>Design</h3>
+                </div>
+                <p class="positions">4 open positions</p>
+            </div>
+            <div class="card highlighted">
+                <div class="card-header">
+                    <div class="icon engineering"><i class="fas fa-code"></i></div>
+                    <h3>Engineering</h3>
+                </div>
+                <p class="positions highlighted-text">8 open positions</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon operations"><i class="fas fa-cogs"></i></div>
+                    <h3>Operations</h3>
+                </div>
+                <p class="positions">2 open positions</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon people"><i class="fas fa-users"></i></div>
+                    <h3>People</h3>
+                </div>
+                <p class="positions">6 open positions</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon sales"><i class="fas fa-clipboard-list"></i></div>
+                    <h3>Sales</h3>
+                </div>
+                <p class="positions">7 open positions</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon university"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>University</h3>
+                </div>
+                <p class="positions">8 open positions</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
