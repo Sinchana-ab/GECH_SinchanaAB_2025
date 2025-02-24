@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position in css</title>
+    <style>
+        body{
+            margin: 30px auto;
+        }
+        .div{
+            border: 2px solid black;
+            /* width: 30vw; */
+            height: 50px;
+        }
+        .container{
+            width: 300px;
+            margin: 30px;
+            /* height: 300vh; */
+            position: relative;
+            border: 2px solid rgb(8, 7, 7);
+        }
+        .fir{
+            background-color: aquamarine;
+            position: relative;
+            top: 100px;
+            left: 200px;
+        }
+        .sec{
+            background-color: aqua;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+        }
+        .thi{
+            background-color: chartreuse;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        four{
+            background-color: yellowgreen;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="div fir">1</div>
+        <div class="div sec">2</div>
+        <div class="div thi">3</div>
+        <div class="div four">4</div>
+        <!-- <div class="div five">5</div> -->
+    </div>
+</body>
+</html>

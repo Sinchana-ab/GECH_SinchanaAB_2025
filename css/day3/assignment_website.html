@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            /* object-fit: cover; */
+        }
+        body{
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .skill-row{
+                display: table-row;
+        }
+
+         .section {
+            display: table;
+            width: 100%;
+        }
+        .skill-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center; 
+            display: inline-block;
+            width: calc(50% - 8px);
+            margin: 5px 0 5px 5px;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 2px 0;/* Center skill names within boxes */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div style="max-width: 800px; margin:0 auto">
+        <div>
+            <img src="./icon.jpg" alt="">
+            <h2>Avron</h2>
+            <h4>Product Designer & Notion Creater</h4>
+        </div>
+        <hr>
+        <div>
+            <p>+00 123 456 789</p>
+            <p>yourname@domain.com</p>
+            <p>www.website.com</p>
+            <p>Anytown, CA 12345</p>
+        </div>
+        <hr>
+        <div>
+            <h4>ABOUT ME</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Facere quae qui sed quis doloribus sunt ullam atque dolorum? 
+    Eligendi ratione incidunt modi aperiam maxime labore exercitationem dolor nihil praesentium nostrum.
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga a laudantium cupiditate recusandae beatae, nemo assumenda fugit dolor magni dignissimos fugiat veritatis quas nobis illum ex ducimus suscipit facilis autem.</p>
+        </div>
+        <hr>
+        <div><i class="fa-solid fa-caret-down"></i>
+            <select name="skill" id="select">
+            <option value="skill">skills</option>
+            <option value=""></option>
+            </select>
+            <i class="fa-solid fa-ellipsis"></i>
+        </div>
+        <hr>
+        <div style="width: 50%; white-space: wrap;">
+            <div style="display: inline-block; padding: 10px; border: 1px solid block; border-radius: 10px; ">
+                <!-- <i class="fa-solid fa-magnifying-glass" ></i><input type="search" placeholder="search" style="border: none; outline: none; font-size: 12px; background: white;"> -->
+                <i class="fa-solid fa-magnifying-glass" ></i><input type="search" placeholder="search" >
+            </div>
+            <div style="display: inline-block; padding: 3px; border-radius: 10px; font-size: 12px; margin-left: 6px; border: 1px solid black;">
+                <i class="fa-regular fa-circle-dot" style="color: blue;"></i> Type:Skill<i class="fa-solid fa-caret-down" style="color: grey;"></i>
+            </div>
+            <div style="display: inline-block; font-size: 12px; color: gray; margin: 20px;">+add filter</div>
+        </div>
+    <div class="section">
+            <div class="skill-row">
+                <div class="skill-item">Collaboration</div>
+                <div class="skill-item">Communication</div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-item">Creativity</div>
+                <div class="skill-item">Critical Thinking</div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-item">Empathy</div>
+                <div class="skill-item">Time Management</div>
+            </div>
+    </div>
+
+    <hr>
+    <div>
+        <h2>ACADEMIC BACKGROUND</h2>
+        <P><strong>University</strong></P>
+        <p>Bachelor Degree</p>
+    </div>
+    </div>
+</body>
+</html>

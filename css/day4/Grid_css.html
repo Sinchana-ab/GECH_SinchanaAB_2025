@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid in css</title>
+    <style>
+        .container{
+            width: 100vw;
+            height:100vh;
+            border: 2px solid black;
+            display: grid;
+            column-gap: 20px;
+            row-gap: 20px;
+            padding: 20px;
+            grid-template-areas: "nav nav nav" 
+            "main main aside" 
+            "footer footer footer";
+            
+            /* grid-template-columns: auto auto auto; */
+            /* grid-template-rows: auto auto auto; */
+        }
+        .child{
+            /* height: auto;
+            width: auto; */
+            border: 2px solid blue;
+        }
+        /* .fiv{
+            grid-column: seccol/span 2;
+            border-color: tomato;
+        }
+        .for{
+            grid-row: 2/span 3;
+            border-color: brown;
+        } */
+         .fir{
+            grid-area: nav;
+            grid-column: 1/span 3;
+         }
+         .sec{
+            grid-area: main;
+            grid-column: 1/span 2;
+         }
+         .thi{
+            grid-area: aside;
+         }
+         .for{
+            grid-area: footer;
+            grid-column: 1/span 3;
+         }
+    </style>
+ </head>
+ <body>
+    <div class="container">
+        <div class="child fir">1</div>
+        <div class="child sec">2</div>
+        <div class="child thi">3</div>
+        <div class="child for">4</div>
+        <!-- <div class="child fiv">5</div>
+        <div class="child six">6</div>
+        <div class="child seve">7</div>
+        <div class="child eigh">8</div>
+        <div class="child nine">9</div> -->
+    </div>
+ </body>
+ </html>                                                                                       

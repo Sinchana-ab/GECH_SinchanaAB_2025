@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psudo in css</title>
+    <style>
+        .atag{
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .atag:hover{
+            color: green;
+        }
+        .atag::after{
+            content: "h";
+        }
+        .atag::before{
+            content: "j";
+        }
+        ::selection{
+            color: red;
+            background-color: rgb(166, 166, 247);
+        }
+        .sec::first-letter{
+            font-size: 40px;
+        }
+        .sec::first-line{
+            color: blueviolet;
+        }
+        .first::first-letter{
+            font-style: italic;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="" class="atag">Home</a>
+            <a href="" class="atag">About</a>
+            <a href="" class="atag">Contact</a>
+        </div>
+        <p class="first">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <p class="sec">Lorem ipsum dolor sit. Lorem, ipsum. </p>
+    </div>
+</body>
+</html>

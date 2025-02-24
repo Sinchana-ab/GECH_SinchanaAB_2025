@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>units in css</title>
+    <style>
+        body{
+            padding: 20px;
+        }
+        .first{
+            background-color: rgb(200, 216, 231);
+            height: 120px;
+            width: 720x;
+            border: 2px solid azure;
+        }
+        .sec{
+            background-color: rgb(222, 222, 138);
+            height: 10em;
+            width: 20em;
+            border: 2px solid blueviolet;
+        }
+        .rem_font{
+            width: 200px;
+            height: 100px;
+            background-color: antiquewhite;
+            font-size: 2rem;
+            border: 2px solid rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <p>1. px:- </p>
+    <p>2. em:- by default font is 1em = 16px , inside parent div , it will ask for parent (div) wheather it has font property or not if it has based it will adjust</p>
+    <p>3. rem:- if html has font size 20px then 1rem=20px it works based on root ie html(it consider by default 16px)</p>
+    <p>4. vw:- viewport width</p>
+    <p>5. vh:- viewport height</p>
+
+    <h1>1.px</h1>
+    <div class="first">
+    </div>
+
+    <h2>2.em</h2>
+    <div class="sec"></div>
+
+    <h1>3.rem</h1>
+    <div class="rem_font">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, eos!
+    </div>
+</body>
+</html>

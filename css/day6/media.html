@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media</title>
+    <style>
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background-color: aqua;
+        }
+        /* @media makes website appears same in all the devices here 1)screen : screen device not hard copy of website 2)all :- its applicable both screen and hard copy 3)ont only is applicable for everey device wih condition */
+        /* @media not|only media_type and (condition) and (condition){
+
+        } */
+         /* @media only screen and (max-width:600px) {
+            .container{
+                background-color: brown;
+            }
+         } */
+          @media only screen and (min_width: 600px) and (max_width:800px){
+            .container{
+                background-color: brown;
+            }
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>varibable</title>
+    <style>
+        :root{
+            --green: rgb(25, 159, 43);
+            --red: rgb(122, 110, 110);
+        }
+        .ptag{
+            background-color: aqua;
+        }
+        .divtag{
+            background-color: var(--green);
+        }
+        .ptag1{
+            background-color: yellow;
+        }
+        .divtag1{
+            --green: rgb(23, 23, 144);
+            background-color: var(--red);
+            color: var(--green);
+        }
+        .container{
+            margin: 20px auto;
+            border: 2px solid black;
+            width: 200px;
+            height: 100px;
+
+        }
+        .child{
+            width: 60%;
+            height: 30px;
+            /* border: 2px solid rgb(108, 123, 232); */
+
+        }
+        .fir{
+            background-color: aqua;
+            z-index: 2;
+            /* border: 1px solid rgb(126, 118, 118); */
+        }
+        .sec{
+            background-color: wheat;
+            top: 10px;
+            left: 10px;
+            position: absolute;
+            margin-top: 20px;
+            /* border: 1px solid blue; */
+        }
+    </style>
+</head>
+<body>
+    <p class="ptag">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste.</p>
+    <div class="divtag">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tempora doloribus voluptatem voluptatibus.</div>
+    <p class="ptag1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <div class="divtag1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, fugiat quas!</div>
+
+    <div class="container">
+        <div class="child first">1</div>
+        <div class="child second">2</div>
+    </div>
+</body>
+</html>

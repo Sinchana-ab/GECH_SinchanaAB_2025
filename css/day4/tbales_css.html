@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables in css</title>
+    <style>
+        body{
+            margin: 20px;
+        }
+        .table_con{
+            width: 80vw;
+            height: 50vh;
+            text-align: center; 
+            margin: 0 100px;
+        }
+        .table_con, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        tr:nth-child(2n){
+            background-color: rgb(239, 233, 233);
+        }
+        tr:nth-child(2n+1){
+            background-color: rgb(220, 153, 153);
+        }
+        tr:first-child{
+            background-color: green;
+            color: azure;
+        }
+        th,td{
+            padding: 10px;
+            text-align: center;
+            vertical-align: bottom;
+        }
+        td{
+            text-size-adjust: 300px;
+        }
+        th{
+            text-decoration: underline;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table class="table_con">
+        <tr>
+            <th>name</th>
+            <th>Roll</th>
+            <th>age</th>
+            <th>address</th>
+        </tr>
+        <tr>
+            <td>Sinchana</td>
+            <td>22</td>
+            <td>20</td>
+            <td>hassan</td>
+        </tr>
+        <tr>
+            <td>AB</td>
+            <td>22</td>
+            <td>22</td>
+            <td>hassan</td>
+        </tr>
+        <tr>
+            <td>shwetha</td>
+            <td>22</td>
+            <td>23</td>
+            <td>hassan</td>
+        </tr>
+        <tr>
+            <td>lorem</td>
+            <td>22</td>
+            <td>23</td>
+            <td>hassan</td>
+        </tr>
+    </table>
+</body>
+</html>
