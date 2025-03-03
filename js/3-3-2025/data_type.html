@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.number
+        let a=12;
+        console.log("value of a: " ,a);
+        console.log("type of a: ", typeof a);
+
+        //string
+        let b = "hello";
+        console.log("value of a: " ,a);
+        console.log("type of a: ", typeof a);
+
+        // BOOlEAN
+        console.log(Boolean(10>9));
+
+        //undefined
+        let c;
+        console.log("the value of c: ",c);
+        c=30;
+        console.log("the value of c: ",c);
+        
+        //null
+        let d=null;
+        console.log("the value of d: ",d);
+
+        //BigInt
+        let e=BigInt(121);
+        console.log("the value of e: ",e);
+
+        // BigInt
+        let g=121n;
+        console.log("value of g: " ,g);
+        console.log("type of g: ", typeof g);
+
+        //Object
+        let f = [1,2,3];
+        console.log("value of f: " ,f);
+        console.log("type of f: ", typeof f);
+
+        //object string
+        let obj1={
+            first : "sinchana",
+            lname : "A B"
+        }
+        console.log("value of obj1: " ,obj1);
+        console.log("type of : obj1", typeof obj1);
+
+
+        //symbol
+        let h = Symbol("foo")
+        console.log("value of h: " ,h);
+        console.log("type of h: ", typeof h);
+
+        //bug
+        let i = null;
+        console.log("value of i: " ,i);
+        console.log("type of i: ", typeof i);
+        console.log(bugs(i))
+    </script>
+</body>
+</html>

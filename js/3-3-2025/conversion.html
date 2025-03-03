@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conversion</title>
+</head>
+<body>
+    <h1>Methods</h1>
+    <p>1. parseInt()- it will convert from String to number</p>
+    <p>2. Number() - it will convert from string to number</p>
+    <p>3. String() - it convert numbers to strings. </p>
+    <p>4. Tostring - The Number method toString() does the same. x.toString()</p>
+    <p>5. + -  unary + operator can be used to convert a variable to a number</p>
+    <p>6. "" -</p>
+
+    <!-- The global method Number() converts a variable (or a value) into a number.
+A numeric string (like "3.14") converts to a number (like 3.14).
+An empty string (like "") converts to 0.
+A non numeric string (like "John") converts to NaN (Not a Number) -->
+    <script>
+        ///1.parse
+        let var1 = "12";
+        console.log("value of var1: " ,var1);
+        console.log("type of var1: ", typeof var1);
+        let b = parseInt(var1);
+        console.log(b, typeof b);
+
+        //2.Number
+        let var3 = "3.14";
+        console.log("type of var3: ", typeof var3);
+        var var0 = Number(var3);
+        console.log(var0);
+
+        //3.string
+        let var2 = 23;
+        console.log("value of var2: " ,var2);
+        console.log("type of var2: ", typeof var2);
+        let x= String(var2);
+        console.log(x, typeof x);
+
+        // tostring
+        let a = 23;
+        console.log(a+ "value of a ","type of a: ", typeof a);
+        let z = a.toString(a)
+        console.log(z, typeof z);
+        
+
+        // 5. +
+        let var6 = "1234"
+        console.log("value of var6: " ,var6);
+        console.log("type of var6: ", typeof var6);
+        let y = +var6;
+        console.log(y,typeof y)
+        let y1 = "John";   // y is a string
+        let x1 = + y1; 
+        console.log(y1)
+
+        //6. 
+        let var7 = "45";
+        console.log("value of var7: " ,var7);
+        console.log("type of var7: ", typeof var7);
+        let var8 = (var7); 
+        console.log(var7, typeof var8 )
+        consol.log( Number("3.14"))
+    </script>
+</body>
+</html>
