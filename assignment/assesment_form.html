@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form action="#">
+        <fieldset>
+            <legend>Student Personal information</legend>
+            <label for="name">Student name: </label>
+            <input name="fname" type="text" id="name" placeholder="First name">
+            <input name="lname" type="text" id="name" placeholder="last name">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+            <label for="password">password:</label>
+                <input type="password" name="password" id="password" placeholder="password" readonly>
+            <br>
+            <br/>
+            <label for="phone">Phone</label>
+            <input type="tel" name="phone" id="phone" value="123456789" readonly><br>
+        <br>
+        <label for="dob">Date of Birth: </label>
+        <input type="date" name="dob" id="dob" required><br>
+        <br>
+            <label for="linkedin">Linkedin</label>
+            <input type="url" name="linkedin" placeholder="http://linedin.com/in/sinchanaab"> <br>
+            <br>
+            <label for="time">Preferred Contact time</label>
+            <input type="time" name="time" id="time"><br>
+            <br>
+            <label for="search">Search informations:</label>
+            <input type="search" name="search" id="search" placeholder="search here...">
+            <br><br>
+        <label for="gender">Gender</label>
+            <div class="gender">
+                <input type="radio" name="gender" id="male" value="Male" required><label for="male">male</label>
+                <input type="radio" name="gender" id="Female" value="Female" required><label for="Female">Female</label>
+                <input type="radio" name="gender" id="others" value="others" required><label for="others">others</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Address</legend>
+            <label for="nation">Nation</label>
+            <select name="nation" id="nation">
+                <option value="">select a Nation</option>
+                <option value="india">india</option>
+                <option value="ca">california</option>
+                <option value="ny"> New yark</option>
+            </select>
+           <label for="city">city:</label> <input type="text" name="cityid
+           city" placeholder="enter city">
+           <label for="pincode">pincode:</label><input type="number" name="pincode" id="pincode">
+           <br>
+           <br/>
+           <lable for="address">address:</lable>
+            <textarea name="address" id="address" width="200px" height="200px"  placeholder="Enter current addres"></textarea><br>
+        </fieldset>
+        <fieldset>
+            <legend>Hobbies</legend>
+            <input type="checkbox" name="Hobbies" id="Dance"><label for="html">Dance</label>
+            <input type="checkbox" name="Hobbies" id="read"><label for="CSS">read</label>
+            <input type="checkbox" name="Hobbies" id="cook"><label for="js">cook</label>
+            <br><br>
+            <legend for="color">Favorite Color:-  <input type="color" name="color" id="color"></legend><br>
+        </fieldset>
+        <fieldset>
+            <legend>skill set</legend>
+            <label name="Skills" id="Skills">Front End</label><br>
+            <input type="checkbox" name="Skills" id="html"><label for="html">Html</label>
+            <input type="checkbox" name="Skills" id="CSS"><label for="CSS">CSS</label>
+            <input type="checkbox" name="Skills" id="js"><label for="js">Javascript</label>
+            <br><br>
+            <label for="range">Skill level(1-10)</label>
+            <input type="range" name="range" id="range" min="1" max="10"> <br>
+            <br>
+            <label for="file">Upload Resume</label>
+            <input type="file" name="file" id="file">
+            <br>
+        </fieldset>
+        <fieldset>
+            <legend>actions</legend><br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="reset">
+            <br><br>
+            <button type="button">Click me</button>
+        </fieldset>
+    </form>
+</body>
+</html>

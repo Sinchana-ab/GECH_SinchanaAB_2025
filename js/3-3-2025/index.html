@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./first.js"></script>
+</head>
+<body>
+     <h1>Hii swathi</h1>
+    <p id="demo">Hello Html<p>
+    <button type="button" onclick="document.getElementById('demo').innerText='Hello Sinchana' ">clickMe</button>
+<hr>
+    <H2>Hello world</H2>
+    <p id="demo1">welcome to javascript<p>
+    <button type="button" onclick="change()">clickMe</button>
+    <br><br>
+<hr>
+    <H2 id="h2">Hello website</H2>
+    <p id="demo2">welcome to javascript<p>
+    <button type="button" onclick="external()">clickMe</button>
+<hr> 
+    <!-- onerhtml--> 
+    <p id="demo3">welcome to javascript<p>
+    <button type="button" onclick="innerHtml()">Inner Html</button>
+<hr>
+<button type="button" onclick=" console.log('user clicked button')">console message</button>
+<hr> 
+<button type="button" onclick=" document.write(5+6);">Write message</button>
+<hr>
+<button type="button" onclick="myFunction()">Alert message</button>
+<hr>
+    <script>
+        function change(){
+            document.getElementById('demo1').innerText='Welcome to internal javascript'; 
+            document.getElementById('h2').innerText='<span>What are you doing</span>'
+        }
+        function innerHtml(){
+            document.getElementById('demo3').innerHTML='<span>Contine with inner Html</span>';
+        }
+        function myFunction(){
+            window.alert("you clicked Button")
+        }
+        
+    </script>
+</body>
+</html>

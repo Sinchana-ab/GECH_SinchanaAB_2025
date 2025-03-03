@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ceramics Studio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="module" src="./src/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .story-section{
+    height: 80vh;
+    background: rgb(239, 240, 241);
+    background: radial-gradient(circle, rgb(254, 253, 253) 0%, rgba(248, 246, 246, 0.76) 0%), url(./images/our\ story.jpg);
+    /* background: url(./images/our\ story.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="./images/ceramic.png" alt="Ceramic Logo" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="./home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./shop.html">SHOP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./workshop.html">WORKSHOP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./blog.html">BLOG</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contact.html">CONTACT</a>
+            </li>
+            <li class="nav-item ms-2">
+              <a class="nav-link" href="#"><i class="bi bi-cart"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-white py-5  bg-dark">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 py-5">
+            <h1 class="display-3 fw-bold mb-4">Ceramics studio</h1>
+            <p class="lead mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Donec orci massa, dapibus quis molestie sit amet, pharetra 
+              vitae dolor. Praesent auctor, dui id maximus sagittis, lectus 
+              enim pharetra quam, ut laoreet tortor metus ut ipsum.
+            </p>
+            <button class="btn btn-primary px-4 py-2">Show More</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bestsellers Section -->
+    <section class="bestsellers py-5">
+      <div class="container bg-light">
+        <h2 class="text-center mb-5">Bestsellers</h2>
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-md-3 mb-4">
+            <div class="card border-0">
+              <img src="./images/pot.jpg" class="card-img-top w-100" alt="Sara Mug">
+              <div class="card-body px-0">
+                <h5 class="card-title">Sara Mug</h5>
+                <p class="card-text">20 USD</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 2 -->
+          <div class="col-md-3 mb-4">
+            <div class="card border-0">
+              <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" class="card-img-top" alt="Moon Plate">
+              <div class="card-body px-0">
+                <h5 class="card-title">Moon Plate</h5>
+                <p class="card-text">30 USD</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 3 -->
+          <div class="col-md-3 mb-4">
+            <div class="card border-0">
+              <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" class="card-img-top" alt="Silver Set">
+              <div class="card-body px-0">
+                <h5 class="card-title">Silver Set</h5>
+                <p class="card-text">40 USD</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 4 -->
+          <div class="col-md-3 mb-4">
+            <div class="card border-0">
+              <img src="./images/making3.jpg" class="card-img-top" alt="Workshops for adults">
+              <div class="card-body px-0">
+                <h5 class="card-title">Workshops for adults</h5>
+                <p class="card-text">210 USD</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Collection Section -->
+    <section class="new-collection py-5 bg-light">
+      <div class="container py-4">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h2 class="mb-4">New collection</h2>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Aenean elementum magna ac sapien molestie condimentum posuere. 
+              Praesent consequat nisi vel eros varius, ut laoreet tortor metus ut ipsum.
+              Nullam auctor, dui id maximus sagittis, lectus enim pharetra quam, 
+              ut laoreet tortor metus ut ipsum elementum, nec venenatis sem 
+              purus egestas. Etiam efficitur posuere hendrerit. 
+              Proin vulputate justo ac nisi elementum.
+            </p>
+            <button class="btn btn-primary px-4 py-2">More</button>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-6 mb-4">
+                <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Ceramic collection">
+              </div>
+              <div class="col-6 mb-4">
+                <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Ceramic collection">
+              </div>
+              <div class="col-12">
+                <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Ceramic collection">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- workshop -->
+  <section class="workshop w-100 py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Image Section -->
+            <div class="col-12 col-lg-6 col-md-6 order-last order-md-first order-lg-first order-sm-last text-center">
+                <img src="./images/omlone.jpg" class="img-fluid w-75 h-50 h-lg-75 h-md-75 mx-auto d-block" alt="Workshop Image">
+            </div>
+            
+            <!-- Text Section -->
+            <div class="col-12 col-lg-6 col-md-6 text-start order-first order-sm-first order-md-last order-lg-last  p-5">
+                <h2 class="fw-bold mb-3">Workshops</h2>
+                <p class="mb-3 mx-auto fs-6 text-secondary">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum sapien ac sapien vestibulum posuere.
+                    Praesent congue dui nec lectus tincidunt elementum. Donec viverra a neque vel egestas. Ut quis urna orci.
+                    Nullam sollicitudin est et quam rhoncus, nec imperdiet sem efficitur. Etiam aliquam posuere hendrerit. 
+                    Curabitur egestas sed nisl rhoncus finibus.
+                </p>
+                <button class="btn btn-danger text-white px-4 py-2">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</section>
+   <!-- workshop end -->
+
+
+    <!-- Our Employees Section -->
+    <section class="employees py-5 bg-light">
+      <div class="container py-4">
+        <h2 class="text-center mb-5">Our employees</h2>
+        <div class="row">
+          <!-- Employee 1 -->
+          <div class="col-md-4 mb-4 text-center">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="rounded-circle mb-3" width="120" height="120" alt="Mary Smith">
+            <h5 class="mb-2">Mary Smith</h5>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Aenean elementum magna ac sapien molestie condimentum posuere. 
+              Praesent consequat nisi vel eros varius, ut laoreet tortor metus ut ipsum 
+              elementum.
+            </p>
+          </div>
+          
+          <!-- Employee 2 -->
+          <div class="col-md-4 mb-4 text-center">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3" width="120" height="120" alt="James Jones">
+            <h5 class="mb-2">James Jones</h5>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Aenean elementum magna ac sapien molestie condimentum posuere. 
+              Praesent consequat nisi vel eros varius, ut laoreet tortor metus ut ipsum 
+              elementum.
+            </p>
+          </div>
+          
+          <!-- Employee 3 -->
+          <div class="col-md-4 mb-4 text-center">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3" width="120" height="120" alt="Emily Murphy">
+            <h5 class="mb-2">Emily Murphy</h5>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Aenean elementum magna ac sapien molestie condimentum posuere. 
+              Praesent consequat nisi vel eros varius, ut laoreet tortor metus ut ipsum 
+              elementum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- photos -->
+    <section class="photo-section p-5">
+        <div class="container " style="max-width: 900px; ">
+            <div class="row g-2 vh-50 align-items-center justify-content-center">
+                             
+                <div class="col-6">
+                    <img src="./images/cup1.jpg" class="img-fluid w-100 h-100 object-fit-cover" alt="Large Image">
+                </div>
+    
+                <div class="col-6">
+                    <div class="row g-2">
+              
+                        <div class="col-12">
+                            <img src="./images/pot.jpg" class="img-fluid w-100 h-100 object-fit-cover" alt="Top Right Image">
+                        </div>
+    
+                        <div class="col-6">
+                            <img src="./images/silver.jpg" class="img-fluid w-100 h-100 object-fit-cover" alt="Small Image 1">
+                        </div>
+                        <div class="col-6">
+                            <img src="./images/making3.jpg" class="img-fluid w-100 h-100 object-fit-cover" alt="Small Image 2">
+                        </div>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+        <!--  photos end -->
+  
+  
+  <!-- story -->
+  <section class="story-section text-start text-black">
+    <div class="container-fluid h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="p-4">
+                    <h1 class="fw-bolder mx-lg-5 mx-md-5 mx-auto mb-3">Our Story</h1>
+                    <p class="fs-4 mx-lg-5 mx-md-5 mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quos ipsam impedit iste illo, nemo necessitatibus nesciunt excepturi atque hic.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, non.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda recusandae, est libero enim laudantium eum reiciendis labore quod consectetur explicabo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- story end -->
+
+
+    <!-- footer section -->
+ <footer class="bg-dark text-white p-4 fs-6">
+    <div class="container-fluid w-100 my-5 text-center ">
+      <div class="row g-2 d-flex flex-column flex-lg-row flex-md-row justify-content-center align-items-center">
+        <div class="col-12 col-lg-2 col-md-2">
+          <p>Adress: 573201 </p>
+          <p>Karnataka India</p>
+        </div>
+        <div class="col-12 col-lg-2 col-md-2">
+          <p>email@gmail.com</p>
+          <p>+0000000000</p>
+        </div>
+        <div class="col-12 col-lg-2 col-md-2 ">
+          <p><a href="#" class="text-white text-decoration-none">Store regulations</a></p>
+          <p><a href="#" class="text-white text-decoration-none">Privacy Policy</a></p>
+        </div>
+        <div class="col-12 col-lg-2 col-md-2">
+          <p><a href="#" class="text-white text-decoration-none">Delivery</a></p>
+          <p><a href="#" class="text-white text-decoration-none">Returns & Exchanges</a></p>
+        </div>
+        <div class="col-12 col-lg-2 col-md-2 d-flex align-items-center justify-content-center text-white">
+          <i class="fa-brands fa-facebook col-2"></i>
+          <i class="fa-brands fa-twitter col-2"></i>
+          <i class="fa-brands fa-instagram col-2"></i>
+        </div>
+      </div>
+    </div>
+    
+   </footer>
+  <div class="container-fluid bg-secondary-subtle d-flex justify-content-center fs-6">
+    <p>A website designed by @Sinchana A B.</p>
+</div>
+   
+   <!-- footer end -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
