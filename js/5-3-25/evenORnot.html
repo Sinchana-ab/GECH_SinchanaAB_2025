@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even or Not</title>
+</head>
+<body>
+    <h1>Even or Not Function</h1>
+    <!-- <label for="num1">Enter First Value (A):</label> -->
+        <input type="number" id="num1" placeholder="Enter number">
+        <button type="button" onclick="display()">even or not</button>
+    <p>The number is:-  <span id="demo"></span></p>
+    <script>
+        function even(int) {
+            let result;
+            if (int % 2 == 0) {
+                result = "even";
+            } else {
+                result = "odd";
+            }
+            return result;
+        }
+        
+        // let int2 = +prompt("Enter a number:");
+        function display() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let result1 = even(num1);
+            document.getElementById("demo").innerText = result1;
+        }
+        
+        // Call the display function to show the result
+    </script>
+</body>
+</html>

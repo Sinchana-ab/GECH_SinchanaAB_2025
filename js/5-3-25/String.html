@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    <h1>Strings in javaScrip</h1>
+    <h4>Methods used in javaScrip</h4>
+    <p>1. length</p>
+    <p>2. Slice</p>
+    <p>3. Substring</p>
+    <p>4. substr</p>
+    <p>5. replace</p>
+    <p>6. toUpperCase()</p>
+    <p>7. toLowercase()</p>
+    <p>8. Trim()</p>
+    <p>9. IndexOf()</p>
+    <p>10. StartSwitch</p>
+    <p>11. EndSwitch()</p>
+    <p>12. includes</p>
+    <p>13. concate()</p>
+
+
+
+    <script>
+        // let str1 = "Hello World";
+        // console.log(str1);
+        // let len = str1.length;
+        // console.log(`The length of String ${str1} is : ${len}`);
+        // console.log("The legth of string : " + str1 + " is " +len);
+        // console.log("The legth of string: " ,len);
+
+        //2. Slice 
+        // let str2 = "Java Script";
+        // let str3 = str2.slice(2, 7);
+        // console.log(`the string is : ${str3}`);
+        // console.log(str2[5]);
+        // console.log("The scliced string: ", str2.slice(-8, -3));
+
+        // //3.substring
+        // let str4 = "hello JavaScript";
+        // let str5 = str4.substring(2,7);
+        // let str41 = str4.substring(-13, 3);
+        // console.log(str5);
+        // console.log("the string is:- ", str41);
+
+        //4. substr
+
+         //3.substring
+         console.log("Substring");
+         let str6 = "JavaScript";
+        let str7 = str6.substr(2,7);
+        let str61 = str6.substr(-4, 5);
+        console.log(str7);
+        console.log(`the string is:- ${str61}`);
+
+        //Replace
+        console.log("Replcae");
+        let str8 = "Java Script";
+        let str9 = str8.replace("Java", "python");
+        console.log(`the string replced is ${str9}`);
+
+        //uppercase()
+        console.log(`the uppercase of ${str8} is ${str8.toUpperCase()}`);
+        //toLowerCase()
+        console.log(`the lowercase of ${str8} is ${str8.toLowerCase()}`);
+        console.log(`the localuppercase of ${str8} is ${str8.toLocaleUpperCase()}`);
+         
+        //trim()
+        let str10 = "           helo         ";
+        console.log(str10);
+        console.log(`the string is ${str10.trim()}`);
+
+        //9. IndexOf()
+        let str11 ="Hello world";
+        console.log(`The index is ${str11.indexOf("ello")}`);
+
+        //10 startwith()
+        console.log(`is the word start with hello ${str11.startsWith("Hello")}`);
+        console.log(`is the word start with world ${str11.startsWith("world")}`);
+
+        //endswith()
+        console.log(`is the word ends with hello ${str11.endsWith("Hello")}`);
+        console.log(`is the word ends with world ${str11.endsWith("world")}`);
+
+        //12 . includes
+        console.log(`is that sentance include java:- ${str11.includes("java")}`);
+        console.log(`is that sentance include Hello:- ${str11.includes("Hello")}`);
+
+        //concat()
+        str13 = "Sinchana";
+        str14 = " A B";
+        console.log(`cancatinated string is ${str13.concat(str14)}`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping Statement</title>
+</head>
+<body>
+    <h1>Looping Statement</h1>
+    <p>1. for loop - for(ini;cond;inc/dec)</p>
+    <p>2. while:-
+         // ini ex: i=0;
+        while(condition){
+            //code
+            //inc / dec<
+        }
+        /p>
+    <p>3. do-while :- 
+        <pre>//ini
+            do{
+                //code
+                //ini / dec
+            }wjil(condition);
+        </pre>
+    </p>
+    <p>4. for in :- 
+        <pre>
+            for(item of iterable){
+                //code
+            }
+        </pre>
+    </p>
+    <p>5. for of</p>
+    <script>
+        // let a1 = [1,2,3,4];
+        // let len = a1.length;
+        // console.log(len);
+        // for(let i =0; i<len; i++){
+        //     console.log(a1[i]);
+        // }
+        // // while loop example
+        // let n = 5;
+        // while(n <= 10){
+        //     console.log("N value:- ", n);
+        //     n++;
+        // }
+        // let j = 0;
+        // while(j < len){
+        //     console.log(a1[j]);
+        //     j++;
+        // }
+        // let input = prompt(" enter a number");
+        // let h = 0
+        // while(h <= input){
+        //     console.log(h);
+        //     h++;
+        // }
+
+        // let input = prompt(" enter a number");
+        // let h = 0
+        // while(h <= input){
+        //     console.log(h);
+        //     h++;
+        // }
+        // do{
+        //     console.log(h);
+        //     h++;
+        // }while(h <= input)
+
+        // do{
+        //     console.log(h);
+        //     h++;
+        // }while(h == input)
+        
+        // do{
+        //     const input1 = +prompt("enter a number");
+        //     if(input1 === 20){
+        //         console.log("User entered the number 20");
+        //         break;
+        //     }
+        //     else{
+        //         console.log("Not match");
+        //         break;
+        //     }
+        // }while(true);
+
+        // do{
+        //     const input1 = +prompt("enter a number");
+        //     if(input1 === 20){
+        //         console.log("User entered the number 20");
+        //         break;
+        //     }
+        // }while(false);
+
+        console.log("For of loop");
+        let array1 = ["sinchana","swathi", "Lavanya", "AS"];
+        for(let item of array1){
+            console.log(item);
+        }
+
+        console.log("For in loop");
+        let array2 = ["sinchana","swathi", "Lavanya", "AS"];
+        for(let item in array2){
+            console.log(item);
+            console.log(array2[item]);
+
+        }
+    </script>
+</body>
+</html>

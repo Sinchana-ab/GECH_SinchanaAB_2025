@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function decleration</title>
+</head>
+<body>
+    <h1>3 ways of decleraing the function</h1>
+    <p>1, Function decleration</p>
+    <p>2, Function expression
+        <pre>
+        const display1 = function(){
+            //code
+        }
+        </pre>
+    </p>
+    <p>3. arrow function
+        <pre>
+            const function_name = () =>
+            {
+                //code
+            }
+        </pre>
+
+    </p>
+
+    <h2>Function types</h2>
+    <p>1, Function accepting a parameter and not returning the value</p>
+    <p>2, Function accepting a parameter and returning the value</p>
+    <p>3, Function not accepting a parameter and  returning the value</p>
+    <p>4, Function not accepting a parameter and not returning the value</p>
+
+
+    <script>
+        //function decleration
+        function display(){
+            console.log("This is Display function");
+        }
+        //function 
+        display();
+
+        //Function accepting a parameter and not returning the value
+        console.log("Function accepting a parameter and not returning the value");
+        
+        function add(a,b){
+            console.log(a*b);
+        }
+        add(2,4);
+
+
+        //Function accepting a parameter and returning the value
+        console.log("Function not accepting a parameter and  returning the value");
+        function add1(a,b){
+            // console.log(a*b);
+            return a + b;
+        }
+        console.log("The add of 2 and 3 is ", add1(2,4));
+        
+        //Function not accepting a parameter and  returning the value
+        console.log("Function not accepting a parameter and  returning the value");
+        
+        function add2(){
+            let a =3;
+            let b = 4;
+            return a + b;
+        }
+        console.log(add2(2,4));
+
+        //Function not accepting a parameter and not returning the value
+        console.log("Function not accepting a parameter and not returning the value");
+        function add3(){
+            let a =3;
+            let b = 4;
+            console.log(`the addition value is ${a} and ${b} is ${a + b}`);
+        }
+        add3();
+
+
+        //function expression
+        const display1 = function(){
+            console.log("This is displayed function expression");
+        }
+
+        //arrow function
+        const display3 = () =>{
+            console.log("This is displayed arrow function");
+        }
+        display3();
+    </script>
+</body>
+</html>
