@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope in js</title>
+</head>
+<body>
+    <h1>Block scope and function scope in javaScrip</h1>
+    <p>1, Block scope - {}(let and const)</p>
+    <p>2. function scope - function function_name{}(var)</p>
+
+    <script>
+        function scope(){
+            var num = 10;
+            let num1 = 20;
+            const num2 = 30;
+            if(true){
+                var num = 100;
+                let num1 = 200;
+                const num2 = 300;
+                console.log("var the number num is: " +num);//100
+                console.log("var the number num1 is: " +num1);//200
+                console.log("var the number num2 is: " +num2);//300
+            }
+            console.log("var the number num is: " +num);//100
+            console.log("var the number num1 is: " +num1);//20
+            console.log("var the number num2 is: " +num2);//30    
+        }
+        scope();
+    </script>
+</body>
+</html>
