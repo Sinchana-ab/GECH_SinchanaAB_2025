@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <h1>Object and class
+        <pre>class:- is a blueprint
+            object :- real world object
+        </pre>
+    </h1>
+    <script>
+        const car_obj = {
+            carName: "Tesla",
+            type: "EV",
+            wheels: 4,
+            "four seat": true,
+            speed: function(){
+                console.log("Tesla has the speed linit 60km/h");
+            }
+        }
+        console.log(car_obj);
+        console.log(car_obj.carName);
+        console.log(car_obj.wheels);
+        car_obj.speed();
+        console.log(car_obj["four seat"]);
+
+        //adding property with value to object
+        car_obj.color = "Purple";
+        console.log(car_obj);
+        // console.log(car_obj1);
+        const new_obj ={...car_obj}
+        car_obj.size = "flate";
+        console.log(car_obj.color);
+        console.log(car_obj.size);
+        
+        //deleting object property
+        delete car_obj.color;
+        console.log(car_obj);
+        console.log(new_obj);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array methods</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Array methods</h1>
+    <p>5. sort</p>
+    <p>6. splice(start,delete,insert)</p>
+    <p>7. each</p>
+    <p>8. some</p>
+    <script>
+        const myArray = [5, 2, 8, 1, 9, 4];
+        const myStringArray = ["apple", "banana", "cherry", "date"];
+        const myObjectArray = [
+        { name: "Alice", age: 25 },
+        { name: "Bob", age: 30 },
+        { name: "Charlie", age: 22 },
+        ];
+        //5. sort
+        const sortedNumbers = [...myArray].sort((a, b) => a - b);
+        console.log("Sorted Numbers (ascending):", sortedNumbers);
+
+        const sortedNumbersDesc = [...myArray].sort((a, b) => b - a);
+        console.log("Sorted Numbers (descending):", sortedNumbersDesc);
+
+        const sortedStrings = [...myStringArray].sort();
+        console.log("Sorted Strings:", sortedStrings);
+
+        const sortedObjects = [...myObjectArray].sort((a, b) => a.age - b.age);
+        console.log("Sorted Objects by age:", sortedObjects);
+
+        //6. splice
+        const removedElements = [...myArray].splice(2, 2);
+        console.log("Removed Elements:", removedElements); // [8, 1]
+        console.log("Modified Array:", myArray);
+
+        const replacedElements = [...myArray].splice(1, 2, 10, 11); 
+        console.log("Replaced Elements:", replacedElements);
+
+        // 7. some()
+
+        const hasGreaterThanEight = myArray.some((element) => element > 8);
+        console.log("Has element greater than 8:", hasGreaterThanEight);
+
+        //8.each
+         let numbers = [10, 20, 30, 40];
+
+        $.each(numbers, function (index, num) {
+           console.log(num * 2);
+        });
+    </script>
+</body>
+</html>

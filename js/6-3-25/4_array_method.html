@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array methods</title>
+</head>
+<body>
+    <h1>Array Methods</h1>
+    <p>1. foreach 
+        <pre>
+            array.forEach((cuElement, index, array))
+array.forEach((curElem)),() =>{
+
+}
+        </pre>
+    </p>
+    <p>2. map</p>
+    <p>3. filter</p>
+    <p>4. reduce
+        <pre>//by default previous is 1 ie previous is 0th element
+            const res = array.reduce((previous, current, index, array) =>{
+
+            })
+        </pre>
+    </p>
+    <p>5. sort</p>
+    <p>6. splice(start,delete,insert)</p>
+    <p>7. each</p>
+    <p>8. some</p>
+
+    <script>
+        const array1 = [1,2,3,4,5,6];
+        //for each
+        array1.forEach((item, index, array) =>{
+            console.log(item*item, "index is",index,"array is:",array);
+        })
+
+        const object1 = [
+            { name:"sinchan", age:20, address:"hassan"},
+            { name:"sinchan A B", age:21, address:"hassan"},
+            { name:"sinchan A", age:22, address:"hassan"},
+            { name:"sinchan B", age:23, address:"hassan"}
+        ]
+        object1.forEach((cur) =>{
+        console.log(cur.name);
+    })
+
+    const object2= [
+            { name:"sinchan", age:20, address:"hassan"},
+            { name:"sinchan A B", age:21, address:"hassan"},
+            { name:"sinchan A", age:22, address:"hassan"},
+            { name:"sinchan B", age:23, address:"hassan"}
+        ]
+
+        const user1 = object2.map((cur) =>{
+            return cur.name
+        })
+        console.log(user1);
+        const user2= object2.map((cur) =>{
+            console.log(cur);
+        })
+
+        //3. filter
+        const array2 = [1,2,3,7,5];
+        const array3 = array2.filter((cur)=>{
+            return cur %2 ==0;
+        })
+        console.log("array3: ", array3);
+
+
+        ///reduce
+        array4 = [1,2,3,4,6];
+        const res =array4.reduce((previous, current, index, array) =>{
+            return previous + current //16
+        },10)//here the 10 is added to final output 16 +10 =26
+        console.log("The Result of array: ",res);
+
+        const result = array4.sort((a,b) =>{ a-b})
+        console.log(result);
+     </script>
+</body>
+</html>

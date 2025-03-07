@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <h1>Array in javaScrip</h1>
+    <h3>Array operations</h3>
+    <script>
+        let array1 = [1,2,3,4];
+        console.log(array1);
+        console.log(array1[3]);
+
+        //push and pop
+        array1.push(23);
+        console.log("After pushing: ", array1);
+        // const res = array1.pop();
+        const abcd = array1.pop()
+        // console.log("The poped array is ", array1.pop());
+        console.log("poped element: ", abcd);
+        console.log("after poping ", array1);
+
+        //shift unshift
+        let array2 = [2,3,4,6];
+        array2.unshift(21)
+        console.log("After unShifting: ", array2);
+        array2.shift();
+        console.log("After Shifting: ", array2);
+
+        let arr = [12, "hii", true, null, {"name": "sinchana"}]
+        console.log(arr);
+        console.log(typeof arr);
+        // let len = arr.length;
+        console.log("For of loop");
+        for(let item of arr){
+            console.log(item, typeof item);
+        }
+    </script>
+
+</body>
+</html

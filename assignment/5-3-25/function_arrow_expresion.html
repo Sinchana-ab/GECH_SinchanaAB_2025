@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Arrow,expression</title>
+</head>
+<body>
+    <h1>Function decleration types
+        <pre>1,Function expression 
+2, Arrow function
+        </pre>
+    </h1>
+    <script>
+        console.log("Function Expression");
+        const greeting = function(name){
+            console.log("hello " + name +"!");
+        }
+        console.log("Function acceptng a parameter and not returning a value");
+        let userName = prompt("Enter a name");
+        greeting(userName);
+
+        console.log("Function acceptng a parameter and  returning a value");
+        const greet = function(name){
+            let name1 = "Hii " + name + "!"
+            return name1;
+        }
+        console.log(greet(userName));
+
+        console.log("Function not acceptng a parameter and  returning a value");
+        const greet1 = function(){
+            let fname = "Hello";
+            let lname = "Sinchana";
+            return fname + " " + lname
+        }
+        console.log(greet1());
+
+        console.log("Function not acceptng a parameter and not returning a value");
+        const greet2 = function(){
+            let fname = "Hello";
+            let lname = "Sinchana";
+            console.log(fname + " " + lname);
+        }
+        greet2();
+
+        //Arrow function
+        console.log("Arrow Function");
+        const Arrow1 = (name) =>
+            console.log("Welcome to JavaScript " + name +"!");
+        console.log("Function acceptng a parameter and not returning a value");
+        Arrow1(userName);
+        
+        console.log("Function acceptng a parameter and  returning a value");
+        const Arrow2 = (num) =>
+            num * num
+        const number = +prompt("Enter a number");
+        console.log(`Sqaure of ${number} is ${Arrow2(number)}`);
+
+        
+        console.log("Function not acceptng a parameter and  returning a value");
+        const Arrow3 = () =>
+            Message = prompt("Entered Message");
+
+        console.log("Messages ", Arrow3());
+        
+    
+        
+        console.log("Function not acceptng a parameter and  not returning a value");
+        const Arrow4 = () =>
+            console.log("Hello Gech");
+        Arrow4();
+    </script>
+</body>
+</html>

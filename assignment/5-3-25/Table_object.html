@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Object with Different Data Types</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Object Data in Table</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name (String)</th>
+                <th>Age (Number)</th>
+                <th>Is Student (Boolean)</th>
+                <th>Skills (Array)</th>
+                <th>Address (Object)</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        const people = [
+            {
+                name: "Alice", 
+                age: 25, 
+                isStudent: false, 
+                skills: ["JavaScript", "Python", "SQL"], 
+                address: { city: "New York", zip: 10001 }
+            },
+            {
+                name: "Bob", 
+                age: 30, 
+                isStudent: true, 
+                skills: ["HTML", "CSS", "React"], 
+                address: { city: "Los Angeles", zip: 90001 }
+            },
+            {
+                name: "Charlie", 
+                age: 28, 
+                isStudent: false, 
+                skills: ["Java", "C++", "Django"], 
+                address: { city: "Chicago", zip: 60601 }
+            }
+        ];
+
+        const tableBody = document.getElementById("tableBody");
+        function displayTable(data) {
+            data.forEach(person => {
+                const row = `<tr>
+                                <td>${person.name}</td>
+                                <td>${person.age}</td>
+                                <td>${person.isStudent}</td>
+                                <td>${person.skills.join(", ")}</td>
+                                <td>${person.address.city}, ${person.address.zip}</td>
+                             </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        // Call the function to display the data
+        displayTable(people);
+    </script>
+
+</body>
+</html>
+
