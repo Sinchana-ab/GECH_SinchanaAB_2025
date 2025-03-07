@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloning Array</title>
+</head>
+<body>
+    <h1>array cloning</h1>
+    <p>When adding the reference to array it change we use clone[...] array to control it</p>
+
+    <script>
+        let Array11 = [2,3,4,5,6]
+        let array1 = Array11;
+        Array11.push(23);
+        console.log("array:", Array11);
+        console.log("array1: ", array1);
+
+        let array4 = [2,4,1,6,2]
+        const array3 = [...array4];
+        console.log("array4: ", array4);
+        
+        array4.shift(23);
+        console.log("array4: ", array4);
+        console.log("array3: ",array3);
+
+        //2.slice another method to add cloning in array
+        const arr12 = ["item1","item2","item3"];
+        console.log("arr12 ", arr12);
+        const arr13 = arr12.slice(0);
+        arr12.push("item4");
+        console.log("arr12 ", arr12);
+        console.log("arr13 ", arr13);
+
+        //3.concat
+        const arr2 = ["item1","item2","item3"];
+        const arr3 = [].concat(arr2);
+        arr2.push("item11");
+        console.log("arr2 ",arr2);
+        console.log("arr3 ",arr3);
+
+
+    </script>
+</body>
+</html>

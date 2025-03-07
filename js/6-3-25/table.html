@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table in javaScrip</title>
+    <style>
+        table, thead,th{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>Table using javaScrip</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>age</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody id="table_body">
+
+        </tbody>
+    </table>
+    <script>
+        const object1 = [
+            { name:"sinchan", age:20, address:"hassan"},
+            { name:"sinchan A B", age:21, address:"hassan"},
+            { name:"sinchan A", age:22, address:"hassan"},
+            { name:"sinchan B", age:23, address:"hassan"}
+        ]
+        let content = "";
+        for(let item of object1){
+            console.log(item.name,item.age,item.address);
+            content += 
+            `<tr>
+                <td>${item.name}</td>
+                <td>${item.age}</td>
+                <td>${item.address}</td>
+            </tr>`
+        }
+        document.getElementById("table_body").innerHTML = content
+    </script>
+</body>
+</html>

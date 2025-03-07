@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onject destructuring</title>
+</head>
+<body>
+    <h1>object Destructuring</h1>
+    <p>sperad operator(...)</p>
+
+    <script>
+        const obj1 ={
+            Name: "Sinchana",
+            age: 20,
+            gender: "Female",
+            address: "Hassan"
+        }
+        // console.log(obj1);
+        // const { Name, age, gender, address} = obj1;
+        // console.log(obj1.Name);
+        // console.log(obj1.age);
+        // console.log(obj1.gender);
+        // console.log(obj1.address);
+
+        const { Name, ...rest } = obj1;
+        console.log(Name);
+        console.log(rest);
+
+        
+    </script>
+</body>
+</html>

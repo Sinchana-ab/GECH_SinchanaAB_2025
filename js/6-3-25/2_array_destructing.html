@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Destructuring</title>
+</head>
+<body>
+    <h1>Array Destructuring</h1>
+    <script>
+        const array = ["item1","item2","item3","item4","item5"]
+        console.log(array);
+        let var1 = array[0];
+        let var2 = array[1];
+        let var3 = array[2];
+        let var4 = array[3];
+        console.log(var1,var2,var3,var4);
+
+        let array1 = ["item1","item2","item3","item4","item5", "item11","item22","item33","item44","item55"]
+        const [var5,var6,...rest] = array1;///destructuring of array
+        console.log(var5, var6);
+        console.log(rest);
+
+        let array2 = [2,3,4,5,6,7,8,9]
+        const [var12, , var13] = array2
+        console.log(var12,var13);
+
+
+        ///destructureing object called nested destructuring
+        const object1 = [
+            { name:"sinchan", age:20, address:"hassan"},
+            { name:"sinchan A B", age:21, address:"hassan"},
+            { name:"sinchan A", age:22, address:"hassan"},
+            { name:"sinchan B", age:23, address:"hassan"}
+        ]
+        // const [{name}{age}{address},user6, user7] = object1
+        const [{name1}, {age2},{address3}] = object1;
+        const[user1,user2,user3] = object1;
+        console.log(name1);
+        console.log(age2);
+        console.log(address3);
+        console.log(user2);
+        console.log(user3);
+    </script>
+     <!-- <script>
+        const object1 = [
+    { name: "sinchan", age: 20, address: "hassan" },
+    { name: "sinchan A B", age: 21, address: "hassan" },
+    { name: "sinchan A", age: 22, address: "hassan" },
+    { name: "sinchan B", age: 23, address: "hassan" }
+];
+
+const [firstObject] = object1;
+const { name, age, address } = firstObject;
+
+console.log(name); // Output: sinchan
+console.log(age);  // Output: 20
+console.log(address); // Output: hassan
+
+    </script> -->
+</body>
+</html>
