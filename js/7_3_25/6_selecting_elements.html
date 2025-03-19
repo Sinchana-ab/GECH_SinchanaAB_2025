@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Selecting Multiple Elements</h1>
+    <p>1. getElementsByClassName - we can't use foreach loop here (HTML Collection)</p>
+    <p>2. querySelectorAll - we can use foreach loop here - (nodeList)</p>
+
+    <div class="child" >J HOPE - Sweet Dreams</div>
+    <div class="child" >J HOPE - Sweet Dreams</div>
+    <div class="child" >J HOPE - Sweet Dreams</div>
+
+    <div class="childs" >J HOPE - Sweet Dreamsland</div>
+    <div class="childs" >J HOPE - Sweet Dreamsland</div>
+    <div class="childs" >J HOPE - Sweet Dreamsland</div>
+
+    <script>
+        //1. getElmentsByClassName - HTML Collection
+        const res = document.getElementsByClassName("child")
+        for(let i of res) {
+            i.style.color = "blue";
+            i.style.fontSize = "30px"
+            }
+            //res.foreach((curele) => { 
+            //  console.log(curele);
+            // })
+
+            //2. querySelectorAll
+            const res1 = document.querySelectorAll(".childs");
+            console.log(res1);
+            res1.forEach((culEle) => {
+                culEle.style.backgroundColor = "pink"
+            }) 
+    </script>
+</body>
+</html>

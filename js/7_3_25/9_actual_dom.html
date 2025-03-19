@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actual Dom</title>
+    <script src="./first.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="htag">Hello world</h1>
+        <p>Sweet Dreamsland</p>
+    </div>
+    <script>console.log(window);</script>
+    <script>
+            let heading = document.getElementById("htag");
+
+// Add an event listener to change the body's background color
+heading.addEventListener("click", function() {
+    // Using DOM to modify the body's style
+    document.body.style.backgroundColor = "yellow";
+})
+    </script>
+</body>
+</html>

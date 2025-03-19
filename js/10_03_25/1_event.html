@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Events in Js</h1>
+    <p>1. Mouse Events</p>
+    <p>2. Keyboard Events</p>
+    <p>3. Form Events</p>
+    <p>4. Window Events</p>
+   <p>5. Document Events</p>
+   <p>6. Clipboard Events</p>
+   <p>7. Media Events</p>
+
+   <h3 id="htag">Hello HTML</h3>
+   <!-- <button onclick="handleClick()">Change the text</button> -->
+   <button id="btn">Change the text</button>
+   
+
+   <h1>Keyboard event</h1>
+   
+   <script>
+   //1. MouseEvent
+//    const handleClick = () => {
+//       const htag = document.querySelector("#htag");
+//       htag.textContent = "Hello JS";
+//     }
+
+//addEventListner
+const btn=document.querySelector("#btn");
+const htag = document.querySelector("#htag")
+btn.addEventListener("click", () =>{
+    console.log("hello");
+    htag.textcontent= "Hello Click";
+});
+
+btn.addEventListener("dbclick", () =>{
+    console.log("hello");
+    htag.textcontent= "Hello Click";
+});
+   </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centers inline elements like h1 */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Vertically centers the h1 */
+            margin: 0;
+        }
+
+        h1 {
+            cursor: pointer;
+            color: #333;
+            padding: 10px;
+            border: 2px solid #333;
+            display: inline-block;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        h1:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1 onclick="changeBackgroundColor()">Click Me to Change Background Color</h1>
+
+    <script>
+        function changeBackgroundColor() {
+            document.body.style.backgroundColor = getRandomColor();
+        }
+
+        function getRandomColor() {
+            let letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body{
+            /* background: aquamarine;  */
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            /* height: 100vh;
+            display: flex;
+            padding: 30px; */
+        }
+        .container {
+            background-color: aliceblue;
+            padding: 20px;
+            /* height: auto; */
+            
+        }
+        button{
+            /* background-color: rgb(39, 221, 160);
+            border: 1px solid rgb(39, 221, 160); */
+            margin: 20px;
+            color: white;
+            border-radius: 3px;
+            width: 120px;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Form Validation</h3></h3>
+        <p style="color: rgb(49, 48, 48);">Sign up to access personalized content.</p>
+        <form id="validation" novalidate>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                <input type="text" id="name" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <p><span id="nameError" class="text-danger"></span></p>
+            </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <input id="email" type="text" class="form-control" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                <span id="emailError" class="text-danger"></span> 
+            </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input id="pass" type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                <span id="passError" class="text-danger"></span>   
+            </div>
+              <div class="input-group mb-3">
+             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input id="cpass" type="text" class="form-control" placeholder="Conform Password" aria-label="Username" aria-describedby="basic-addon1">
+                <span id="cpassError" class="text-danger"></span>   
+            </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-location-dot"></i></span>
+                <textarea name="" id="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                <span id="addressError" class="text-danger"></span>   
+            </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-code-commit"></i></span>
+                <input id="pin" type="text" class="form-control" placeholder="Pincode" aria-label="Username" aria-describedby="basic-addon1">
+                <span id="pinError" class="text-danger"></span>   
+            </div>
+            
+              <button class="btn btn-primary" type="submit">Submit form</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const validation = document.querySelector("#validation");
+
+    validation.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const showError = (eleId, text) => {
+            const errorElement = document.getElementById(eleId);
+            if (errorElement) {
+                errorElement.textContent = text;
+            } else {
+                console.error(`Element with id '${eleId}' not found`);
+            }
+        };
+
+        const clearError = (eleId) => {
+            const errorElement = document.getElementById(eleId);
+            if (errorElement) {
+                errorElement.textContent = "";
+            }
+        };
+
+        const formvalid = () => {
+            let isvalid = true;
+
+            const name = document.querySelector("#name").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const pass = document.querySelector("#pass").value;
+            const cpass = document.querySelector("#cpass").value;
+            const address = document.querySelector("#address").value.trim();
+            const pin = document.querySelector("#pin").value.trim();
+
+            console.log(name, email, pass, cpass, address, pin);
+
+            // Name Validation
+            if (name === "") {
+                showError("nameError", "Name field is required");
+                isvalid = false;
+            } else if (name.length < 3) {
+                showError("nameError", "Name must contain at least 3 letters");
+                isvalid = false;
+            } else {
+                clearError("nameError");
+                isvalid = true;
+            }
+
+            // Email Validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email === "") {
+                showError("emailError", "Email field is required");
+                isvalid = false;
+            } else if (!emailPattern.test(email)) {
+                showError("emailError", "Invalid email");
+                isvalid = false;
+            } else {
+                clearError("emailError");
+                isvalid = true;
+            }
+
+            // Password Validation
+            const passwordPattern = /^(?=.[A-Z])(?=.[a-z])(?=.[@$%!?&])[A-Za-z\d@#$%^&*?!]{8,}$/;
+            if (pass === ""){
+                showError("passError", "Password field is required");
+                isvalid = false;
+            }
+            else if (!passwordPattern.test(pass)) {
+                showError("passError", " password contains atleast ");
+                isvalid = false;
+            } else {
+                clearError("passError");
+                isvalid = true;
+            }
+
+            // Confirm Password Validation
+            if (cpass === ""){
+                showError("cpassError", "Password field is required");
+                isvalid = false;
+            }
+            else if (cpass !== pass) {
+                showError("cpassError", "Passwords do not match");
+                isvalid = false;
+            } else {
+                clearError("cpassError");
+                isvalid = true;
+            }
+
+            // Address Validation
+            if (address === "") {
+                showError("addressError", "Address field is required");
+                isvalid = false;
+            } else {
+                clearError("addressError");
+                isvalid = true;
+            }
+
+            // Pincode Validation (assuming 6-digit PIN)
+            const pincodePattern = /^\d{6}$/;
+            if(pin === ""){
+                showError("pinError", "Pincode is required");
+                isvalid = false;
+            }
+            else if (!pincodePattern.test(pin)) {
+                showError("pinError", "Pincode must be 6 digits");
+                isvalid = false;
+            } else {
+                clearError("pinError");
+                isvalid = true;
+            }
+
+            return isvalid;
+        };
+
+        if (formvalid()) {
+            alert("Form submitted");
+            validation.submit();
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
