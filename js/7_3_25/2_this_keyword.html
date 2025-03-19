@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This Keyword</h1>
+    <script>
+        console.log(this);
+        
+
+        const obj1 = {
+            firstName: "Shiva",
+            lastName: "Shekara",
+            age: 45,
+            about: function(){
+                console.log(this.firstName + " " + this.lastName);// clg(this) - takes to obj1 object and if we use arrow function then it takes to windows object
+            }
+        }
+        obj1.about();
+    </script>
+</body>
+</html>

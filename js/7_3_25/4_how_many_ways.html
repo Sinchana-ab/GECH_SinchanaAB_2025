@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- 1. its not recomended due to it loads js first  -->
+     <!-- <script src="./first.js"> </script> -->
+     <!-- 3.its not recommended due to it run html and JS syncronasly but after JS comeplate it stop runing html concentrate to JS  -->
+      <!-- <script src="./first.js" async></script> -->
+      <!-- 4. It is recommended it run symaltanously html & JS after cccomepliting JS wait for HTML -->
+       <script src="./first.js" defer></script>
+
+</head>
+<body>
+    <h1 style="background-color: aqua;">How many ways we can use external JS in HTML</h1>
+    <p>1. inside a head</p>
+    <p>2. inside a above closing body</p>
+    <p>3. using async inside the head</p>
+    <p>4. using defer inside head</p>
+
+
+    <!-- 2. time to load it is recommended but it will take time to load -->
+    <!-- <script src="./first.js"></script> -->
+
+</body>
+</html>

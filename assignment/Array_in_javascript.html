@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array operations</title>
+</head>
+<body>
+    <h1>Array operations</h1>
+    <p>
+        <pre>
+            1.sort
+            2.splice
+            3.forEach
+            4.some
+            5.map
+            6.filter
+            7.reduce
+        </pre>
+    </p>
+    <script>
+                const myArray = [5, 2, 8, 1, 9, 4];
+        const myStringArray = ["apple", "banana", "cherry", "date"];
+        const myObjectArray = [
+        { name: "Alice", age: 25 },
+        { name: "Bob", age: 30 },
+        { name: "Charlie", age: 22 },
+        ];
+
+        // 1. sort() - Sorts the elements of an array in place and returns the sorted array.
+
+        // Sorting numbers (ascending)
+        const sortedNumbers = [...myArray].sort((a, b) => a - b); // [...myArray] creates a copy
+        console.log("Sorted Numbers (ascending):", sortedNumbers); // [1, 2, 4, 5, 8, 9]
+
+        // Sorting numbers (descending)
+        const sortedNumbersDesc = [...myArray].sort((a, b) => b - a);
+        console.log("Sorted Numbers (descending):", sortedNumbersDesc); // [9, 8, 5, 4, 2, 1]
+
+        // Sorting strings
+        const sortedStrings = [...myStringArray].sort();
+        console.log("Sorted Strings:", sortedStrings); // ["apple", "banana", "cherry", "date"]
+
+        // Sorting objects by age
+        const sortedObjects = [...myObjectArray].sort((a, b) => a.age - b.age);
+        console.log("Sorted Objects by age:", sortedObjects);
+
+        // 2. splice() - Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+
+        // Removing elements
+        const removedElements = [...myArray].splice(2, 2); // Remove 2 elements starting from index 2
+        console.log("Removed Elements:", removedElements); // [8, 1]
+        console.log("Modified Array:", myArray); // Note: myArray is changed if you don't use the spread operator to make a copy.
+
+        // Replacing elements
+        const replacedElements = [...myArray].splice(1, 2, 10, 11); // Replace 2 elements from index 1 with 10 and 11
+        console.log("Replaced Elements:", replacedElements); // [2, 8]
+
+        // Adding elements
+        const addedElements = [...myArray].splice(3, 0, 12, 13); // Add 12 and 13 at index 3 (without removing anything)
+        console.log("Added Elements (none removed)", addedElements); // []
+
+        // 3. forEach() - Executes a provided function once for each array element.
+
+        myArray.forEach((element, index) => {
+        console.log(`Element at index ${index}: ${element}`);
+        });
+
+        // 4. some() - Tests whether at least one element in the array passes the test implemented by the provided function.
+
+       
+        const hasGreaterThanEight = myArray.some((element) => element > 8);
+        console.log("Has element greater than 8:", hasGreaterThanEight); // true
+
+        
+        const hasYoungPerson = myObjectArray.some((person) => person.age < 23);
+        console.log("Has young person:", hasYoungPerson); // true
+
+        // 5. map() - Creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+        const doubledNumbers = myArray.map((element) => element * 2);
+        console.log("Doubled Numbers:", doubledNumbers);
+
+        const names = myObjectArray.map((person) => person.name);
+        console.log("Names from Object Array:", names);
+
+        // 6. filter() - Creates a shallow copy of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.
+
+        const evens = myArray.filter((element) => element % 2 === 0);
+        console.log("Even Numbers:", evens);
+
+        const adults = myObjectArray.filter((person) => person.age >= 25);
+        console.log("Adults:", adults);
+
+        // 7. reduce() - Executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+
+        const sum = myArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        console.log("Sum of Array:", sum);
+
+        const combinedNames = myObjectArray.reduce((acc, person) => acc + " " + person.name, "").trim();
+        console.log("Combined Names:", combinedNames);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Forms Events</h1>
+    <p>chsnge, focus, input, blur, submit</p>
+    <input type="text" name="username" id="username" placeholder="enter username">
+    <p id="result">h</p>
+
+    <!-- //change -->
+    <select id="dropdown">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+    </select>
+    <p id="fruitMsg"></p>
+
+    <form id="contactForm">
+        <input type="text" placeholder="Name">
+        <input type="email" name="email" placeholder="email">
+        <textarea name="message" placeholder="message"></textarea>
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        //3. form events
+        //input
+        const username = document.querySelector("#username");
+        const result = document.querySelector("#result");
+        // username.addEventListener("input", () =>{
+        //     result.innerText = username.value;
+        // })
+
+        //change
+        document.querySelector("#dropdown").addEventListener("change", () => {
+        console.log("selected input");
+    });
+
+       username.addEventListener("focus", () => {
+        console.log("focus");
+        });
+       username.addEventListener("blur", () => {
+        console.log("blur");
+        });
+
+        //submit
+        const contactForm = document.querySelector("#contactForm");
+        contactForm.addEventListener("submit", (event) => {
+            // event.preventDefault();
+            console.log("hello");
+        })
+    </script>
+
+    
+</body>
+</html>
