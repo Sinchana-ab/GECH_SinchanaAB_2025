@@ -3,7 +3,7 @@ package inheritance;
 //abstract and final keyword for the class name
 class Student{
 	//states
-	public int age =20;///instance within class which  are declered hrough constactor 
+	public int age =20;///instance within class which  are declared through constractor 
 	public String name = "sinchana";
 	public double marks = 230.42;
 	// action
@@ -32,7 +32,7 @@ public class ClassObjectInJava {
 		/*
 		 * class:
 		 * =====
-		 * Class represent the state and behavioure of an object
+		 * Class represent the state and behavior of an object
 		 * state -> property
 		 * beha -> action
 		 * 
