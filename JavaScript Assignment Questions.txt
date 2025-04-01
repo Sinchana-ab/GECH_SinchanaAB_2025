@@ -1,0 +1,59 @@
+JavaScript Assignment Questions
+ 
+ 1. Variables and Data Types
+ Theory: Explain var, let, and const with examples.
+ Task: Write a JavaScript program that declares variables using all three keywords and prints their values.
+ 
+ 2. Functions and Scope
+ Theory: Explain function declaration, function expressions, and arrow functions.
+ Task: Write a function that takes two numbers as input and returns their sum. Execute it for multiple test cases.
+ 
+ 3. Conditional Statements
+ Theory: Explain if-else, switch-case with examples.
+ 
+ 4. Loops
+ Theory: Explain for, while, for in, for of and do-while loops with examples.
+ 
+ 
+ 
+ 4. Arrays & Array Methods
+ Theory: Explain different array methods like map(), filter(), reduce(), forEach(), and find().
+ Task: Given an array of numbers, filter out odd numbers and return an array of squares of even numbers using the map() method.
+ 
+ ------5. Objects & Object Manipulation
+ Theory: Explain JavaScript objects, key-value pairs, and how to manipulate object properties.
+ Task: Create an object representing a student with properties name, age, marks. Write a function that increases the marks by 10%.
+ 
+ ----6. DOM Manipulation
+ Theory: Explain how to select elements using getElementById, querySelector, and modify their content.
+ Task: Create an HTML file with a <button> and <p>. Write a JavaScript function that updates the text inside <p> when the button is clicked.
+ 
+ 7. Asynchronous JavaScript
+ 
+ Theory: Explain setTimeout, setInterval
+ 
+ 8. ES6 Features (Destructuring, Spread, Rest Operator)
+ 
+ Theory: Explain ES6 features like destructuring, spread operator, and rest operator.
+ Task: Write a function that accepts multiple numbers using the rest operator and returns their sum. Use the spread operator to merge two arrays.
+ 
+ 9. Event Handling
+ 
+ Theory: Explain event listeners (click, mouseover, keydown, etc.) and event bubbling.
+ Task: Create a simple webpage with a <div> box. When the user hovers over it, change the background color randomly.
+ 
+ 10. LocalStorage & SessionStorage
+ 
+ Theory: Explain the difference between localStorage and sessionStorage and their use cases.
+ Task: Create a form with name and email fields. Save the input values in localStorage when the user submits the form and retrieve them when the page reloads.
+ 
+ 
+ 11. Asynchronous JavaScript (Async/Await)
+ 
+ Theory: Explain async/await with examples.
+ Task: Write an asynchronous function that simulates fetching data from an API using fetch(). Log the response data to the console. 
+ API = "https://jsonplaceholder.typicode.com/posts"
+ 
+ 12. Asynchronous JavaScript (Promises)
+ 
+ Theory: Explain Promises
