@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Edit User</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #007bff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #007bff;
+            border-radius: 5px;
+        }
+
+        /* Form Styling */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 450px;
+            text-align: left;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        input, select, textarea {
+            width: 65%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: white;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo">
+            <img src="/images/logo.jpg" alt="Logo">
+        </div>
+        <div>
+            <h1 style="font-family: italic; font-size: 20px; color: White">
+                Edit User Details
+            </h1>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/registration/update">Update User</a>
+        </div>
+    </nav>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <h2>Edit User</h2>
+        <form th:action="@{/registration/update/{id}(id=${registration.id})}" th:object="${registration}" method="post">
+
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" th:field="*{name}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" th:field="*{email}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone:</label>
+                <input type="number" th:field="*{phone}" required>
+            </div>
+
+            <div class="form-group">
+                <label>City:</label>
+                <select th:field="*{city}">
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mysore">Mysore</option>
+                    <option value="Delhi">Delhi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <input type="radio" th:field="*{gender}" value="Male"> Male
+                    <input type="radio" th:field="*{gender}" value="Female"> Female
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Skills:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" th:field="*{skill}" value="Java"> Java
+                    <input type="checkbox" th:field="*{skill}" value="Python"> Python
+                    <input type="checkbox" th:field="*{skill}" value="JavaScript"> JavaScript
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Address:</label>
+                <textarea th:field="*{address}" required></textarea>
+            </div>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Sinchana AB. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
