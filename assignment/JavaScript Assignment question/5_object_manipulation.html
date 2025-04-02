@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h2>5. Objects & Object Manipulation</h2>
+ <p>Theory: Explain JavaScript objects, key-value pairs, and how to manipulate object properties.</p>
+ <p>Task: Create an object representing a student with properties name, age, marks. Write a function that increases the marks by 10%.</p>
+ <script>
+    const student = {
+      name: "sinchana",
+      age: 20,
+      marks: 200
+    }
+    console.log("student is: ",student);
+    const inc_student = { 
+      name : student.name,
+      age : student.age,
+      marks : student.marks + student.marks*0.1
+    }
+    console.log("student increased markks is: ",inc_student);
+ </script>
+</body>
+</html>

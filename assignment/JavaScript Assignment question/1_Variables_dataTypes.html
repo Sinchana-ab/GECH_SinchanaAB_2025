@@ -4,12 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table,thead{
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
     <h1>Theory: Explain var, let, and const with examples.</h1>
  <p>Task: Write a JavaScript program that declares variables using all three keywords and prints their values.</p>
+    <table>
+        <thead >
+            <th>keywords</th>
+            <th>Descriptions</th>
+        </thead>
+        <tr>
+            <th>var</th>
+            <td>
+                <p>we can declares variables through var keyword 
+                declared variables can be redicleare and reassign</p>
+            </td>
+        </tr>
+        <tr>
+            <th>const</th>
+            <td>
+                <p>we can declares variables through const keyword 
+                declared variables can't be redicleare and reassign</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Let</th>
+            <td>
+                <p>we can declares variables through Let keyword and
+                declared variables can't be redicleare and can be reassign</p>
+            </td>
+        </tr>
+    </table>
     <script>
-        
+        var name = "Sinchana";
+        console.log("First time var varible name value is: ",name);
+        var name = "nayana";
+        console.log("redeclearing  var varible name value is: ",name);
+        name = "x+y";
+        console.log("reassigning  var varible name value is: ",name);
+        let sem = "7th sem";
+        console.log("the variable sem decleared using let keyword: ",sem);
+        //sem variable can't be redecleare 
+        sem = "8th sem";
+        console.log("the variable sem reassigning value is: ",sem);
+        console.log("const variable can't be redecleare and can be reassign");
     </script>
 </body>
 </html>

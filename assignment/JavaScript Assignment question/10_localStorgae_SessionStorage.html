@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>10. LocalStorage & SessionStorage</h2>
+ 
+    <p>Theory: Explain the difference between localStorage and sessionStorage and their use cases.</p>
+    <p>Task: Create a form with name and email fields. Save the input values in localStorage when the user submits the form and retrieve them when the page reloads.</p>
+    <form onsubmit="saveData(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Retrieve stored values when page reloads
+            document.getElementById("name").value = localStorage.getItem("name") || "";
+            document.getElementById("email").value = localStorage.getItem("email") || "";
+        });
+
+        function saveData(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+
+            // Store values in localStorage
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+
+            alert("Data saved successfully!");
+        }
+</body>
+</html>

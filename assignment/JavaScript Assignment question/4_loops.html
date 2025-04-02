@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    <h2>4. Loops</h2>
+    <p>Theory: Explain for, while, for in, for of and do-while loops with examples.</p>
+    <script>
+        let name = "sinchana";
+        let reversname = "";
+        const n = name.length;
+        console.log(name);
+        console.log("using for loop");
+        for(let i=n-1;i>=0;i--){
+            reversname += name[i]; 
+        }
+        console.log("reversed name is", reversname);
+        console.log("using while loop");
+        let i = n-1;
+        while(n>0){
+            reversname += name[i];
+            i--;
+        }
+        console.log("reversed name is", reversname);
+        console.log("using do while");
+        do{
+            reversname += name[i];
+            i--;
+        }while(n>=0)
+        console.log("reversed name is", reversname);
+    </script>
+</body>
+</html>

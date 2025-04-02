@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+ <h2>4. Arrays & Array Methods</h2>
+ <p>Theory: Explain different array methods like map(), filter(), reduce(), forEach(), and find().
+ Task: Given an array of numbers, filter out odd numbers and return an array of squares of even numbers using the map() method.</p>
+ <script>
+    let array = [1,2,3,4,5,6];
+    console.log("Array elements are: ",array);
+    const array1 = array.map((item)=>{
+        if(item%2 == 0){
+            return item* item;
+        }
+        else{
+            return item;
+        }
+    })
+    console.log("filtered array is: ",array1 );
+ </script>
+</body>
+</html>
