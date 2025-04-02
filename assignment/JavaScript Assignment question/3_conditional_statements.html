@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>3. Conditional Statements</h2>
+    <p> Explain if-else, switch-case with examples.</p>
+    <script>
+        const dep = prompt("enter which department you are: ")
+        console.log("Using if-else statements");
+        if(dep == "cse" || dep == "computer science and engineering" || dep =="computer science"){
+            console.log("your in computer science department ");
+        }
+        else{
+            console.log("your in not in computer science department");
+        }
+        console.log("using switch statement");
+        switch(dep){
+            case 'cse':
+            case 'computer science and engineering':
+            case 'computer science' : 
+                                        console.log("your in computer science department");
+                                        break;
+            case 'ec' : console.log("yo ec department");
+                        break;
+            default:
+                     console.log("your in other department");
+                    break;
+        }
+    </script>
+</body>
+</html>

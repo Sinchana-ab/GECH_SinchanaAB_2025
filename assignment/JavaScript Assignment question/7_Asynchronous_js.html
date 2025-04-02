@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       <h2>7. Asynchronous JavaScript</h2>
+        <p>Theory: Explain setTimeout, setInterval</p>
+    </div>
+    <pre id="code-block">
+        console.log("Hello, World!");
+            </pre>
+            <button id="copy-btn" onclick="copyCode()">Copy Code</button>
+    <script>
+        function copyCode() {
+            let codeElement = document.getElementById("code-block");
+            let textToCopy = codeElement.innerText;
+
+            let tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+
+            let copyButton = document.getElementById("copy-btn");
+            copyButton.innerText = "Copied!";
+            setTimeout(() => {
+                copyButton.innerText = "Copy Code";
+            }, 2000); // Reset text after 2 seconds
+        }
+    </script>
+</body>
+</html>

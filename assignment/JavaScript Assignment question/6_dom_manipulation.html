@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>6. DOM Manipulation</h2>
+ <p>Theory: Explain how to select elements using getElementById, querySelector, and modify their content.</p>
+ <p>Task: Create an HTML file with a "button" and "p tag". Write a JavaScript function that updates the text inside when the button is clicked.</p>
+    <br><br>
+ <p id="demo">Hello sinchana, What's up!</p>
+ <button onclick="changeText()">click me</button>
+ <script>
+    const text1 = document.getElementById("demo");
+    function changeText(){
+        text1.innerHTML = "<h1>hii, thanks for asking nothing</h1>"
+    }
+ </script>
+</body>
+</html>
