@@ -1,10 +1,81 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #343a40;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .add-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .add-btn:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-	<h1>Home pages</h1>
+
+    <h1>Student List</h1>
+
+    <a th:href="@{add-student}" class="add-btn">+ Add Student</a>
+	<div th:if="${success}">
+	    <p th:text="${success}"></p>
+	</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}">1</td>
+                <td th:text="${student.name}">Name</td>
+                <td th:text="${student.age}">Age</td>
+                <td th:text="${student.email}">Email</td>
+                <td>
+			        <a th:href="@{/std-edit(id=${student.id})}">edit</a>              
+    				<a th:href="@{/std-delete(id=${student.id})}">delete</a>  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
