@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title>Registration Form</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>
-        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -17,10 +15,9 @@
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
         nav {
             background: #007bff;
-            padding: 15px;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,7 +47,6 @@
             border-radius: 5px;
         }
 
-        /* Form Styling */
         .form-container {
             background-color: white;
             padding: 30px;
@@ -68,27 +64,29 @@
 
         .form-group {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 10px;
+            flex-direction: column;
+            margin-bottom: 15px;
         }
 
         label {
             font-weight: bold;
-            width: 30%;
+            margin-bottom: 5px;
         }
 
-        input, select, textarea {
-            width: 65%;
+        input, select {
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .radio-group, .checkbox-group {
+        .checkbox-group {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
         }
 
         button {
@@ -109,104 +107,115 @@
             border: 2px solid #007bff;
         }
 
-        /* Footer */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
         footer {
             background: #333;
             color: white;
-            padding: 10px;
+            padding: 5px;
             width: 100%;
             text-align: center;
+            margin-top: auto;
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-logo">
-            <img src="/images/logo.jpg" alt="Logo">
-        </div>
-        <div>
-            <h1 style="font-family: italic; font-size: 20px; color: White">
-                Student Registration Portal
-            </h1>
-        </div>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/registration/register">Add Student</a>
-        </div>
-    </nav>
-
-    <!-- Form Section -->
-    <div class="form-container">
-        <h2>User Registration</h2>
-        <form th:action="@{/registration/register}" th:object="${registration}" method="post">
-            
-            <div class="form-group">
-                <label>Name:</label>
-                <input type="text" th:field="*{name}" required>
-            </div>
-
-            <div class="form-group">
-                <label>Age:</label>
-                <input type="number" th:field="*{age}" required>
-            </div>
-
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="email" th:field="*{email}" required>
-            </div>
-
-            <div class="form-group">
-                <label>Phone:</label>
-                <input type="text" th:field="*{phone}" required>
-            </div>
-
-            <div class="form-group">
-                <label>Date of Birth:</label>
-                <input type="date" th:field="*{dob}" required>
-            </div>
-
-            <div class="form-group">
-                <label>City:</label>
-                <select th:field="*{city}">
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Mysore">Mysore</option>
-                    <option value="Delhi">Hassan</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Gender:</label>
-                <div class="radio-group">
-                    <input type="radio" th:field="*{gender}" value="Male"> Male
-                    <input type="radio" th:field="*{gender}" value="Female"> Female
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Skills:</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" th:field="*{skill}" value="Java"> Java
-                    <input type="checkbox" th:field="*{skill}" value="Python"> Python
-                    <input type="checkbox" th:field="*{skill}" value="JavaScript"> JavaScript
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Address:</label>
-                <textarea th:field="*{address}" required></textarea>
-            </div>
-
-            <button type="submit">Register</button>
-        </form>
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-logo">
+        <img src="/images/logo.jpg" alt="Logo">
     </div>
+    <div>
+        <h1 style="font-family: italic; font-size: 20px; color: White">
+            Student Registration Portal
+        </h1>
+    </div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/registration/register">Add Student</a>
+    </div>
+</nav>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 Sinchana AB. All rights reserved.</p>
-    </footer>
+<!-- Form Section -->
+<div class="form-container">
+    <h2>User Registration</h2>
+    <form th:action="@{/registration/register}" th:object="${registration}" method="post">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="number" th:field="*{age}" />
+            <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" />
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth:</label>
+            <input type="date" th:field="*{dob}" />
+            <div th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="text" th:field="*{phone}" />
+            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>City:</label>
+            <input type="text" th:field="*{city}" />
+            <div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender:</label>
+            <select th:field="*{gender}">
+                <option value="">-- Select Gender --</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Skills:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" th:field="*{skills}" value="Java" /> Java</label>
+                <label><input type="checkbox" th:field="*{skills}" value="Python" /> Python</label>
+                <label><input type="checkbox" th:field="*{skills}" value="SQL" /> SQL</label>
+                <label><input type="checkbox" th:field="*{skills}" value="HTML" /> HTML</label>
+                <label><input type="checkbox" th:field="*{skills}" value="CSS" /> CSS</label>
+            </div>
+            <div th:if="${#fields.hasErrors('skills')}" th:errors="*{skills}" class="error"></div>
+        </div>
+		<div class="form-group">
+		    <label>Address:</label>
+		    <textarea th:field="*{address}" rows="4" placeholder="Enter your address"></textarea>
+		    <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error"></div>
+		</div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2025 Sinchana AB. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

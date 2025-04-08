@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @GetMapping("/")
     public String home() {
-        return "redirect:/registration/list"; // ✅ Redirect root URL
+        return "redirect:/registration/list";
     }
 }

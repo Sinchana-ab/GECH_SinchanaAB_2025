@@ -24,31 +24,33 @@
     <div class="container">
         <h2>Registered Student List</h2>
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>City</th>
-                <th>Gender</th>
-                <th>Skills</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </tr>
-            <tr th:each="user : ${register}">
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.email}"></td>
-                <td th:text="${user.phone}"></td>
-                <td th:text="${user.city}"></td>
-                <td th:text="${user.gender}"></td>
-                <td th:text="${user.skill}"></td>
-                <td th:text="${user.address}"></td>
-                <td>
-                    <a th:href="@{'/registration/edit/' + ${user.id}}"><button>Edit</button></a>
-                    <a th:href="@{'/registration/delete/' + ${user.id}}"><button class="delete-btn">Delete</button></a>
-                </td>
-            </tr>
-        </table>
+      <table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Skills</th>
+        <th>Address</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${register}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.city}"></td>
+        <td th:text="${#temporals.format(user.dob, 'yyyy-MM-dd')}"></td>
+        <td th:text="${user.gender}"></td>
+        <td th:text="${user.skills}"></td>
+        <td th:text="${user.address}"></td>
+        <td>
+            <a th:href="@{'/registration/edit/' + ${user.id}}"><button>Edit</button></a>
+            <a th:href="@{'/registration/delete/' + ${user.id}}"><button class="delete-btn">Delete</button></a>
+        </td>
+    </tr>
+</table>
     </div>
 
     <!-- Footer -->
