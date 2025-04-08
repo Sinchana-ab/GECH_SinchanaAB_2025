@@ -9,7 +9,7 @@
     <div th:if="${failed}">
 	    <p th:text="${failed}"></p>
 	</div>
-    <form th:action="@{/edit-student(id=${student.id})}" method="post" th:object="${studentDTO}">
+    <form th:action="@{/edit-student(id=${student.id})}" enctype="multipart/form-data" method="post" th:object="${studentDTO}">
         <!-- Name Input -->
         <label for="name">Name:</label>
         <input type="text" th:field="*{name}" id="name" placeholder="Enter your name"><br>
@@ -29,7 +29,20 @@
         <label for="password">Password:</label>
         <input type="password" th:field="*{password}" id="password" placeholder="Enter your Password"><br>
         <p th:if="${#fields.hasErrors('password')}" th:text="${#fields.errors('password')}"></p>
-
+		
+		 <!-- Image Input -->
+        <label for="image">Image:</label>
+        <img alt="image" height="100px" width="100px" th:src="@{'image/'+${student.imagePath}}">
+        <input type="file" th:field="*{image}" id="image"><br>
+        <p th:if="${#fields.hasErrors('image')}" th:text="${#fields.errors('image')}"></p>
+		
+		<!-- resume -->
+		<label for="resume">Resume:</label>
+        <a th:href="@{'resume/'+${student.resumePath}}" target="_blank">View Resume</a>
+        <p th:text="${student.resumePath}"></p>
+        <input type="file" th:field="*{resume}" id="resume"><br>
+        <p th:if="${#fields.hasErrors('resume')}" th:text="${#fields.errors('resume')}"></p>
+	
         <!-- Submit Button -->
         <input type="submit" value="edit Student">
     </form>

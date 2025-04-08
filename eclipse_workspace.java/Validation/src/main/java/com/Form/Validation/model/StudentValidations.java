@@ -17,7 +17,8 @@ public class StudentValidations {
 	private String email;
 	private String password;
 	private String imagePath;
-	public StudentValidations(long id, String name, int age, String email,  String password,String imagePath) {
+	private String resumePath;
+	public StudentValidations(long id, String name, int age, String email,  String password,String imagePath,String resumePath) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,6 +26,7 @@ public class StudentValidations {
 		this.email = email;
 		this.password= password;
 		this.imagePath = imagePath;
+		this.resumePath = resumePath;
 	}
 	public StudentValidations() {
 		super();
@@ -65,6 +67,12 @@ public class StudentValidations {
 	}
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	public String getResumePath() {
+		return resumePath;
+	}
+	public void setResumePath(String resumePath) {
+		this.resumePath = resumePath;
 	}
 	
 	

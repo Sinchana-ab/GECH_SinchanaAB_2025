@@ -60,6 +60,8 @@
                 <th>Name</th>
                 <th>Age</th>
                 <th>Email</th>
+                <th>Images</th>
+                <th>Resume</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -69,6 +71,13 @@
                 <td th:text="${student.name}">Name</td>
                 <td th:text="${student.age}">Age</td>
                 <td th:text="${student.email}">Email</td>
+                <td >
+                	<img alt="image" width="100px" height="100px" th:src ="@{'image/'+${student.imagePath}}">
+                </td>
+                <td>
+                	<a th:href="@{'resume/'+${student.resumePath}}" target="_blank">View Resume</a>
+                	<p th:text="${student.resumePath}"></p>
+                </td>
                 <td>
 			        <a th:href="@{/std-edit(id=${student.id})}">edit</a>              
     				<a th:href="@{/std-delete(id=${student.id})}">delete</a>  
