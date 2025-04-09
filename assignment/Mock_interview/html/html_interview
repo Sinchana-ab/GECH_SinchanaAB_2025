@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="">Home</a>
+            <a href="">contact</a>
+            <a href="">register</a>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quaerat vel doloribus, nemo maxime quod harum non, explicabo aperiam accusantium quae? Velit fugiat officia quos a cumque? Reprehenderit, culpa voluptate?</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; created by sinchana </p>
+    </footer>
+</body>
+</html>

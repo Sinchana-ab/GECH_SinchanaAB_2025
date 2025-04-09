@@ -54,6 +54,10 @@ public class HomeController {
     }
     @PostMapping("/edit-student")
     public String updateStudent(@RequestParam Long id, @Valid @ModelAttribute StudentDTO studentDTO, BindingResult result, Model model,RedirectAttributes attribute) {
+    	 StudentValidations student1 = studentRepository.findByEmail(studentDTO.getEmail());
+     	if(student1 != null && student1.getId() != id ) {
+     		result.addError(new FieldError("StudentDTO", "email", "email is already exits"));
+     	}
     	if(result.hasErrors()) {
     		StudentValidations student = studentRepository.findById(id).get();
     		model.addAttribute("student",student);
@@ -81,9 +85,14 @@ public class HomeController {
 
     @PostMapping("/add-student")
     public String addStudent(@Valid @ModelAttribute StudentDTO studentDTO, BindingResult result, Model model, RedirectAttributes attribute) {
-        if(studentDTO.getImage().isEmpty()) {
+        StudentValidations student = studentRepository.findByEmail(studentDTO.getEmail());
+    	if(student != null) {
+    		result.addError(new FieldError("StudentDTO", "email", "email is already exits"));
+    	}
+    	if(studentDTO.getImage().isEmpty()) {
         	result.addError(new FieldError("StudentDTO", "image", "Image is required"));
         }
+        
         if(studentDTO.getResume().isEmpty()) {
         	result.addError(new FieldError("StudentDTO", "resume", "resume is required"));
         }
