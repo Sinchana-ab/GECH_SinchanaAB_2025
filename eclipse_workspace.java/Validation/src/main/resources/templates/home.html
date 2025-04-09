@@ -75,14 +75,15 @@
                 	<img alt="image" width="100px" height="100px" th:src ="@{'image/'+${student.imagePath}}">
                 </td>
                 <td>
-                	<a th:href="@{'resume/'+${student.resumePath}}" target="_blank">View Resume</a>
-                	<p th:text="${student.resumePath}"></p>
+                	<!--<a th:href="@{'resume/'+${student.resumePath}}" target="_blank">View Resume</a>  -->
+                	<iframe width="200px" height="100px" th:src = "@{'resume/'+${student.resumePath}}"></iframe>
+                	<!-- <p th:text="${student.resumePath}"></p> -->
                 </td>
                 <td>
 			        <a th:href="@{/std-edit(id=${student.id})}">edit</a>              
     				<a th:href="@{/std-delete(id=${student.id})}">delete</a>  
                 </td>
-            </tr>
+            </tr>`
         </tbody>
     </table>
 
