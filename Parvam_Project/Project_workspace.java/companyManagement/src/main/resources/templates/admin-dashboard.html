@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <style>
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            position: fixed;
+        }
+        .main-content {
+            margin-left: 250px;
+        }
+        .section-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .table thead {
+            background-color: #343a40;
+            color: white;
+        }
+        .section-title {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3 sidebar">
+        <div class="text-center mb-4">
+            <img src="/images/admin.png" class="rounded-circle" width="80" height="80" alt="Admin">
+            <h5 class="mt-2">Admin Name</h5>
+            <p class="text-muted">Administrator</p>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/dashboard}">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/projects}">Manage Projects</a></li>
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/blogs}">Manage Blogs</a></li>
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/testimonials}">Manage Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/gallery}">Manage Gallery</a></li>
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/messages}">Manage Contact Messages</a></li>
+            <li class="nav-item"><a class="nav-link text-white" th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content p-4">
+        <div class="container">
+            <h2 class="mb-4">Welcome to the Admin Dashboard</h2>
+
+            <!-- Project Management Section -->
+            <div class="section-box mb-5">
+                <h4 class="section-title">Manage Projects</h4>
+               <!-- Button trigger modal -->
+<button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+  + Add New Project
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form th:action="@{/admin/projects/add}" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProjectModalLabel">Add New Project</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" name="location" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" rows="3" required></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Add Project</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+               
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Location</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="project : ${projects}">
+                            <td th:text="${project.id}">1</td>
+                            <td th:text="${project.title}">Villa</td>
+                            <td th:text="${project.location}">Bangalore</td>
+                            <td th:text="${project.description}">Modern home</td>
+                            <td>
+                                <a th:href="@{'/admin/projects/edit/' + ${project.id}}" class="btn btn-warning btn-sm">Edit</a>
+                                <a th:href="@{'/admin/projects/delete/' + ${project.id}}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
