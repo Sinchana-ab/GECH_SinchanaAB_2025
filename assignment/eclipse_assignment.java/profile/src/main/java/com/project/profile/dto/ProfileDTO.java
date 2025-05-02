@@ -3,6 +3,7 @@ package com.project.profile.dto;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 public class ProfileDTO {
@@ -10,8 +11,7 @@ public class ProfileDTO {
 	private String name;
 	@NotBlank(message = "color cannot be empty")
 	private String color;
-	@NotBlank(message = "font size cannot be empty")
-	@Min(1) @Max(10)
+	@NotNull(message = "Font size is required")
 	private int fontSize;
 	@NotBlank(message = "gender cannot be empty")
 	private String gender;

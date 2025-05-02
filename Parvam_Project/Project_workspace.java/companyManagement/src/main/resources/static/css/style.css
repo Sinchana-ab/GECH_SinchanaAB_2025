@@ -1,0 +1,55 @@
+/* style.css */
+
+.hero {
+    height: 90vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding-left: 50px;
+    background: url('/images/construction-banner1.jpg') no-repeat center center/cover;
+    animation: scrollHero 15s infinite;
+}
+
+@keyframes scrollHero {
+    0% {
+        background-image: url('/images/hero1.jpg');
+    }
+    50% {
+        background-image: url('/images/hero2.jpg');
+    }
+    100% {
+        background-image: url('/images/hero3.jpg');
+    }
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.section-title {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.admin-link {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-weight: bold;
+}
+
+.project-card img,
+.service-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+footer {
+    background: #212529;
+    color: white;
+    padding: 20px 0;
+}
