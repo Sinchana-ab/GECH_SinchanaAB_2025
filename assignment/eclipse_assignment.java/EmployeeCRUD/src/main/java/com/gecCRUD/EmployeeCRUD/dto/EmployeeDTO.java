@@ -1,14 +1,28 @@
 package com.gecCRUD.EmployeeCRUD.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
 public class EmployeeDTO {
-	private String fName;
-	private String lName;
-	private String email;
-	private String phone;
-	private String address;
+	
+	 @NotBlank(message = "First name is required")
+	    private String fName;
+
+	    @NotBlank(message = "Last name is required")
+	    private String lName;
+
+	    @Email(message = "Enter a valid email")
+	    @NotBlank(message = "Email is required")
+	    private String email;
+
+	    @Pattern(regexp = "^\\d{10}$", message = "Phone must be 10 digits")
+	    private String phone;
+
+	    @NotBlank(message = "Address is required")
+	    private String address;
 	
 	public String getfName() {
 		return fName;

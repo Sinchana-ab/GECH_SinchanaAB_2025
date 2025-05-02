@@ -1,26 +1,20 @@
 body {
-    font-family: sans-serif;
-    padding: 20px;
+    background-color: #f8f9fa;
+}
+.card img {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.card {
+    border-radius: 20px;
 }
 
-form {
-    margin-bottom: 30px;
-}
-
-#profileCardContainer {
-    margin-top: 20px;
-}
-
-.profile-card {
-    padding: 20px;
-    border-radius: 12px;
-    color: white;
-    text-align: center;
-    max-width: 300px;
-}
-
-.profile-card img {
+.profile-img {
     width: 100px;
     height: 100px;
+    object-fit: cover;
     border-radius: 50%;
+    border: 3px solid white;
+    background-color: white;
 }
