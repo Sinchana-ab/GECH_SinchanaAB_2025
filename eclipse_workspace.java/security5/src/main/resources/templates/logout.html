@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Logout</title>
+    <style>
+    /* styles.css */
+.logout-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+h2 {
+    color: #333;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <h2>You have been logged out</h2>
+        <p>Thank you for visiting! See you again soon.</p>
+        <a th:href="@{/login}"><button>Login Again</button></a>
+    </div>
+</body>
+</html>
