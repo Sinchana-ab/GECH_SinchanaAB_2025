@@ -53,3 +53,19 @@ footer {
     color: white;
     padding: 20px 0;
 }
+/* admin.css */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    position: fixed;
+}
+
+.flex-grow-1 {
+    margin-left: 250px;
+}
+
