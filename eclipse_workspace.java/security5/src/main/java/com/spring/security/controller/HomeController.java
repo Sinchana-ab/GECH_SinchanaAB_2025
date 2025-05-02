@@ -48,4 +48,17 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/std-details")
+	public String stdDetails() {
+		return "std-details";
+	}
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	 @GetMapping("/logout-success")
+	public String logoutPage() {
+        return "logout";
+    }
+	
 }
