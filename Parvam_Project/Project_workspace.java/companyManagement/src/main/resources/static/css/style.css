@@ -1,5 +1,5 @@
 /* style.css */
-
+/* Hero Section */
 .hero {
     height: 90vh;
     color: white;
@@ -8,9 +8,13 @@
     text-align: left;
     padding-left: 50px;
     background: url('/images/construction-banner1.jpg') no-repeat center center/cover;
-    animation: scrollHero 15s infinite;
+    background-size: cover;
+    background-position: center center;
+    animation: scrollHero 15s infinite, fadeIn 2s ease-out 1s; /* Added text fade-in */
+    transition: background-image 1s ease-in-out; /* Smooth transition for background change */
 }
 
+/* Keyframe for scrolling background images */
 @keyframes scrollHero {
     0% {
         background-image: url('/images/hero1.jpg');
@@ -23,10 +27,157 @@
     }
 }
 
+/* Fade-In Effect for Text */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Text Styles */
+.hero h1 {
+    font-size: 4rem; /* Larger size */
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 2s ease-out forwards; /* Fade-in effect for header */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.hero h1:hover {
+    transform: scale(1.05); /* Slight zoom effect when hovering */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 2.5s ease-out forwards; /* Fade-in effect for paragraph */
+    animation-delay: 0.5s; /* Slight delay for paragraph fade-in */
+}
+
+/* Hero Button Styles */
+.cta-button {
+    padding: 12px 25px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Added button scaling effect */
+    opacity: 0;
+    animation: fadeInButton 3s ease-out forwards;
+    animation-delay: 1s; /* Delay for button fade-in */
+}
+
+.cta-button:hover {
+    background-color: #cc5200;
+    transform: scale(1.05); /* Button grows on hover */
+}
+
+/* Hero Overlay */
 .overlay {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 40px;
     border-radius: 10px;
+}
+
+/* Button with more interaction */
+.hero .cta-button {
+    animation: fadeInButton 2.5s ease-out 1s;
+}
+
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Fade-in effect for other sections */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply scroll-triggered animation */
+#services, #recent-projects {
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+    animation-delay: 0.5s; /* Slight delay */
+}
+
+/* Specific timings for each section */
+#services {
+    animation-delay: 1s;
+}
+
+#recent-projects {
+    animation-delay: 1.5s;
+}
+html {
+    scroll-behavior: smooth; /* Smooth scroll effect for links */
+}
+/* Subtle hover effect on service and project cards */
+.service-card, .project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover, .project-card:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+/* Hover zoom effect for images inside cards */
+.service-card img, .project-card img {
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover img, .project-card:hover img {
+    transform: scale(1.05); /* Zoom-in effect */
+}
+@media (max-width: 768px) {
+    .hero {
+        padding-left: 20px;
+        height: 80vh;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
+
+    .service-card, .project-card {
+        margin-bottom: 20px;
+    }
+
+    .service-card img, .project-card img {
+        height: 180px; /* Adjust image height for mobile */
+    }
 }
 
 .section-title {
@@ -41,18 +192,64 @@
     font-weight: bold;
 }
 
-.project-card img,
+.service-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Slight lift effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .service-card img {
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.1); /* Slight zoom effect */
+}
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
     height: 200px;
     width: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
 }
 
 footer {
     background: #212529;
     color: white;
-    padding: 20px 0;
+    padding: 40px 0; /* More padding for spacious design */
 }
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ff6600;
+}
+
 /* admin.css */
 body {
     margin: 0;
@@ -67,5 +264,51 @@ body {
 
 .flex-grow-1 {
     margin-left: 250px;
+}
+.project-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.card-footer {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+}
+.project-card:hover .card-footer {
+    visibility: visible;
+    opacity: 1;
+}
+@media (max-width: 768px) {
+    .service-card, .project-card {
+        margin-bottom: 20px;
+    }
+
+    .hero {
+        padding-left: 20px; /* Adjust padding on mobile */
+        height: 80vh; /* Adjust hero height for mobile */
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem; /* Adjust font size for mobile */
+    }
+
+    .cta-button {
+        font-size: 1rem; /* Adjust button size for mobile */
+    }
+}
+.btn-outline-warning,
+.btn-outline-dark {
+    border-radius: 20px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.btn-outline-warning:hover,
+.btn-outline-dark:hover {
+    transform: scale(1.05);
 }
 

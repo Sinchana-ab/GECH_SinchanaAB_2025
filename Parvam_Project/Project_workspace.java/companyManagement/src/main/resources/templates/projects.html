@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Projects | Construction Co.</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Construction Co.</a>
+        <a class="btn btn-outline-warning" th:href="@{/admin/login}">Admin Login</a>
+    </div>
+</nav>
+
+<!-- Projects Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Our Project Portfolio</h2>
+        <div class="row g-4">
+            <div class="col-md-4 project-card">
+                <img src="/images/project1.jpg" alt="Project 1">
+                <h5 class="mt-3">Villa - Bangalore</h5>
+                <p>Modern design with landscape features.</p>
+            </div>
+            <div class="col-md-4 project-card">
+                <img src="/images/project2.jpg" alt="Project 2">
+                <h5 class="mt-3">IT Tower - Mangalore</h5>
+                <p>Smart workspace infrastructure project.</p>
+            </div>
+            <div class="col-md-4 project-card">
+                <img src="/images/project3.jpg" alt="Project 3">
+                <h5 class="mt-3">Hospital Renovation</h5>
+                <p>Safety and patient-friendly upgrades.</p>
+            </div>
+            <!-- Add more project cards as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center bg-dark text-white py-3">
+    <p>© 2025 Construction Company. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -15,10 +15,20 @@ public class Project {
 
     @Column(length = 1000)
     private String description;
+    
+    private String imagePath; 
 
     // Getters and Setters
 
-    public Long getId() {
+    public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -49,4 +59,6 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
+
+	
 }
