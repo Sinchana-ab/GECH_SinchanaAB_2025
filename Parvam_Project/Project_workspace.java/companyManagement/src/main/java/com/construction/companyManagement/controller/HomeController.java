@@ -11,13 +11,45 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "index"; // loads src/main/resources/templates/index.html
+
+        return "index"; 
+    }
+    @GetMapping("/about")
+    public String about() {
+        return "about"; 
+    }
+
+    @GetMapping("/services/residential")
+    public String residentialServices() {
+        return "residential"; 
+    }
+
+    @GetMapping("/services/commercial")
+    public String commercialServices() {
+        return "commercial"; 
+
+   
     }
 
     @GetMapping("/projects")
     public String projects() {
-        return "projects";
+
+        return "projects"; 
     }
+
+    @GetMapping("/news")
+    public String news() {
+        return "news";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @GetMapping("/admin/login")
+    public String adminLogin() {
+        return "admin_login"; }
 
     @GetMapping("/blogs")
     public String blogs() {

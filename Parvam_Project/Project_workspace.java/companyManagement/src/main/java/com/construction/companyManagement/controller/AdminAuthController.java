@@ -1,6 +1,7 @@
 package com.construction.companyManagement.controller;
 
 import com.construction.companyManagement.dto.ProjectDTO;
+
 import com.construction.companyManagement.model.Project;
 import com.construction.companyManagement.model.TeamMember;
 import com.construction.companyManagement.service.ProjectService;
@@ -29,12 +30,16 @@ public class AdminAuthController {
     @Autowired
     private TeamMemberService teamMemberService;
 
-    @GetMapping("/admin/login")
+//    @GetMapping("/admin/login")
+//    public String loginPage() {
+//        return "admin-login";
+//    }
+
+    @GetMapping("login")
     public String loginPage() {
-        return "admin-login";
+        return "login";
     }
 
-  
 
     // Add Project
     @PostMapping("/admin/projects/add")
@@ -78,6 +83,14 @@ public class AdminAuthController {
         return "admin-dashboard";
     }
 
+//    // Public Team Page
+//    @GetMapping("/team")
+//    public String showTeam(Model model) {
+//        List<TeamMember> members = teamMemberService.getAllTeamMembers();
+//        model.addAttribute("team", members);
+//        return "team"; // You can reuse this section in index.html if preferred
+//    }
+
     // Public Team Page
     @GetMapping("/team")
     public String showTeam(Model model) {
@@ -85,4 +98,5 @@ public class AdminAuthController {
         model.addAttribute("team", members);
         return "team"; // You can reuse this section in index.html if preferred
     }
+
 }

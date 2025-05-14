@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Bricks Byte</title>
+</head>
+<body>
+    <div th:replace="layout :: layout(pageTitle='Our Team', mainContent='team-content')"></div>
+
+    <div id="team-content">
+        <section class="hero">
+            <h1>Meet Our Team</h1>
+            <p>Get to know the people driving our success.</p>
+        </section>
+        <section>
+            <div>
+                <div>Member 1</div>
+                <div>Member 2</div>
+                <div>Member 3</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

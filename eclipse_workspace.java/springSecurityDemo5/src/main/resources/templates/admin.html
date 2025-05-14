@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #f1f3f5;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #212529;
+        }
+        .sidebar a {
+            color: #ffffff;
+            padding: 15px;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #343a40;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+        <div class="d-flex">
+            <span class="navbar-text text-white me-3">Logged in as: Admin</span>
+            <a class="btn btn-outline-light" href="#">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Layout -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column mt-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Property Types</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <main class="col-md-10 ms-sm-auto px-md-4 mt-4">
+            <h2>Admin Dashboard</h2>
+            <div class="row mt-4">
+                <!-- Users Card -->
+                <div class="col-md-3 mb-3">
+                    <div class="card border-primary">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Users</h5>
+                            <p class="card-text">Total: 120</p>
+                            <a href="#" class="btn btn-primary btn-sm">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Properties Card -->
+                <div class="col-md-3 mb-3">
+                    <div class="card border-success">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Properties</h5>
+                            <p class="card-text">Listed: 85</p>
+                            <a href="#" class="btn btn-success btn-sm">Manage</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applications Card -->
+                <div class="col-md-3 mb-3">
+                    <div class="card border-warning">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Applications</h5>
+                            <p class="card-text">Pending: 12</p>
+                            <a href="#" class="btn btn-warning btn-sm">Review</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Types Card -->
+                <div class="col-md-3 mb-3">
+                    <div class="card border-info">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Property Types</h5>
+                            <p class="card-text">Types: 5</p>
+                            <a href="#" class="btn btn-info btn-sm">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card mt-4">
+                <div class="card-header bg-secondary text-white">
+                    Recent Admin Activities
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Approved 3 new property listings</li>
+                        <li>Added new property type: "Farmhouse"</li>
+                        <li>Deleted inactive user accounts</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

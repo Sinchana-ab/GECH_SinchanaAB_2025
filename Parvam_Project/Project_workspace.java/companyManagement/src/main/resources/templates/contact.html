@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Bricks Byte</title>
+</head>
+<body>
+    <div th:replace="layout :: layout(pageTitle='Contact Us', mainContent='contact-content')"></div>
+
+    <div id="contact-content">
+        <section class="hero">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Get in touch with us today.</p>
+        </section>
+        <section>
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Name">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your Email">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your Message"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
