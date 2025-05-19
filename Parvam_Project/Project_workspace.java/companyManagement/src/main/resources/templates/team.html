@@ -1,23 +1,128 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('Our Team | Bricks Byte', ~{::content})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team | Bricks Byte</title>
+    <style>
+        /* Hero Section Styles */
+        .hero {
+            background: url('/images/team-hero-bg.jpg') no-repeat center center/cover;
+            height: 60vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        /* Team Section Styles */
+        .team-section {
+            padding: 4rem 2rem;
+            background-color: #f8f9fc;
+            text-align: center;
+        }
+        .team-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+        .team-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+        .team-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #333;
+        }
+        .team-card p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0 1rem 1rem;
+        }
+        .team-card .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .team-card .social-icons a {
+            color: #ff6a00;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <div th:replace="layout :: layout(pageTitle='Our Team', mainContent='team-content')"></div>
-
-    <div id="team-content">
+    <div th:fragment="content">
+        <!-- Hero Section -->
         <section class="hero">
             <h1>Meet Our Team</h1>
             <p>Get to know the people driving our success.</p>
         </section>
-        <section>
-            <div>
-                <div>Member 1</div>
-                <div>Member 2</div>
-                <div>Member 3</div>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <img src="/images/team-member-1.jpg" alt="Team Member 1">
+                    <h3>John Doe</h3>
+                    <p>Chief Executive Officer</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <img src="/images/team-member-2.jpg" alt="Team Member 2">
+                    <h3>Jane Smith</h3>
+                    <p>Head of Operations</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <img src="/images/team-member-3.jpg" alt="Team Member 3">
+                    <h3>Robert Brown</h3>
+                    <p>Lead Architect</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('Testimonials | Bricks Byte', ~{::content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Testimonials | Bricks Byte</title>
+</head>
+<body>
+<div th:fragment="content">
+  <section class="section-hero-dark text-white py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">What Our Clients Say</h1>
+      <p class="lead mb-0">We build lasting partnerships based on trust and results.</p>
+    </div>
+  </section>
+  <section class="py-5 bg-light testimonials-section">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100 text-center">
+            <div class="testimonial-quote mb-3">
+              <i class="fas fa-quote-left fa-2x text-orange"></i>
+            </div>
+            <blockquote class="mb-4">“The Bricks Byte team exceeded our expectations and delivered on time. Their attention to detail and innovation is unmatched.”</blockquote>
+            <div class="fw-bold">Melissa Carter</div>
+            <div class="text-muted small">Director, GreenTech</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100 text-center">
+            <div class="testimonial-quote mb-3">
+              <i class="fas fa-quote-left fa-2x text-orange"></i>
+            </div>
+            <blockquote class="mb-4">“Professional, reliable, and always transparent. We trust Bricks Byte for all our commercial projects.”</blockquote>
+            <div class="fw-bold">John Lee</div>
+            <div class="text-muted small">Facilities Manager, City Group</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card p-4 bg-white rounded shadow-sm h-100 text-center">
+            <div class="testimonial-quote mb-3">
+              <i class="fas fa-quote-left fa-2x text-orange"></i>
+            </div>
+            <blockquote class="mb-4">“Excellent communication and superb craftsmanship. Highly recommend for residential renovations.”</blockquote>
+            <div class="fw-bold">Priya Singh</div>
+            <div class="text-muted small">Homeowner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('Edit Project', ~{::main})">
+<main>
+    <div class="container py-4">
+        <h3 class="mb-4">Edit Project</h3>
+        <form th:action="@{'/admin/projects/edit/' + ${project.id}}" method="post" enctype="multipart/form-data"
+              class="bg-white p-4 rounded shadow-sm">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" th:value="${project.title}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Location</label>
+                <input type="text" name="location" class="form-control" th:value="${project.location}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="3" th:text="${project.description}"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image (Optional)</label>
+                <input type="file" name="image" class="form-control" accept="image/*">
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a th:href="@{/admin/projects/all-projects}" class="btn btn-secondary ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</main>
+</html>

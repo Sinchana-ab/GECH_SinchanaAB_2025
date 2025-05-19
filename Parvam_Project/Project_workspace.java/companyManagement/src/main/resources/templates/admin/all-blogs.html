@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('All Blogs', ~{::main})">
+<main>
+  <div class="container py-4">
+    <h2 class="mb-4">All Blogs</h2>
+    <a th:href="@{/admin/blogs/add}" class="btn btn-success mb-3">+ Add Blog</a>
+
+    <div class="row" th:if="${blogs != null}">
+      <div class="col-md-4" th:each="blog : ${blogs}">
+        <div class="card mb-4">
+          <img th:src="@{'/blog-images/' + ${blog.imagePath}}" class="card-img-top" alt="Blog Image">
+          <div class="card-body">
+            <h5 th:text="${blog.title}"></h5>
+            <p><strong>Author:</strong> <span th:text="${blog.author}"></span></p>
+            <p th:text="${blog.content}"></p>
+            <p><strong>Published:</strong> <span th:text="${blog.publishedAt}"></span></p>
+            <div class="mt-2">
+              <a th:href="@{'/admin/blogs/edit/' + ${blog.id}}" class="btn btn-warning btn-sm">✏️ Edit</a>
+              <a th:href="@{'/admin/blogs/delete/' + ${blog.id}}" class="btn btn-danger btn-sm"
+                 onclick="return confirm('Are you sure?')">🗑 Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+</html>

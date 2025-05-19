@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('Gallery | Bricks Byte', ~{::content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery | Bricks Byte</title>
+</head>
+<body>
+<div th:fragment="content">
+  <section class="section-hero-dark text-white py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">Project Gallery</h1>
+      <p class="lead mb-0">A showcase of our most inspiring builds and interiors.</p>
+    </div>
+  </section>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-sm-6 col-md-4">
+          <div class="gallery-img-box rounded shadow-sm overflow-hidden">
+            <img src="/images/gallery1.jpg" alt="Gallery 1" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="gallery-img-box rounded shadow-sm overflow-hidden">
+            <img src="/images/gallery2.jpg" alt="Gallery 2" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="gallery-img-box rounded shadow-sm overflow-hidden">
+            <img src="/images/gallery3.jpg" alt="Gallery 3" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="gallery-img-box rounded shadow-sm overflow-hidden">
+            <img src="/images/gallery4.jpg" alt="Gallery 4" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="gallery-img-box rounded shadow-sm overflow-hidden">
+            <img src="/images/gallery5.jpg" alt="Gallery 5" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="gallery-img-box rounded shadow-sm overflow-hidden">
+            <img src="/images/gallery6.jpg" alt="Gallery 6" class="img-fluid w-100">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

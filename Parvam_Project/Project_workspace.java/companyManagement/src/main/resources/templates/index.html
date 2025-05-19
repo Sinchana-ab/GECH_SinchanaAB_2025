@@ -1,181 +1,291 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::title},~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout('Home | Bricks Byte', ~{::content})}">
 <head>
     <meta charset="UTF-8">
     <title>Home | Bricks Byte</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
+<div th:fragment="content">
 
-    <!-- Define the 'index-content' fragment -->
-    <section>
-        <!-- Hero Section -->
-        <div class="hero">
-            <h1 id="hero-title">Built on <span id="changing-word">Reputation</span></h1>
-            <h2>SINCE 2025</h2>
-            <p>We Build the Future with Excellence and Integrity</p>
-            <a href="#about" class="btn btn-warning">Learn More</a>
-        </div>
-
-        <!-- Additional Sections -->
-        <div id="about" class="about">
-            <h2>About Us</h2>
-            <p>We are a leading construction company with a strong commitment to quality and trust.</p>
-        </div>
-
-        <div id="services" class="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Residential Construction</li>
-                <li>Commercial Construction</li>
-                <li>Renovations</li>
-            </ul>
+    <!-- HERO SECTION -->
+    <section class="hero-section position-relative">
+        <img src="/images/hero-bg.jpg" alt="Construction Background" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-white text-center">
+            <div class="circle-text">
+                <span>WE BUILT THE FUTURE · WE BUILT THE FUTURE ·</span>
+                <span class="circle-arrow">&#8594;</span>
+            </div>
+            <h1 class="display-3 fw-bold">
+                BUILT ON <span class="text-outline">REPUTATION</span><br>
+                SINCE 1983
+            </h1>
+            <div class="hero-bottom">
+                <div class="trusted">
+                    <span class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                    <span>Trusted By 500+ Companies</span>
+                </div>
+                <a href="/projects" class="btn btn-hero">
+                    Explore Our Projects <span class="btn-arrow">&#8594;</span>
+                </a>
+            </div>
         </div>
     </section>
-=======
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Construction Company</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <style>
-        .hero {
-            background: url('/images/hero-bg.jpg') no-repeat center center/cover;
-            height: 100vh;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        .hero h1, .hero p {
-            z-index: 2;
-            position: relative;
-        }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        .service-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Construction Co.</a>
-        <a class="btn btn-outline-warning admin-link" th:href="@{/admin/login}">Admin Login</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" th:href="@{/}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/projects}">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/blogs}">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/gallery}">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
-            </ul>
+	<section class="who-we-are-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left: Text Content -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="section-label mb-2">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">who we are.</span>
         </div>
+        <h2 class="display-5 fw-bold mb-4">LEADING GLOBAL BUILDER AND DEVELOPER</h2>
+        <p class="lead">As a national leader in our industry, we are revolutionizing what you expect from a contractor.</p>
+        <p class="who-we-are-desc">Our clients cover a wide range of sectors including local, state, territory and Commonwealth governments, retail and sales, hospitality, commercial, health and aged care, industrial and manufacturing, civil works and defence, as well as medium-density residential, in the Northern City and South England.</p>
+        <a href="/about" class="btn btn-outline-dark who-we-are-btn">
+          More About Us <span class="who-we-are-btn-arrow">&#8594;</span>
+        </a>
+      </div>
+      <!-- Right: Image + Stats -->
+      <div class="col-lg-6">
+        <div class="who-we-are-image-wrapper position-relative">
+          <img src="/images/vision-image.jpg" alt="Construction Team at Work" class="img-fluid rounded shadow who-we-are-img">
+          <div class="who-we-are-stats">
+            <div class="stat-box stat-dark">
+              <div class="stat-icon"><img src="/images/project-icon.jpg" alt="Projects Icon"></div>
+              <div class="stat-value">500<sup>+</sup></div>
+              <div class="stat-label">Completed Projects</div>
+            </div>
+            <div class="stat-box stat-orange">
+              <div class="stat-icon"><img src="/images/icon-award.jpg" alt="Awards Icon"></div>
+              <div class="stat-value">48<sup>+</sup></div>
+              <div class="stat-label">Awards<br>Winning</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</nav>
-
-<!-- Hero Section -->
-<section class="hero">
-    <div class="overlay"></div>
-    <div>
-        <h1 class="display-4 fw-bold">Building the Future</h1>
-        <p class="lead">We deliver high-quality construction services backed by 20+ years of expertise.</p>
-        <a href="#services" class="btn btn-warning btn-lg mt-3">Explore Services</a>
+  </div>
+</section>
+<section class="services-grid-section">
+  <div class="container-fluid p-0">
+    <div class="row g-0">
+      <!-- Service 1 -->
+      <div class="col-md-3 service-col">
+        <div class="service-tile" style="background-image: url('/images/project1.jpg');">
+          <div class="service-overlay"></div>
+          <div class="service-content text-center">
+            <h3>Construction</h3>
+            <a href="/services/residential" class="service-link"><span>&#8599;</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- Service 2 -->
+      <div class="col-md-3 service-col">
+        <div class="service-tile" style="background-image: url('/images/project2.jpg');">
+          <div class="service-overlay"></div>
+          <div class="service-content text-center">
+            <h3>Architecture &amp; Building</h3>
+            <a href="/services/architecture" class="service-link"><span>&#8599;</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- Service 3 -->
+      <div class="col-md-3 service-col">
+        <div class="service-tile" style="background-image: url('/images/project3.jpg');">
+          <div class="service-overlay"></div>
+          <div class="service-content text-center">
+            <h3>House Renovation</h3>
+            <a href="/services/renovation" class="service-link"><span>&#8599;</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- Service 4 -->
+      <div class="col-md-3 service-col">
+        <div class="service-tile" style="background-image: url('/images/project 3.jpg');">
+          <div class="service-overlay"></div>
+          <div class="service-content text-center">
+            <h3>Interior Design</h3>
+            <a href="/services/interior" class="service-link"><span>&#8599;</span></a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section> 
+<section class="vision-values-section py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Section Heading -->
+      <div class="col-12 text-center mb-5">
+        <div class="section-label mb-2 justify-content-center">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">vision & values.</span>
+        </div>
+        <h2 class="display-5 fw-bold">WE HAVE A VISION<br>FOR THE FUTURE OF CONSTRUCTION</h2>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center">
+      <!-- Left: Image -->
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <img src="/images/construction.jpg" alt="Construction Worker" class="img-fluid rounded shadow vision-img">
+      </div>
+      <!-- Right: Content -->
+      <div class="col-lg-7">
+        <div class="vision-content-box p-4 p-md-5">
+          <div class="vision-tabs mb-3">
+            <button class="vision-tab active" type="button">Our Vision</button>
+            <button class="vision-tab" type="button">Core Values</button>
+          </div>
+          <h3 class="fw-bold mb-3">Building today to transform tomorrow</h3>
+          <p class="mb-4 vision-desc">
+            Across this diversity, one thing all our clients share is the trust they put in us to manage and deliver construction projects of the highest quality – it’s what we’ve built our reputation on.
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="vision-list">
+                <li>Building inch by inch</li>
+                <li>Building for the future</li>
+                <li>Building together</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="vision-list">
+                <li>Building to last</li>
+                <li>Building with trust</li>
+                <li>Building safely</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="featured-projects-section py-5">
+  <div class="container-fluid px-5">
+    <div class="section-label mb-2">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">recent work.</span>
+    </div>
+    <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+      <h2 class="display-5 fw-bold text-white mb-0">FEATURED<br>PROJECTS</h2>
+      <div class="project-chat-bubble d-flex align-items-center">
+        <img src="/images/project-manager.jpg" alt="Project Manager" class="chat-person-img">
+        <div class="chat-bubble">
+          <div class="chat-title">Do You Have A Project To Discuss?</div>
+          <div class="chat-link"><a href="/contact">Let's Chat.</a></div>
+        </div>
+        <span class="chat-icon"><img src="/images/icon-chat.jpg" alt="Chat"></span>
+      </div>
+    </div>
+    <div class="featured-projects-carousel d-flex align-items-stretch">
+      <!-- Project Card 1 -->
+      <div class="project-card">
+        <div class="project-image" style="background-image: url('/images/project1.jpg');"></div>
+        <div class="project-info">
+          <div class="project-title">Sience lab building</div>
+          <div class="project-tags">
+            <span class="tag">Commercial</span>
+            <span class="tag">New Build</span>
+          </div>
+          <a href="/projects/sience-lab" class="project-link"><span>&#8599;</span></a>
+        </div>
+      </div>
+      <!-- Project Card 2 -->
+      <div class="project-card">
+        <div class="project-image" style="background-image: url('/images/project2.jpg');"></div>
+        <div class="project-info">
+          <div class="project-title">Family house</div>
+          <div class="project-tags">
+            <span class="tag">Renovation</span>
+          </div>
+          <a href="/projects/family-house" class="project-link"><span>&#8599;</span></a>
+        </div>
+      </div>
+      <!-- Project Card 3 -->
+      <div class="project-card">
+        <div class="project-image" style="background-image: url('/images/project3.jpg');"></div>
+        <div class="project-info">
+          <div class="project-title">Green House Neighbourhood</div>
+          <div class="project-tags">
+            <span class="tag">Commercial</span>
+          </div>
+          <a href="/projects/green-house" class="project-link"><span>&#8599;</span></a>
+        </div>
+      </div>
+      <!-- Add more project cards as needed -->
+    </div>
+    <!-- Carousel navigation -->
+    <div class="featured-projects-nav mt-4">
+      <button class="nav-btn prev-btn">&larr;</button>
+      <button class="nav-btn next-btn">&rarr;</button>
+    </div>
+  </div>
+</section>
+<section class="testimonial-partner-section py-5">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <!-- Testimonial & Trust Row -->
+      <div class="col-lg-10">
+        <div class="d-flex flex-wrap align-items-center gap-4 mb-4">
+          <!-- Trusted By -->
+          <div class="d-flex align-items-center gap-2">
+            <div class="testimonial-avatars">
+              <img src="/images/client1.jpg" alt="Client 1" class="testimonial-avatar">
+              <img src="/images/client2.jpg" alt="Client 2" class="testimonial-avatar">
+              <img src="/images/client3.jpg" alt="Client 3" class="testimonial-avatar">
+              <img src="/images/client4.jpg" alt="Client 4" class="testimonial-avatar">
+            </div>
+            <span class="testimonial-count-badge">+1250</span>
+          </div>
+          <div class="testimonial-trusted-by ms-2">
+            <div class="small text-muted">Trusted by</div>
+            <div class="fw-bold">world leading companies</div>
+          </div>
+          <div class="ms-auto d-none d-lg-block">
+            <a href="/contact" class="btn btn-outline-dark quote-btn">
+              Get A Quote <span class="quote-arrow">&#8599;</span>
+            </a>
+          </div>
+        </div>
+        <!-- Testimonial Text -->
+        <div class="testimonial-content mb-5">
+          <blockquote class="testimonial-quote">
+            “Rebuilto Construction has been more than a developer - they have acted as a true partner. All rolled up their sleeves and sought solutions instead of sidestepping substantial complications.”
+          </blockquote>
+          <div class="testimonial-author mt-3">
+            <div class="fw-bold">Ralph Adams</div>
+            <div class="testimonial-author-role">Construction Admin., Assistant Project Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Partners Row -->
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="section-label mb-2">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">our partners.</span>
+        </div>
+        <hr class="partner-divider my-3">
+        <div class="d-flex flex-wrap align-items-center justify-content-between partner-logos">
+          <img src="/images/partner1.svg" alt="Home & Garden" class="partner-logo">
+          <img src="/images/partner2.svg" alt="Brick Company" class="partner-logo">
+          <img src="/images/partner3.svg" alt="Construction" class="partner-logo">
+          <img src="/images/partner4.svg" alt="Virtups Coworking" class="partner-logo">
+          <img src="/images/partner5.svg" alt="Home Build Construction" class="partner-logo">
+          <img src="/images/partner6.svg" alt="Architecture" class="partner-logo">
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Services Section -->
-<section id="services" class="py-5">
-    <div class="container text-center">
-        <h2 class="section-title">Our Services</h2>
-        <div class="row g-4">
-            <!-- Service Cards -->
-            <div class="col-md-4">
-                <img src="/images/service1.jpg" alt="Service 1">
-                <h5 class="mt-3">Commercial Projects</h5>
-                <p>Office buildings, malls, and more.</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/images/service2.jpg" alt="Service 2">
-                <h5 class="mt-3">Residential Construction</h5>
-                <p>Villas, apartments, and housing layouts.</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/images/service3.jpg" alt="Service 3">
-                <h5 class="mt-3">Interior & Renovation</h5>
-                <p>Modern interiors and remodeling.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Recent Projects Section -->
-<section id="recent-projects" class="py-5 bg-light">
-    <div class="container text-center">
-        <h2 class="section-title">Recent Projects</h2>
-        <div class="row g-4">
-            <!-- Project Cards -->
-            <div class="col-md-4">
-                <img src="/images/project1.jpg" alt="Project 1">
-                <h5 class="mt-3">Luxury Villa - Bangalore</h5>
-                <p>Completed in 2024 with modern exterior & interior.</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/images/project2.jpg" alt="Project 2">
-                <h5 class="mt-3">Corporate Tower - Mangalore</h5>
-                <p>Ongoing project with 12 floors and smart tech.</p>
-            </div>
-            <div class="col-md-4">
-                <img src="/images/project3.jpg" alt="Project 3">
-                <h5 class="mt-3">Hospital Renovation</h5>
-                <p>Specialized care wing renovation with safety upgrades.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="text-center py-3 bg-dark text-white">
-    <p>© 2025 Construction Company. All rights reserved.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
->>>>>>> 2d1e4576769e97153cc17f69ec852a8626ad2bfe
+</div>
+<script src="/js/main.js"></script>
 </body>
 </html>

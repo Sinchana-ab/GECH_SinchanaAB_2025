@@ -1,0 +1,101 @@
+.admin-bg {
+    background: #f6f8fb;
+}
+.admin-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    border-right: 1.5px solid #232323;
+    box-shadow: 1px 0 6px 0 rgba(20,20,20,0.05);
+    position: relative;
+    z-index: 10;
+}
+.admin-sidebar .nav-link {
+    font-size: 1.09rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: background 0.14s, color 0.14s;
+    font-weight: 500;
+    opacity: 0.93;
+}
+.admin-sidebar .nav-link.active, 
+.admin-sidebar .nav-link:hover, 
+.admin-sidebar .nav-link:focus {
+    background: #ff6f2c;
+    color: #fff;
+    opacity: 1;
+}
+.admin-sidebar .fa {
+    color: #ff6f2c;
+    margin-right: 0.5em;
+}
+.admin-content {
+    background: #f6f8fb;
+    min-height: 100vh;
+}
+.card {
+    border-radius: 14px;
+    box-shadow: 0 2px 16px 0 rgba(40,40,40,0.08);
+    border: none;
+}
+.card .card-body h6 {
+    font-size: 1.05rem;
+    opacity: 0.8;
+}
+.card .card-body h4 {
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+.text-bg-primary { background: #ff6f2c!important; color: #fff!important; }
+.text-bg-success { background: #2dc26b!important; color: #fff!important; }
+.text-bg-warning { background: #ffc107!important; color: #222!important; }
+.text-bg-info { background: #27a9e1!important; color: #fff!important; }
+.btn-success, .btn-primary, .btn-warning, .btn-danger, .btn-outline-primary {
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 1.02rem;
+}
+.btn-success, .btn-primary { background: #ff6f2c; border: none; }
+.btn-success:hover, .btn-primary:hover { background: #ff842c; }
+.btn-warning { background: #ffc107; color: #222; border: none; }
+.btn-warning:hover { background: #ffdf7a; color: #222; }
+.btn-danger { background: #e53935; border: none; }
+.btn-danger:hover { background: #d32f2f; }
+.btn-outline-primary { border: 1.5px solid #ff6f2c; color: #ff6f2c; }
+.btn-outline-primary:hover { background: #ff6f2c; color: #fff; }
+.card-img-top {
+    height: 170px;
+    object-fit: cover;
+    border-radius: 14px 14px 0 0;
+}
+.modal-content {
+    border-radius: 14px;
+}
+.modal-header {
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
+}
+@media (max-width: 991px) {
+    .admin-sidebar {
+        width: 90px;
+        padding: 1rem 0.3rem;
+    }
+    .admin-sidebar .nav-link {
+        font-size: 1.4rem;
+        padding: 0.5rem 0.2rem;
+        text-align: center;
+    }
+    .admin-sidebar .nav-link span {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .admin-sidebar {
+        display: none;
+    }
+    .admin-content {
+        margin-left: 0!important;
+        padding: 1rem!important;
+    }
+}

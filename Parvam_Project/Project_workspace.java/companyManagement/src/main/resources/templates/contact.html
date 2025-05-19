@@ -1,29 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('Contact | Bricks Byte', ~{::content})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Bricks Byte</title>
+  <meta charset="UTF-8">
+  <title>Contact | Bricks Byte</title>
 </head>
 <body>
-    <div th:replace="layout :: layout(pageTitle='Contact Us', mainContent='contact-content')"></div>
-
-    <div id="contact-content">
-        <section class="hero">
-            <h1>Contact Us</h1>
-            <p>We'd love to hear from you. Get in touch with us today.</p>
-        </section>
-        <section>
-            <form>
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Your Email">
-                <label for="message">Message</label>
-                <textarea id="message" placeholder="Your Message"></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </section>
+<div th:fragment="content">
+  <section class="section-hero-dark text-white py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
+      <p class="lead mb-0">Let's talk about your next project. We’re here to help you build!</p>
     </div>
+  </section>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-md-6">
+          <h4 class="fw-bold mb-3">Get In Touch</h4>
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-orange">Send Message <span>&#8594;</span></button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h4 class="fw-bold mb-3">Contact Details</h4>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="fas fa-map-marker-alt text-orange me-2"></i>2972 Westheimer Rd., Illinois 85486</li>
+            <li class="mb-2"><i class="fas fa-phone-alt text-orange me-2"></i>(084) 123 - 456 88</li>
+            <li class="mb-2"><i class="fas fa-envelope text-orange me-2"></i>support@example.com</li>
+          </ul>
+          <h5 class="fw-bold">Business Hours</h5>
+          <p class="mb-0">Mon-Fri: 8:00am - 7:00pm<br>Sat: 9:00am - 3:00pm<br>Sun: Closed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 </body>
 </html>

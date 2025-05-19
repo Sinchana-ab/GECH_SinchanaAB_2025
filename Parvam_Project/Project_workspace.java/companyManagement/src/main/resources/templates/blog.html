@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('Blog | Bricks Byte', ~{::content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog | Bricks Byte</title>
+</head>
+<body>
+<div th:fragment="content">
+  <section class="section-hero-dark text-white py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">Bricks Byte Blog</h1>
+      <p class="lead mb-0">Insights, news, and inspiration from the world of construction and design.</p>
+    </div>
+  </section>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="blog-card bg-white rounded shadow-sm h-100">
+            <img src="/images/blog1.jpg" class="img-fluid rounded-top" alt="Sustainable Construction">
+            <div class="p-3">
+              <h5 class="fw-bold mb-2">Sustainable Construction: The Future</h5>
+              <p class="mb-2 text-muted small">May 10, 2025 · By Admin</p>
+              <p class="mb-3">Explore how modern materials and techniques are shaping a greener built environment.</p>
+              <a href="#" class="text-orange fw-bold">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-card bg-white rounded shadow-sm h-100">
+            <img src="/images/blog2.jpg" class="img-fluid rounded-top" alt="Office Renovation Trends">
+            <div class="p-3">
+              <h5 class="fw-bold mb-2">Office Renovation Trends in 2025</h5>
+              <p class="mb-2 text-muted small">Apr 28, 2025 · By Team</p>
+              <p class="mb-3">Discover the latest in workplace design, from flexible spaces to smart integrations.</p>
+              <a href="#" class="text-orange fw-bold">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-card bg-white rounded shadow-sm h-100">
+            <img src="/images/blog3.jpg" class="img-fluid rounded-top" alt="Client Project Highlight">
+            <div class="p-3">
+              <h5 class="fw-bold mb-2">Client Project Highlight: Green House</h5>
+              <p class="mb-2 text-muted small">Apr 12, 2025 · By Admin</p>
+              <p class="mb-3">A behind-the-scenes look at our eco-friendly neighborhood project in detail.</p>
+              <a href="#" class="text-orange fw-bold">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('Edit Blog', ~{::main})">
+<main>
+  <div class="container py-4">
+    <h3 class="mb-4">Edit Blog</h3>
+    <form th:action="@{'/admin/blogs/edit/' + ${blog.id}}" method="post" enctype="multipart/form-data"
+          class="bg-white p-4 rounded shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" th:value="${blog.title}" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Author</label>
+        <input type="text" name="author" class="form-control" th:value="${blog.author}" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Content</label>
+        <textarea name="content" class="form-control" rows="4" th:text="${blog.content}" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Replace Image</label>
+        <input type="file" name="image" class="form-control" accept="image/*">
+        <small class="text-muted">Leave blank to keep current image.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Blog</button>
+      <a th:href="@{/admin/blogs}" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+  </div>
+</main>
+</html>

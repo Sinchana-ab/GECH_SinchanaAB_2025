@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
 
@@ -19,17 +21,15 @@ public class HomeController {
         return "about"; 
     }
 
-    @GetMapping("/services/residential")
-    public String residentialServices() {
-        return "residential"; 
-    }
-
-    @GetMapping("/services/commercial")
-    public String commercialServices() {
-        return "commercial"; 
-
-   
-    }
+//    @GetMapping("/services/residential")
+//    public String residentialServices() {
+//        return "services/residential"; 
+//    }
+//
+//    @GetMapping("/services/commercial")
+//    public String commercialServices() {
+//        return "services/commercial"; 
+//    }
 
     @GetMapping("/projects")
     public String projects() {
@@ -41,28 +41,43 @@ public class HomeController {
     public String news() {
         return "news";
     }
+    @GetMapping("/team")
+    public String Team() {
+        return "team";
+    }
 
     @GetMapping("/contact")
     public String contact() {
         return "contact";
     }
 
-    @GetMapping("/admin/login")
-    public String adminLogin() {
-        return "admin_login"; }
-
-    @GetMapping("/blogs")
-    public String blogs() {
-        return "blogs";
+    @GetMapping("/admin/dashboard")
+    public String dashoard() {
+        return "admin/dashboard";
     }
- // ProjectController.java
-  //  @GetMapping("/admin/projects/edit/{id}")
-  //  public String editProjectForm(@PathVariable Long id, Model model) { /* populate form */ }
 
-  //  @PostMapping("/admin/projects/update")
-   // public String updateProject(ProjectDTO dto) { /* handle update */ }
+    @GetMapping("/admin/login")
+    public String showLoginPage(Model model) {
+        return "admin/login";  // This just shows the login form
+    }
+   
+    @PostMapping("/login-success")
+    public String loginSuccess(HttpSession session) {
+        session.setAttribute("admin", true); // Use a more meaningful value, like the admin's username
+        return "redirect:/admin/dashboard";
+    }
+    @GetMapping("/testimonials")
+    public String testimonials() {
+        return "testimonials";
+    }
 
- //   @GetMapping("/admin/projects/delete/{id}")
- //   public String deleteProject(@PathVariable Long id) { /* handle deletion */ }
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
 
+    @GetMapping("/gallery")
+    public String gallery() {
+        return "gallery";
+    } 
 }

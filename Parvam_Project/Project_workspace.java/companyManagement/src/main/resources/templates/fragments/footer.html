@@ -1,54 +1,113 @@
-<div id="footer" class="footer py-5" th:fragment="footer"> 
+<div id="footer" class="footer pt-0" th:fragment="footer">
+  <!-- Newsletter Signup -->
+  <div class="footer-newsletter-section">
     <div class="container">
-        <!-- Footer Top -->
-        <div class="footer-top d-flex justify-content-between align-items-center mb-5">
-            <div class="footer-contact">
-                <p><strong>Call Us:</strong> (084) 123 - 456 88</p>
-                <p><strong>Need Support:</strong> <a href="mailto:support@example.com">support@example.com</a></p>
-                <p><strong>Head Office:</strong> 2972 Westheimer Rd., Illinois 85486</p>
-            </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="footer-label mb-2">
+            <span class="footer-label-line"></span>
+            <span class="footer-label-text">newsletter signup.</span>
+          </div>
+          <h2 class="footer-newsletter-title">SUBSCRIBE OUR<br>NEWSLETTER</h2>
         </div>
-        <!-- Footer Links -->
-        <div class="footer-links row">
-            <div class="col-md-3">
-                <h4>Bricks Byte</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <ul>
-                    <li><a href="#">Solutions</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Meet Our Team</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">HR Training</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h4>Need to Reach Us?</h4>
-                <p>We’re here to answer all your questions. Fill out our contact form and we’ll connect you with the people who can help.</p>
-                <a href="#" class="btn btn-orange">Contact Us <span>&#8594;</span></a>
-            </div>
+        <div class="col-lg-6">
+          <form class="footer-newsletter-form d-flex">
+            <input type="email" class="form-control newsletter-input" placeholder="Enter your email..." required>
+            <button type="submit" class="newsletter-btn">
+              <i class="fas fa-envelope"></i>
+            </button>
+          </form>
         </div>
-        <!-- Footer Bottom -->
-        <div class="footer-bottom text-center mt-5">
-            <p>&copy; 2025 Bricks Byte. All Rights Reserved</p>
-            <ul class="footer-policy">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Terms and Conditions</a></li>
-            </ul>
-        </div>
+      </div>
     </div>
+    <div class="footer-newsletter-img"></div>
+  </div>
+  <!-- Footer Contact (Icons Row) -->
+  <div class="footer-contact-bar">
+    <div class="container">
+      <div class="row text-white g-0">
+        <div class="col-md-4 contact-block border-end-lg">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div>
+            <div class="contact-label">Call Us</div>
+            <div class="contact-value fw-bold">(084) 123 - 456 88</div>
+          </div>
+        </div>
+        <div class="col-md-4 contact-block border-end-lg">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-label">Need Support</div>
+            <div class="contact-value fw-bold">support@example.com</div>
+          </div>
+        </div>
+        <div class="col-md-4 contact-block">
+          <div class="contact-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <div class="contact-label">Head Office</div>
+            <div class="contact-value fw-bold">2972 Westheimer Rd.,<br>Illinois 85486</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Main Links -->
+  <div class="footer-main">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+          <h4 class="footer-brand mb-3">Bricks Byte</h4>
+          <div class="footer-social mb-2">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <ul class="footer-list">
+            <li><a href="#">Solutions</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Meet Our Team</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">HR Guides</a></li>
+            <li><a href="#">Customer Testimonials</a></li>
+            <li><a href="#">Outsourcing</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-6">
+          <ul class="footer-list">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">HR Training</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-12">
+          <h4 class="footer-heading">Need to reach us?</h4>
+          <p class="footer-desc mb-3">We’re here to answer all your questions. Fill out our contact form and we’ll connect you with the people who can help.</p>
+          <a href="#" class="footer-contact-btn">
+            Contact Us <span>&#8594;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bottom -->
+  <div class="footer-bottom-bar text-center">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div class="footer-copyright">
+          &copy; 2025 <span class="footer-brand-inline">Bricks Byte</span>. All Rights Reserved
+        </div>
+        <ul class="footer-policy mb-0">
+          <li><a href="#">Privacy Policy.</a></li>
+          <li><a href="#">Contact.</a></li>
+          <li><a href="#">Terms and Conditions.</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
