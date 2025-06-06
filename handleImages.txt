@@ -1,0 +1,10 @@
+How to handle images in spring boot:
+====================================
+3 ways
+1. using file system - recomended
+2. using aws - it is recomended to use in production
+3. using blob in db - itis not recomended
+
+
+findById()
+findByEmail(String email) - select * from students where email ="uhiuh@gmailcom"

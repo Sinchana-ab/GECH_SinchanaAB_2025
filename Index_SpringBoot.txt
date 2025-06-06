@@ -1,0 +1,10 @@
+1. DataBase connectivity.
+2. How to validate forms.
+3. How to handle images.
+4. Spring data jpa (Pagination and Sorting) and relation ship.
+5. Thymeleaf.
+6. Spring Security.
+7. Notes Taker web app (include security).
+8. Rest API in Spring boot.
+9. How to test by using postman.
+10. How to use Jquery(Js library)in Spring boot(to create a CRUD without reaload web page).
