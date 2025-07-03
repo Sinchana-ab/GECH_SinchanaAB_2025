@@ -50,9 +50,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/", "/about", "/contact", "/register", "/login",
+                    "/projects", "/projects/**", // ✅ Allow project list and individual project details
+                    "/blog", "/gallery", "/testimonials", "/team",
+                    "/images/**", "/uploads/**", "/css/**", "/js/**"
+                ).permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/admin/projects/all-projects").hasAnyRole("ADMIN")
-                .requestMatchers("/", "/about", "/contact", "/register", "/login","/projects","/blog","/gallery","/testimonials","/team","/images/**", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(login -> login
@@ -62,13 +66,13 @@ public class SecurityConfig {
                 .permitAll()
             )
             .logout(logout -> logout
-            	    .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-            	    .logoutSuccessUrl("/admin/login?logout")
-            	    .invalidateHttpSession(true)
-            	    .deleteCookies("JSESSIONID")
-            	    .permitAll()
-            	)
-
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
+                .logoutSuccessUrl("/admin/login?logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .permitAll()
+            )
             .build();
     }
+
 }

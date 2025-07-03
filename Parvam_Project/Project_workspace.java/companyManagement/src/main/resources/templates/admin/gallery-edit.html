@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('Edit Gallery Image', ~{::main})">
+
+<main>
+  <div class="container py-4">
+    <h2 class="mb-4">Edit Image</h2>
+
+    <form th:action="@{/admin/gallery/save}" method="post"
+          th:object="${galleryDTO}" enctype="multipart/form-data">
+
+      <input type="hidden" th:field="*{id}" />
+
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" th:field="*{title}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Change Image (optional)</label>
+        <input type="file" class="form-control" th:field="*{image}">
+        <div class="form-text">Leave blank to retain the existing image.</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a th:href="@{/admin/gallery}" class="btn btn-secondary">← Back</a>
+        <button type="submit" class="btn btn-success">✅ Update</button>
+      </div>
+    </form>
+  </div>
+</main>
+</html>

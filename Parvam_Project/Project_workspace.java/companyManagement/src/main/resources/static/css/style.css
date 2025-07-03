@@ -142,6 +142,25 @@ h1 .text-outline {
     color: #ffa726;
 }
 -- ------------------------------------------
+.icon-badges-top-right {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+}
+
+.badge-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  padding: 4px;
+}
+-- -----------------------------------------------
 /* --- Services Grid Section --- */
 .services-grid-section {
   margin: 0;

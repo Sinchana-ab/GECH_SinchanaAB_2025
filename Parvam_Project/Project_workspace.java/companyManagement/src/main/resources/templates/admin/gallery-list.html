@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('All Gallery Images', ~{::main})">
+
+<main>
+  <div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="mb-0">Gallery</h2>
+      <a th:href="@{/admin/gallery/add}" class="btn btn-success">+ Add Image</a>
+    </div>
+
+    <div class="row" th:if="${galleryItems != null and !galleryItems.isEmpty()}">
+      <div class="col-md-4 mb-4" th:each="item : ${galleryItems}">
+        <div class="card shadow-sm">
+          <img th:src="@{'/gallery-images/' + ${item.title} + '.jpg'}"
+               class="card-img-top" style="height: 200px; object-fit: cover;" alt="Gallery image">
+          <div class="card-body">
+            <h5 class="card-title" th:text="${item.title}">Image Title</h5>
+            <div class="d-flex justify-content-between">
+              <a th:href="@{'/admin/gallery/edit?id=' + ${item.id}}" class="btn btn-warning btn-sm">✏️ Edit</a>
+              <a th:href="@{'/admin/gallery/delete?id=' + ${item.id}}" class="btn btn-danger btn-sm"
+                 onclick="return confirm('Delete this image?')">🗑 Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info text-center" th:if="${galleryItems == null or galleryItems.isEmpty()}">
+      No images found.
+    </div>
+
+    <div class="text-end mt-4">
+      <a th:href="@{/admin/dashboard}" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+  </div>
+</main>
+</html>

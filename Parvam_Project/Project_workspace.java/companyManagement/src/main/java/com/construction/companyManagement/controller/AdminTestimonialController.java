@@ -1,14 +1,10 @@
 package com.construction.companyManagement.controller;
 
 import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.construction.companyManagement.dto.TestimonialDTO;
 import com.construction.companyManagement.service.TestimonialService;
@@ -26,13 +22,32 @@ public class AdminTestimonialController {
         return "admin/all-testimonials";
     }
 
-    @PostMapping("/add")
-    public String addTestimonial(@ModelAttribute TestimonialDTO testimonialDTO) {
+    @GetMapping("/add")
+    public String showAddForm(Model model) {
+        model.addAttribute("testimonialDTO", new TestimonialDTO());
+        return "admin/testimonial-add";
+    }
+
+    @GetMapping("/edit")
+    public String showEditForm(@RequestParam("id") Long id, Model model) {
+        TestimonialDTO dto = testimonialService.getTestimonialById(id);
+        model.addAttribute("testimonialDTO", dto);
+        return "admin/testimonial-edit";
+    }
+
+    @PostMapping("/save")
+    public String saveOrUpdateTestimonial(@ModelAttribute TestimonialDTO testimonialDTO) {
         try {
             testimonialService.saveTestimonial(testimonialDTO);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "redirect:/admin/testimonials";
+    }
+
+    @GetMapping("/delete")
+    public String deleteTestimonial(@RequestParam("id") Long id) {
+        testimonialService.deleteTestimonial(id);
         return "redirect:/admin/testimonials";
     }
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Home | Bricks Byte</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
+    
 </head>
 <body>
 <div th:fragment="content">
@@ -51,22 +52,21 @@
       </div>
       <!-- Right: Image + Stats -->
       <div class="col-lg-6">
-        <div class="who-we-are-image-wrapper position-relative">
-          <img src="/images/vision-image.jpg" alt="Construction Team at Work" class="img-fluid rounded shadow who-we-are-img">
-          <div class="who-we-are-stats">
-            <div class="stat-box stat-dark">
-              <div class="stat-icon"><img src="/images/project-icon.jpg" alt="Projects Icon"></div>
-              <div class="stat-value">500<sup>+</sup></div>
-              <div class="stat-label">Completed Projects</div>
-            </div>
-            <div class="stat-box stat-orange">
-              <div class="stat-icon"><img src="/images/icon-award.jpg" alt="Awards Icon"></div>
-              <div class="stat-value">48<sup>+</sup></div>
-              <div class="stat-label">Awards<br>Winning</div>
-            </div>
-          </div>
-        </div>
-      </div>
+		  <div class="who-we-are-image-wrapper position-relative">
+		    <!-- Main Image -->
+		    <img src="/images/vision-image.jpg" alt="Construction Team at Work"
+		         class="img-fluid rounded shadow who-we-are-img">
+		
+		    <!-- NEW: Top-right icon badges -->
+		    <div class="icon-badges-top-right">
+		      <img src="/images/project-icon.jpg" alt="Projects Icon" class="badge-icon me-2"><span>500<sup>+</sup>Completed Projects </span>
+		             
+		      <img src="/images/icon-award.jpg" alt="Awards Icon" class="badge-icon"><span>48<sup>+</sup>Awards Winning</span>
+		     
+		    </div>
+		
+		  </div>
+	</div>
     </div>
   </div>
 </section>
@@ -125,7 +125,7 @@
           <span class="section-label-line"></span>
           <span class="section-label-text">vision & values.</span>
         </div>
-        <h2 class="display-5 fw-bold">WE HAVE A VISION<br>FOR THE FUTURE OF CONSTRUCTION</h2>
+        <h2 class="display-5 fw-bold .text-light">WE HAVE A VISION<br>FOR THE FUTURE OF CONSTRUCTION</h2>
       </div>
     </div>
     <div class="row align-items-center justify-content-center">

@@ -1,51 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('Contact | Bricks Byte', ~{::content})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout('Contact Us | Bricks Byte', ~{::content})}">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact | Bricks Byte</title>
+    <meta charset="UTF-8">
+    <title>Contact Us | Bricks Byte</title>
+    <style>
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('/images/contact-hero.jpg') no-repeat center center/cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: 5rem 2rem;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 650px;
+            margin: auto;
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.15rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+            outline: none;
+        }
+
+        .contact-form button {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 0.85rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            color: #28a745;
+            margin-top: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+    </style>
 </head>
 <body>
 <div th:fragment="content">
-  <section class="section-hero-dark text-white py-5 text-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
-      <p class="lead mb-0">Let's talk about your next project. We’re here to help you build!</p>
-    </div>
-  </section>
-  <section class="py-5 bg-light">
-    <div class="container">
-      <div class="row g-5">
-        <div class="col-md-6">
-          <h4 class="fw-bold mb-3">Get In Touch</h4>
-          <form>
-            <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Your Name" required>
-            </div>
-            <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Your Email" required>
-            </div>
-            <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Subject">
-            </div>
-            <div class="mb-3">
-              <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-orange">Send Message <span>&#8594;</span></button>
-          </form>
-        </div>
-        <div class="col-md-6">
-          <h4 class="fw-bold mb-3">Contact Details</h4>
-          <ul class="list-unstyled mb-4">
-            <li class="mb-2"><i class="fas fa-map-marker-alt text-orange me-2"></i>2972 Westheimer Rd., Illinois 85486</li>
-            <li class="mb-2"><i class="fas fa-phone-alt text-orange me-2"></i>(084) 123 - 456 88</li>
-            <li class="mb-2"><i class="fas fa-envelope text-orange me-2"></i>support@example.com</li>
-          </ul>
-          <h5 class="fw-bold">Business Hours</h5>
-          <p class="mb-0">Mon-Fri: 8:00am - 7:00pm<br>Sat: 9:00am - 3:00pm<br>Sun: Closed</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="hero" style="background: url('/images/contact-hero.jpg') no-repeat center center/cover;">
+        <h1 style="color: white;">Let's Talk</h1>
+        <p style="color: white;">Have a question or just want to say hello? We'd love to hear from you.</p>
+    </section>
+
+    <section class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>Fill out the form below and we’ll respond as soon as possible.</p>
+
+        <form th:action="@{/contact}" th:object="${contactMessage}" method="post" class="contact-form">
+            <input type="text" th:field="*{name}" placeholder="Your Name" required/>
+            <input type="email" th:field="*{email}" placeholder="Your Email" required/>
+            <input type="text" th:field="*{subject}" placeholder="Subject" required/>
+            <textarea th:field="*{message}" placeholder="Your Message" rows="6" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <p th:if="${param.success}" class="success-message">Thanks! Your message has been sent successfully.</p>
+        <meta http-equiv="refresh" content="3;url=/">
+        
+    </section>
 </div>
 </body>
 </html>

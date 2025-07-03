@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('Manage Messages', ~{::main})">
+<main>
+  <div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="mb-0">Contact Messages</h2>
+    </div>
+
+    <div class="table-responsive" th:if="${messages != null and !messages.isEmpty()}">
+      <table class="table table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="msg, stat : ${messages}">
+            <td th:text="${stat.index + 1}">1</td>
+            <td th:text="${msg.name}">John Doe</td>
+            <td th:text="${msg.email}">john@example.com</td>
+            <td th:text="${msg.subject}">Inquiry</td>
+            <td th:text="${msg.message}">Hello, I'd like to know more...</td>
+            <td>
+              <form th:action="@{'/admin/messages/delete/' + ${msg.id}}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger"
+                        onclick="return confirm('Are you sure you want to delete this message?');">
+                  🗑 Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- If no messages -->
+    <div class="alert alert-info text-center" th:if="${messages == null or messages.isEmpty()}">
+      No messages available.
+    </div>
+
+    <div class="text-end mt-4">
+      <a th:href="@{/admin/dashboard}" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+  </div>
+</main>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layouts/admin-layout :: layout('Add Testimonial', ~{::main})">
+<main>
+  <div class="container py-4">
+    <h2 class="mb-4">Edit Testimonial</h2>
+
+    <form th:action="@{/admin/testimonials/save}" method="post"
+          th:object="${testimonialDTO}" enctype="multipart/form-data">
+      
+      <input type="hidden" th:field="*{id}"/>
+
+      <div class="mb-3">
+        <label for="clientName" class="form-label">Client Name</label>
+        <input type="text" class="form-control" id="clientName" th:field="*{clientName}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="feedback" class="form-label">Feedback</label>
+        <textarea class="form-control" id="feedback" rows="5" th:field="*{feedback}" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input type="number" class="form-control" id="rating" th:field="*{rating}" min="1" max="5" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Client Photo</label>
+        <input type="file" class="form-control" id="image" th:field="*{image}">
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a th:href="@{/admin/testimonials}" class="btn btn-secondary">← Cancel</a>
+        <button type="submit" class="btn btn-success">💾 Save Testimonial</button>
+      </div>
+    </form>
+  </div>
+</main>
+</html>

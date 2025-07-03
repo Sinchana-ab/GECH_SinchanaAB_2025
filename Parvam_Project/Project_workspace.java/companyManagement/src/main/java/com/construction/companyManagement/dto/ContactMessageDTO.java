@@ -28,9 +28,5 @@ public class ContactMessageDTO {
 	}
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-    // Getters and Setters
-    
+	}    
 }
-

@@ -34,7 +34,7 @@ public class AdminBlogController {
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("blogDTO", new BlogDTO());
-        return "admin/blogs-add";
+        return "admin/blogs-all";
     }
 
     @PostMapping("/add")
