@@ -1,0 +1,17 @@
+aws courses: 
+
+Day1: create account in aws skill builder and console and segamaker
+day2: how to host the website 
+step1: search in the console "S3 Buckets"
+step1: create bucket
+	rules: *folder structure should be maintain
+		*the html file should be name as "
+   then block the  as you public access --> public to private for only admin access[polies]Acl->access control list
+	keyname ss3-s3
+	
+step3: encrypt password part --> only for you *{enable}[it will encrypted] or for others click {diable} 
+step4: then we need to fallow s3 policy
+ 	copy the code from sir sended
+	replace the resource value with bucket anr value
+	then click apply changes 
+then bucket url will be created then click you can access the website 

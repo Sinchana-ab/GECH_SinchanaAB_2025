@@ -1,0 +1,117 @@
+the basic structure of c 
+#include<stdio.h>
+int main(){
+            return 0;
+        }   
+after compliling through command gcc filename.c
+then a.exe file be there
+for compiling     ---> gcc 1_intro.c
+
+for running ----> a(command prompt) or .\a(in vs code) 
+
+Datatypes: which defines the variable what type of data it will store, variable is like container[box]
+primetive dataType: int,float,char,double long  
+nonprimetive datatypr: Array, String 
+userDefined datatype: structure,union,enum
+
+python is dynamically typed language[because no need to mention the datatype when we declaring ex: a = 10;]
+c is statically typed language[because we need to mention the datatype when we declaring ex: int a = 10;]   
+c is a procedural language[functions are there]
+c is a object oriented language[classes are there]
+
+formate specifier :- that helps to print the variable in a specific format and take input from the user
+example: int --> %d
+        float --> %f
+        char --> %c
+        String --> %s
+        double --> %lf
+        long --> %ld
+        unsigned int --> %u
+        octal --> %o
+        hexadecimal --> %x
+        pointer --> %p
+         
+example:- #include<stdio.h>
+int main(){
+    int var = 10;
+    printf("the value of var is %d",var);
+    return 0;
+}
+#include<stdio.h>
+int main(){
+    int num;
+    printf("Enter a number: \n");
+    scanf("%d", &num);
+    printf("the value user entered: %d",num);
+    return 0;
+} here we taken the input from user through the scanf 
+& helps to store the value within the address, in printf if we use & that prints address
+\b --> for blackslash;
+\t --> for extra tab[tabSpace]
+
+Assignment day1: in single program accept all datatype variable value then print it,
+                go through the concept control and looping statement, 
+
+
+day--2
+condition statement: if, else, else if, switch
+else if: - to check multiple condtion
+switch :- is a condtion statement, it is used when we have to check multiple condition
+          syntax:- switch (expression)
+          {
+          case constant expression:
+            /* code */
+            break;
+          
+          default:
+            break;
+          }
+
+looping statement: for, while, do while :- to avoid the code repitation
+while is a precheck loop
+          syntax: while (/* condition */)
+          {
+            /* code */
+          }
+do while :- atleast one condition need to write then we use
+
+hw: 1)given number is perfect number or not
+    2)Given number is strong number or not
+
+
+Dynamic memory allocation and pointer in c:-
+          address in Hexdecimals
+          pointer is used to store the address of the variable
+             in pointer 1)address is stored and sa,e datatype pf that variable 
+                        2)it is a variable which stores the address of another variable
+                        synatx: int n =5
+                        int *ptr = &n;
+                        * is also called dereffenceing operator
+                        & is also called address of operator
+            Types of pointer: 
+            1)wild pointer  => by only intialzing without assigning the address of variable ,[it acts works disoppriate]
+            2)null pointer => int *ptr = NULL; to avoid wild disadvantage
+            3)void pointer => void *ptr => it can point to any datatype, when we dont knowdatatyle later we can assign,
+            4)Dangling pointer => IT POITS TO ONE VARIABLE ADDRESS WHICH DOES NOT CONTAON ANY __valueles
+
+Dynamic Memory allocation[DMA]: 
+1)run TIME 
+)complie time
+ in these we have 4 types: 
+              1)malloc: memory allocatio:- syntax: ptr = (data_type *)malloc(size in bytes)
+                   ptr = (int *)malloc(5*sizeof(int)); here malloc success then void memeory allocated or fail  it return null pointer
+              2)calloc: contiguous allocation:- syntax: ptr = (data_type *)calloc(n, size in bytes)
+                         ptr = (int *)calloc(5, sizeof(int)); Asking for multiple value ie n value , it return null pointer assign 0 value address  in heap memory
+
+              3) realloc: reallocation:- syntax: ptr = (data_type *)realloc(ptr, new size in bytes)
+                         ptr = (int *)realloc(ptr, 2*sizeof(int)); 
+              4) free: free the memory:- syntax: free(ptr);
+
+union : similar to structre can access only one variable or feild at a time in union;
+structure: is a userDefined dataType, we can give store different datatype value
+            syntax: struct name{
+              int regno;
+              char name[10];
+              char gender;
+            }
+          we can create the structure variable/ instances :-  structStudent std1,...........stdn;

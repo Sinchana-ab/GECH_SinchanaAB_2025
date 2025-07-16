@@ -18,21 +18,35 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.construction.companyManagement.PasswordEncoder;
 import com.construction.companyManagement.service.CustomAdminDetailsService;
+import com.construction.companyManagement.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     @Autowired
-    private CustomAdminDetailsService userDetailsService;
+    private CustomAdminDetailsService adminDetailsService;
+
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
     @Bean
-    public org.springframework.security.crypto.password.PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // Admin Auth Provider
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    public DaoAuthenticationProvider adminAuthProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(adminDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    // User Auth Provider
+    @Bean
+    public DaoAuthenticationProvider userAuthProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(passwordEncoder());
@@ -41,9 +55,10 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                   .authenticationProvider(authenticationProvider())
-                   .build();
+        AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        builder.authenticationProvider(adminAuthProvider());
+        builder.authenticationProvider(userAuthProvider());
+        return builder.build();
     }
 
     @Bean
@@ -51,28 +66,24 @@ public class SecurityConfig {
         return http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/", "/about", "/contact", "/register", "/login",
-                    "/projects", "/projects/**", // ✅ Allow project list and individual project details
-                    "/blog", "/gallery", "/testimonials", "/team",
-                    "/images/**", "/uploads/**", "/css/**", "/js/**"
+                    "/", "/about", "/contact", "/projects", "/blog", "/gallery", "/testimonials", "/team",
+                    "/images/**", "/uploads/**", "/css/**", "/js/**",
+                    "/user/register", "/user/login"
                 ).permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(login -> login
-                .loginPage("/admin/login")
-                .loginProcessingUrl("/admin/login")
-                .defaultSuccessUrl("/admin/dashboard", true)
-                .permitAll()
+                .loginPage("/user/login").permitAll()
+                .defaultSuccessUrl("/", true)
             )
             .logout(logout -> logout
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-                .logoutSuccessUrl("/admin/login?logout")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-                .permitAll()
             )
             .build();
     }
-
 }

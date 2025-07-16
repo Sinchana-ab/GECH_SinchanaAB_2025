@@ -55,7 +55,7 @@ components:
 important implementing classes:
 ===============================
 JwtAuthenticationToken, OAuth2LoginAuthenticationToken,
-UsernamePasswordAuthenticationToken
+UsernamePasswordAuthenticationToken : fully responsible authenticated token
 
 3. AuthenticationManager:
 ==========================

@@ -1,0 +1,42 @@
+difference btw nextLine() and next()
+nextline() --> which takes entire line including space
+next() --> wont takes the space only the words
+
+
+java--> james Gosline at sunmicrosystem origin name oak at 1995
+	write once Run Anywhere system
+
+Before taking the user input nextLine() better to use take nextline() input without storing Anywhere
+package Introduction;
+
+import java.util.Scanner;
+
+public class Student {
+	public static void main(String[] args) {
+		int age;
+		char gender;
+		float marks;
+		String name;
+		
+		System.out.println("Enter the student Details: ");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("enter age \t");
+		age = sc.nextInt();
+		System.out.print("enter Gender \t");
+		gender = sc.next().charAt(0);
+		System.out.print("enter marks \t");
+		marks = sc.nextFloat();
+		sc.nextLine();
+		System.out.println("enter name");
+		name = sc.nextLine();
+		System.out.println("user Enterd datils:");
+		System.out.println("Age: "+age);
+		System.out.println("marks: "+marks);
+		System.out.println("gender: "+gender);
+		System.out.println("name: "+name);
+	}
+}
+ when taking input like folat input after String input better to use nextLine() method
+because it takes up after float input value hole line as input to next user input or enter event also input
+----------------------------
+
