@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Department</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Edit Department: <span th:text="${department.name}"></span></h1>
+            <nav>
+                <a th:href="@{/admin/departments}">← Back to Department Management</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <form th:action="@{/admin/departments/update/{id}(id=${department.id})}" th:object="${departmentDTO}" method="post">
+            <label for="departmentName">Department Name:</label>
+            <input type="text" id="departmentName" th:field="*{name}" th:value="${department.name}" required />
+            
+            <button type="submit" class="button">Update Department</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Employee Management System</h1>
+            <nav>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/employees}">Employees</a>
+                <a th:href="@{/departments}">Departments</a>
+                <a th:href="@{/roles}">Roles</a>
+                <a th:href="@{/register}">Register</a>
+                <a th:href="@{/login}">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Welcome Aboard 👋</h2>
+            <p>Manage employee records, departments and roles with ease.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Designed with 💙 by You</p>
+        </div>
+    </footer>
+</body>
+</html>

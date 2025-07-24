@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Roles</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header><h1>Roles</h1></header>
+    <main class="container">
+        <a th:href="@{/}">← Back to Home</a>
+        <ul th:each="role : ${roles}">
+            <li th:text="${role.name}">Role Name</li>
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Edit Employee: <span th:text="${employee.name}"></span></h1>
+            <nav>
+                <a th:href="@{/admin/employees}">← Back to Employee Management</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <form th:action="@{/admin/employees/update/{id}(id=${employee.id})}" th:object="${employeeDTO}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" th:value="${employee.name}" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" th:value="${employee.email}" required />
+
+            <label for="department">Department:</label>
+            <select id="department" name="departmentId">
+                <option value="">-- Select Department --</option>
+                <option th:each="dept : ${departments}" 
+                        th:value="${dept.id}" 
+                        th:text="${dept.name}"
+                        th:selected="${employee.department != null and employee.department.id == dept.id}">Department Name</option>
+            </select>
+            
+            <button type="submit" class="button">Update Employee</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

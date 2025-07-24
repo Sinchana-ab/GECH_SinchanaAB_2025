@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/admin/users}">Manage Users</a>
+                <a th:href="@{/admin/departments}">Manage Departments</a>
+                <a th:href="@{/admin/employees}">Manage Employees</a>
+                <a th:href="@{/admin/roles}">Manage Roles</a>
+                <a th:href="@{/admin/tasks}">Manage Tasks</a> <!-- New link -->
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Welcome, <span sec:authentication="name">User</span>!</h2>
+            <p>This is your central hub for managing the Employee Management System. Use the links below to navigate through different management sections.</p>
+        </section>
+
+        <section class="dashboard-sections">
+            <div class="card">
+                <h3>User Management</h3>
+                <p>Oversee and modify user accounts, including assigning and revoking roles.</p>
+                <a th:href="@{/admin/users}" class="button">Go to Users</a>
+            </div>
+            <div class="card">
+                <h3>Department Management</h3>
+                <p>Create new departments, update existing ones, or remove obsolete departments.</p>
+                <a th:href="@{/admin/departments}" class="button">Go to Departments</a>
+            </div>
+            <div class="card">
+                <h3>Employee Management</h3>
+                <p>Manage detailed employee profiles, assign them to departments, and update their information.</p>
+                <a th:href="@{/admin/employees}" class="button">Go to Employees</a>
+            </div>
+            <div class="card">
+                <h3>Role Management</h3>
+                <p>Define and maintain system roles, controlling access and permissions across the application.</p>
+                <a th:href="@{/admin/roles}" class="button">Go to Roles</a>
+            </div>
+            <div class="card"> <!-- New Task Management Card -->
+                <h3>Task Management</h3>
+                <p>Assign and track tasks for employees, update their progress and due dates.</p>
+                <a th:href="@{/admin/tasks}" class="button">Go to Tasks</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

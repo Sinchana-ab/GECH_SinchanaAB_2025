@@ -12,6 +12,10 @@ Why Use Spring Boot?:
 * Comes with built-in dependencies (e.g., databases, security).
 * Uses annotations to remove XML configuration.
 
+SpringBoot Stater:
+=====================
+* A set of convenint dependency descriptor,
+
 
 IOC Container and Dependency Injection:
 =======================================

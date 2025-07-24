@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Roles</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Manage Roles</h1>
+            <nav>
+                <a th:href="@{/admin/dashboard}">← Back to Dashboard</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div th:if="${successMessage}" class="alert success" th:text="${successMessage}"></div>
+        <div th:if="${errorMessage}" class="alert error" th:text="${errorMessage}"></div>
+
+        <h2>Add New Role</h2>
+        <form th:action="@{/admin/roles/add}" th:object="${roleDTO}" method="post">
+            <label for="name">Role Name (e.g., ADMIN, USER, MANAGER):</label>
+            <input type="text" id="name" th:field="*{name}" required placeholder="e.g., HR_MANAGER" />
+            <button type="submit" class="button">Add Role</button>
+        </form>
+
+        <h2>Existing Roles</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="role : ${roles}">
+                    <td th:text="${role.id}">1</td>
+                    <td th:text="${role.name}">ADMIN</td>
+                    <td>
+                        <form th:action="@{/admin/roles/delete/{id}(id=${role.id})}" method="post" style="display: inline-block;">
+                            <button type="submit" class="button delete-button" onclick="return confirm('Are you sure you want to delete this role? This will affect users assigned to this role.');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

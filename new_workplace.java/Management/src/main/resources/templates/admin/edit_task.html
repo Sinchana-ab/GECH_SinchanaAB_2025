@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Edit Task: <span th:text="${task.title}"></span></h1>
+            <nav>
+                <a th:href="@{/admin/tasks}">← Back to Task Management</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <form th:action="@{/admin/tasks/update/{id}(id=${task.id})}" th:object="${taskDTO}" method="post">
+            <label for="title">Task Title:</label>
+            <input type="text" id="title" th:field="*{title}" th:value="${task.title}" required />
+
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" rows="3" th:text="${task.description}"></textarea>
+
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" th:field="*{dueDate}" th:value="${task.dueDate}" required />
+
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}" required>
+                <option th:each="statusOption : ${statuses}" 
+                        th:value="${statusOption}" 
+                        th:text="${statusOption}"
+                        th:selected="${task.status == statusOption}"></option>
+            </select>
+
+            <label for="assignedEmployeeId">Assign to Employee:</label>
+            <select id="assignedEmployeeId" name="assignedEmployeeId" required>
+                <option value="">-- Select Employee --</option>
+                <option th:each="employee : ${employees}" 
+                        th:value="${employee.id}" 
+                        th:text="${employee.name + ' (' + employee.email + ')'}"
+                        th:selected="${task.assignedEmployee != null and task.assignedEmployee.id == employee.id}"></option>
+            </select>
+            
+            <button type="submit" class="button">Update Task</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

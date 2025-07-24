@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Documents</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Documents</h1>
+            <nav>
+                <a th:href="@{/employee/dashboard}">← Back to Dashboard</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Important Documents & Records</h2>
+            <p>Here you can find company policies, your employment contract, and other relevant documents.</p>
+        </section>
+
+        <section>
+            <h3>Company Policies</h3>
+            <ul>
+                <li><a href="#" class="button">Employee Handbook (PDF)</a></li>
+                <li><a href="#" class="button">Code of Conduct (PDF)</a></li>
+                <li><a href="#" class="button">Privacy Policy (PDF)</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>My Personal Documents</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Document Name</th>
+                        <th>Type</th>
+                        <th>Last Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Rows - In a real app, this would be populated from backend data -->
+                    <tr>
+                        <td>Employment Contract</td>
+                        <td>Contract</td>
+                        <td>2024-01-15</td>
+                        <td><a href="#" class="button">View</a> <a href="#" class="button edit-button">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Annual Performance Review 2024</td>
+                        <td>Performance</td>
+                        <td>2024-12-01</td>
+                        <td><a href="#" class="button">View</a> <a href="#" class="button edit-button">Download</a></td>
+                    </tr>
+                    <!-- th:each="document : ${documents}" -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

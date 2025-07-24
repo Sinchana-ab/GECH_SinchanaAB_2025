@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tasks</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Manage Tasks</h1>
+            <nav>
+                <a th:href="@{/admin/dashboard}">← Back to Dashboard</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div th:if="${successMessage}" class="alert success" th:text="${successMessage}"></div>
+        <div th:if="${errorMessage}" class="alert error" th:text="${errorMessage}"></div>
+
+        <h2>Assign New Task</h2>
+        <form th:action="@{/admin/tasks/add}" th:object="${taskDTO}" method="post">
+            <label for="title">Task Title:</label>
+            <input type="text" id="title" th:field="*{title}" required placeholder="e.g., Complete Q3 Report" />
+
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" rows="3" placeholder="Detailed description of the task..."></textarea>
+
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" th:field="*{dueDate}" required />
+
+            <label for="assignedEmployeeId">Assign to Employee:</label>
+            <select id="assignedEmployeeId" name="assignedEmployeeId" required>
+                <option value="">-- Select Employee --</option>
+                <!-- THIS IS WHERE THE EMPLOYEES ARE LISTED -->
+                <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name + ' (' + employee.email + ')'}"></option>
+            </select>
+            <p th:if="${#lists.isEmpty(employees)}" style="color:red; font-size:0.9em;">No employees available. Please add employees first.</p>
+            
+            <button type="submit" class="button">Assign Task</button>
+        </form>
+
+        <h2>Existing Tasks</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Assigned To</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.id}">1</td>
+                    <td th:text="${task.title}">Complete Report</td>
+                    <td th:text="${task.assignedEmployee != null ? task.assignedEmployee.name : 'Unassigned'}">John Doe</td>
+                    <td th:text="${task.dueDate}">2025-12-31</td>
+                    <td th:text="${task.status}">Pending</td>
+                    <td>
+                        <a th:href="@{/admin/tasks/edit/{id}(id=${task.id})}" class="button edit-button">Edit</a>
+                        <form th:action="@{/admin/tasks/delete/{id}(id=${task.id})}" method="post" style="display: inline-block;">
+                            <button type="submit" class="button delete-button" onclick="return confirm('Are you sure you want to delete this task?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(tasks)}">
+                    <td colspan="6">No tasks found.</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

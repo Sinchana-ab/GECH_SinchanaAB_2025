@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Employee Dashboard</h1>
+            <nav>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/employees}">View Employees</a>
+                <a th:href="@{/departments}">View Departments</a>
+                <a th:href="@{/roles}">View Roles</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Welcome, <span sec:authentication="name">User</span>!</h2>
+            <p>This is your personalized employee dashboard. Here you can view your information and access relevant resources.</p>
+            <div th:if="${successMessage}" class="alert success" th:text="${successMessage}"></div>
+            <div th:if="${errorMessage}" class="alert error" th:text="${errorMessage}"></div>
+        </section>
+
+        <section class="dashboard-sections">
+            <div class="card">
+                <h3>My Profile</h3>
+                <p>View and update your personal details, contact information, and assigned department.</p>
+                <a th:href="@{/my-profile}" class="button">Go to Profile</a>
+            </div>
+            <div class="card">
+                <h3>Leave Requests</h3>
+                <p>Submit new leave requests and track the status of your existing applications.</p>
+                <a th:href="@{/leave-requests}" class="button">Manage Leave</a>
+            </div>
+            <!-- Removed Documents Card -->
+        </section>
+
+        <section class="my-tasks-section">
+            <h2>My Assigned Tasks</h2>
+            <table th:if="${not #lists.isEmpty(assignedTasks)}">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="task : ${assignedTasks}">
+                        <td th:text="${task.title}">Task Title</td>
+                        <td th:text="${task.description}">Task Description</td>
+                        <td th:text="${task.dueDate}">2025-12-31</td>
+                        <td th:text="${task.status}">Pending</td>
+                        <td>
+                            <!-- Example action: mark as complete. You'd implement a form/controller for this -->
+                            <form th:action="@{/employee/tasks/update-status/{id}(id=${task.id})}" method="post" style="display: inline-block;">
+                                <input type="hidden" name="newStatus" value="Completed" />
+                                <button type="submit" class="button" th:if="${task.status != 'Completed'}" onclick="return confirm('Mark this task as Completed?');">Mark Complete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${#lists.isEmpty(assignedTasks)}">No tasks currently assigned to you.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

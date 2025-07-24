@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Departments</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header><h1>Departments</h1></header>
+    <main class="container">
+        <a th:href="@{/}">← Back to Home</a>
+        <ul th:each="dept : ${departments}">
+            <li>
+                <strong th:text="${dept.name}">Department Name</strong> - 
+                <span th:text="${#lists.size(dept.employeeNames)}">Employee Count</span>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>	

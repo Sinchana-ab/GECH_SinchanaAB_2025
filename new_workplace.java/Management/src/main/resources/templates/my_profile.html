@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Profile</h1>
+            <nav>
+                <a th:href="@{/employee/dashboard}">← Back to Dashboard</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Personal Information</h2>
+            <div th:if="${successMessage}" class="alert success" th:text="${successMessage}"></div>
+            <div th:if="${errorMessage}" class="alert error" th:text="${errorMessage}"></div>
+
+            <div class="profile-details">
+                <p><strong>Username:</strong> <span sec:authentication="name"></span></p>
+                <!-- In a real application, you would fetch employee details from the backend -->
+                <p><strong>Employee ID:</strong> <span th:text="${employee?.id ?: 'N/A'}"></span></p>
+                <p><strong>Full Name:</strong> <span th:text="${employee?.name ?: 'N/A'}"></span></p>
+                <p><strong>Email:</strong> <span th:text="${employee?.email ?: 'N/A'}"></span></p>
+                <p><strong>Department:</strong> <span th:text="${employee?.department?.name ?: 'N/A'}"></span></p>
+                <!-- Add more employee details here as needed -->
+            </div>
+            
+            <a th:href="@{/my-profile/edit}" class="button edit-button">Edit Profile</a>
+        </section>
+
+        <!-- Placeholder for edit profile form - you'd create edit_profile.html for this -->
+        <!-- <section class="form-section" th:if="${showEditForm}">
+            <h2>Edit My Profile</h2>
+            <form th:action="@{/my-profile/update}" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" th:value="${employee?.name}" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:value="${employee?.email}" required />
+
+                <button type="submit" class="button">Save Changes</button>
+            </form>
+        </section> -->
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

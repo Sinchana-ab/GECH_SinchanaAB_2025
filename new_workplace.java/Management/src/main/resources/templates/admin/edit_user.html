@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Roles</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Edit User: <span th:text="${user.username}"></span></h1>
+            <nav>
+                <a th:href="@{/admin/users}">← Back to User Management</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <form th:action="@{/admin/users/update/{id}(id=${user.id})}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:value="${user.username}" readonly />
+
+            <label for="roles">Assign Roles:</label>
+            <select id="roles" name="roleIds" multiple size="5">
+                <option th:each="role : ${allRoles}"
+                        th:value="${role.id}"
+                        th:text="${role.name}"
+                        th:selected="${currentRoleIds.contains(role.id)}">Role Name</option>
+            </select>
+            <small>Hold Ctrl (Windows) or Cmd (Mac) to select multiple roles.</small>
+            
+            <button type="submit" class="button">Update Roles</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

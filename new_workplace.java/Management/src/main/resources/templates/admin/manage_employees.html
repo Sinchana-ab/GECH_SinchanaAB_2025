@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Employees</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Manage Employees</h1>
+            <nav>
+                <a th:href="@{/admin/dashboard}">← Back to Dashboard</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div th:if="${successMessage}" class="alert success" th:text="${successMessage}"></div>
+        <div th:if="${errorMessage}" class="alert error" th:text="${errorMessage}"></div>
+
+        <h2>Add New Employee</h2>
+        <form th:action="@{/admin/employees/add}" th:object="${employeeDTO}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required placeholder="e.g., Jane Doe" />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required placeholder="e.g., jane.doe@example.com" />
+
+            <label for="department">Department:</label>
+            <select id="department" name="departmentId">
+                <option value="">-- Select Department --</option>
+                <option th:each="dept : ${departments}" th:value="${dept.id}" th:text="${dept.name}"></option>
+            </select>
+            
+            <button type="submit" class="button">Add Employee</button>
+        </form>
+
+        <h2>Existing Employees</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.id}">1</td>
+                    <td th:text="${employee.name}">John Doe</td>
+                    <td th:text="${employee.email}">john.doe@example.com</td>
+                    <td th:text="${employee.department != null ? employee.department.name : 'N/A'}">HR</td>
+                    <td>
+                        <a th:href="@{/admin/employees/edit/{id}(id=${employee.id})}" class="button edit-button">Edit</a>
+                        <form th:action="@{/admin/employees/delete/{id}(id=${employee.id})}" method="post" style="display: inline-block;">
+                            <button type="submit" class="button delete-button" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Leave Requests</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Leave Requests</h1>
+            <nav>
+                <a th:href="@{/employee/dashboard}">← Back to Dashboard</a>
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div th:if="${successMessage}" class="alert success" th:text="${successMessage}"></div>
+        <div th:if="${errorMessage}" class="alert error" th:text="${errorMessage}"></div>
+
+        <h2>Submit New Leave Request</h2>
+        <form th:action="@{/leave-requests/submit}" method="post">
+            <label for="leaveType">Leave Type:</label>
+            <select id="leaveType" name="leaveType" required>
+                <option value="">-- Select Type --</option>
+                <option value="Sick Leave">Sick Leave</option>
+                <option value="Vacation Leave">Vacation Leave</option>
+                <option value="Casual Leave">Casual Leave</option>
+            </select>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required />
+
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required />
+
+            <label for="reason">Reason:</label>
+            <textarea id="reason" name="reason" rows="4" placeholder="Briefly describe your reason for leave..." required></textarea>
+
+            <button type="submit" class="button">Submit Request</button>
+        </form>
+
+        <h2>My Pending & Approved Leave Requests</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Leave Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Row - In a real app, this would be populated from backend data -->
+                <tr>
+                    <td>Vacation Leave</td>
+                    <td>2025-08-01</td>
+                    <td>2025-08-07</td>
+                    <td><span style="color: orange;">Pending</span></td>
+                    <td>
+                        <button class="button delete-button" onclick="alert('Functionality to cancel leave not yet implemented.');">Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sick Leave</td>
+                    <td>2025-07-20</td>
+                    <td>2025-07-20</td>
+                    <td><span style="color: green;">Approved</span></td>
+                    <td>N/A</td>
+                </tr>
+                <!-- th:each="leaveRequest : ${leaveRequests}" -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Employee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
