@@ -17,7 +17,7 @@ userDefined datatype: structure,union,enum
 python is dynamically typed language[because no need to mention the datatype when we declaring ex: a = 10;]
 c is statically typed language[because we need to mention the datatype when we declaring ex: int a = 10;]   
 c is a procedural language[functions are there]
-c is a object oriented language[classes are there]
+c++ is a object oriented language[classes are there]
 
 formate specifier :- that helps to print the variable in a specific format and take input from the user
 example: int --> %d

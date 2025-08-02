@@ -9,13 +9,14 @@ import java.util.Set;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users") 
+@Table(name = "users") // Explicitly define table name for clarity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true) // ADDED: Ensures username is unique
     private String username;
     private String password;
 
@@ -26,6 +27,8 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    // One-to-one relationship with Employee
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Employee employee;
 
@@ -61,7 +64,6 @@ public class User {
         this.roles = roles;
     }
 
-    // New: Getter and Setter for employee
     public Employee getEmployee() {
         return employee;
     }
