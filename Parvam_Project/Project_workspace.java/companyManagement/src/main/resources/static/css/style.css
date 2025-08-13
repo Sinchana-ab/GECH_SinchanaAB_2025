@@ -91,7 +91,7 @@
 }
 
 h1 .text-outline {
-    color: #fff;
+    color: black;
     -webkit-text-stroke: 2px #ffb300;
     text-stroke: 2px #ffb300;
     opacity: 0.3;
@@ -871,15 +871,15 @@ h1 .text-outline {
 
 /* Featured Projects Section */
 .featured-projects {
-    background-color: #222;
-    color: white;
+    background-color: white;
+    color: Black;
     padding: 3rem 0;
 }
 
 .section-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 
 .chat-box {

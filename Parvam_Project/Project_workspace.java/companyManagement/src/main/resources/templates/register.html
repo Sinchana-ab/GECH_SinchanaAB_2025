@@ -53,7 +53,7 @@
 <body>
 <div class="register-box">
   <h2 class="text-center fw-bold mb-4" style="color:#ff6f2c;">User Registration</h2>
-  <form th:action="@{/user/register}" th:object="${userDTO}" method="post">
+  <form th:action="@{/register}" th:object="${userDTO}" method="post">
     <div class="mb-3">
       <label class="form-label">Username</label>
       <input type="text" th:field="*{username}" class="form-control" required>
@@ -66,14 +66,15 @@
       <label class="form-label">Password</label>
       <input type="password" th:field="*{password}" class="form-control" required>
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label class="form-label">Role</label>
       <input type="text" th:field="*{role}" class="form-control" placeholder="e.g. USER" required>
-    </div>
+    </div> -->
     <button type="submit" class="btn btn-orange w-100">Register</button>
   </form>
   <div class="login-link">
-    <p>Already have an account? <a th:href="@{/user/login}" class="text-decoration-none">Login here</a></p>
+    <p>Already have an account? <a th:href="@{/login}" class="text-decoration-none">User Login here</a></p>
+<p>Already have an account? <a th:href="@{/admin/login}" class="text-decoration-none">Admin Login here</a></p>
   </div>
 </div>
 </body>

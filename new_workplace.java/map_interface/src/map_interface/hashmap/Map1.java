@@ -18,6 +18,8 @@ public class Map1 {
 			System.out.println("the element is with key: "+k+" and name is: "+name);
 		}
 		
+		m.forEach((k,v)->System.out.println(k+"=> "+v));
+		
 		System.out.println(m.containsKey(2));
 		System.out.println(m.containsValue("Sinchana"));
 		m.remove(2);

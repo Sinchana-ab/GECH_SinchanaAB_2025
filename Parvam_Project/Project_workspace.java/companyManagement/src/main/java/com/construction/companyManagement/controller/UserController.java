@@ -22,24 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Register a new user
-    @PostMapping("/register")
-    public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setUsername(userDTO.getUsername());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword()); 
-        user.setRole(userDTO.getRole());
-
-        User savedUser = userService.saveUser(user);
-
-        UserDTO responseDTO = new UserDTO();
-        responseDTO.setUsername(savedUser.getUsername());
-        responseDTO.setEmail(savedUser.getEmail());
-        responseDTO.setRole(savedUser.getRole());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
-    }
+    
 
     @GetMapping("/{username}")
     public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username) {

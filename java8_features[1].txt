@@ -1,0 +1,99 @@
+Java8 features:
+====
+1.lambda expressions
+2.functional interface
+3.predicate
+4.consumer
+5.supplier
+6.Function
+7.stream API
+//1.
+lambada  expressions:-(it reduces the code and it supports the functional  programming(java script)).
+=======
+1.it is also called anonymous function(no name).
+2.there is no return type.
+3 there  is no  access modifiers.
+
+ex:-
+1.
+public int add(int a,int b){
+   return a +b;
+}
+//lamba expression for adding two numbbers
+(int a ,int b)->{
+return a +b;
+}
+
+2.
+public string findLength(String  s){
+   return s.length();
+   }
+   //lamba expression for finding  string length
+   (String s)->{
+   return s.length();
+   }
+   
+ 3.
+   
+   public  void print(){
+   syso("Hello world");
+   }
+   //lamba  expression for  printing hello  world.
+  ()->{
+  syso("Hello world");
+  }
+
+Important points:
+==========
+1.no need to  specify  the  data type of the data.
+(a,b)->{return a+b;}
+
+2.if the statement is single line then not require of  {} and return
+(s)->s.length();
+
+3.if you are passing an single parameter then no  need to specify the ()
+s->s.length()
+
+4.if there is no parameter  then we need to  specify ()
+()->{syso("Hello world")}
+
+5.if there are multiple  parameters ,then we need  to seperate  by ,/delimiter.
+(a,b)->a+b;
+
+//2.functional Interface:
+============
+* Interface  contain only  one abstract  method.
+example:-comparator
+* @functionalInterface-> annotation for function interface..
+
+streams:
+=======
+
+collections:
+========
+to represents a group of individual  objects as an single entity,we should  go for  a collection.
+
+streams:
+========
+* to work with multiple objects or collection then we should  go for a streams.
+
+1.source
+=========
+* on which you are applying the stream
+2.intermediate operation
+========
+* the opeeration will return the another stream.
+3.termination operation
+=======
+it will terminate the stream.
+after applying  the termination operation,we cannot reuse it.
+for each stream we can use only  one termination operation.
+
+ex:-
+=======
+List<Integer> list=new ArrayList<>();
+list.add(10);
+list.add(12);
+
+list.stream().filter(x->x%2==0).count();
+
