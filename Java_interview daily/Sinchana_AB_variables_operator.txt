@@ -1,0 +1,192 @@
+					Variables Interview Questions (Tricks)
+
+Variables
+
+Q1. What is the default value of local variables?
+
+A: Local variables don’t have default values. They must be initialized.
+
+public class Test {
+    int i;               // instance → default 0
+    static boolean b;    // static → default false
+    public static void main(String[] args) {
+        Test t = new Test();
+        System.out.println(t.i + " " + b);
+        // int x; System.out.println(x); //  Compile error (no default)
+    }
+}
+
+Output:
+
+0 false
+
+---
+
+Q2. Difference between static, instance, and local variables?
+
+A: Static → one copy per class.
+
+Instance → new copy per object.
+
+Local → inside method, no default.
+
+
+class Example {
+    static int s = 0;
+    int i = 0;
+    void show() {
+        int local = 0;
+        s++; i++; local++;
+        System.out.println("s=" + s + " i=" + i + " local=" + local);
+    }
+    public static void main(String[] args) {
+        Example e1 = new Example();
+        Example e2 = new Example();
+        e1.show();
+        e1.show();
+        e2.show();
+    }
+}
+
+Output:
+
+s=1 i=1 local=1
+s=2 i=2 local=1
+s=3 i=1 local=1
+---
+
+Operators
+
+Q3. What happens when dividing integers vs floating points?
+
+A: Integer division truncates, floating-point division gives decimal.
+
+public class Division {
+    public static void main(String[] args) {
+        System.out.println(5 / 2);
+        System.out.println(5 / 2.0);
+    }
+}
+
+Output:
+
+2
+2.5
+---
+
+Q4. Pre vs Post increment difference?
+
+A: Pre-increment increases first, post-increment uses value then increases.
+
+public class IncTest {
+    public static void main(String[] args) {
+        int i = 5;
+        System.out.println(i++ + ++i);
+	//5 + 6++
+    }
+}
+
+Output:
+
+12
+---
+
+Q5. Modulus operator with negative numbers?
+
+public class ModulusTest {
+    public static void main(String[] args) {
+        System.out.println(10 % 3);
+        System.out.println(-10 % 3);
+        System.out.println(10 % -3);
+    }
+}
+
+Output:
+
+1
+-1
+1
+---
+
+Functions (Methods)
+
+Q6. Can we overload methods with null arguments?
+
+A: The most specific method is chosen.
+
+class Overload {
+    void show(Object o) { System.out.println("Object"); }
+    void show(String s) { System.out.println("String"); }
+
+    public static void main(String[] args) {
+        new Overload().show(null);
+    }
+}
+
+Output:
+
+String
+---
+
+Q7. What happens if finally block has return statement?
+
+A: It overrides try/catch return.
+
+class FinallyTest {
+    static int test() {
+        try { return 1; }
+        finally { return 2; }
+    }
+    public static void main(String[] args) {
+        System.out.println(test());
+    }
+}
+
+Output:
+
+2
+---
+
+Q8. Can we overload the main() method?
+
+A: Yes, but JVM always calls main(String[] args).
+
+public class MainOverload {
+    public static void main(String[] args) {
+        System.out.println("Main with String[]");
+    }
+    public static void main(int[] args) {
+        System.out.println("Main with int[]");
+    }
+}
+
+Output:
+
+Main with String[]
+---
+
+Q9. Is Java pass by value or reference?
+
+A: Always pass by value (object reference itself is passed by value).
+
+class Demo {
+    int x = 10;
+}
+public class PassByValue {
+    static void change(Demo d) {
+        d = new Demo(); // new object
+        d.x = 20;
+    }
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        change(d1);
+        System.out.println(d1.x);
+    }
+}
+
+Output:
+
+10
+
+
+

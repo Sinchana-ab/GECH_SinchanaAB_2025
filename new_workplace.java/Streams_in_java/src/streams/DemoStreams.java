@@ -12,9 +12,10 @@ public class DemoStreams {
 				.sorted((a,b)->b-a);
 		
 		data.forEach(n->System.out.println(n));
+		
 		System.out.println( nums.stream()
 				.map(n->n*n).collect(Collectors.toList()));
-//		long n = data.count();
-//		System.out.println(n);
+		//long n = data.count();
+		//System.out.println(n);
 	}
 }

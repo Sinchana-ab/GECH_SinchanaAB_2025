@@ -1,0 +1,1147 @@
+					Variables Interview Questions (Tricks)
+
+Variables
+
+Q1. What is the default value of local variables?
+
+A: Local variables don’t have default values. They must be initialized.
+
+public class Test {
+    int i;               // instance → default 0
+    static boolean b;    // static → default false
+    public static void main(String[] args) {
+        Test t = new Test();
+        System.out.println(t.i + " " + b);
+        // int x; System.out.println(x); //  Compile error (no default)
+    }
+}
+
+Output:
+
+0 false
+
+---
+
+Q2. Difference between static, instance, and local variables?
+
+A: Static → one copy per class.
+
+Instance → new copy per object.
+
+Local → inside method, no default.
+
+
+class Example {
+    static int s = 0;
+    int i = 0;
+    void show() {
+        int local = 0;
+        s++; i++; local++;
+        System.out.println("s=" + s + " i=" + i + " local=" + local);
+    }
+    public static void main(String[] args) {
+        Example e1 = new Example();
+        Example e2 = new Example();
+        e1.show();
+        e1.show();
+        e2.show();
+    }
+}
+
+Output:
+
+s=1 i=1 local=1
+s=2 i=2 local=1
+s=3 i=1 local=1
+---
+
+Operators
+
+Q3. What happens when dividing integers vs floating points?
+
+A: Integer division truncates, floating-point division gives decimal.
+
+public class Division {
+    public static void main(String[] args) {
+        System.out.println(5 / 2);
+        System.out.println(5 / 2.0);
+    }
+}
+
+Output:
+
+2
+2.5
+---
+
+Q4. Pre vs Post increment difference?
+
+A: Pre-increment increases first, post-increment uses value then increases.
+
+public class IncTest {
+    public static void main(String[] args) {
+        int i = 5;
+        System.out.println(i++ + ++i);
+	//5 + 6++
+	// 5+7
+    }
+}
+
+Output:
+
+12
+---
+
+Q5. Modulus operator with negative numbers?
+
+public class ModulusTest {
+    public static void main(String[] args) {
+        System.out.println(10 % 3);
+        System.out.println(-10 % 3);
+        System.out.println(10 % -3);
+    }
+}
+
+Output:
+
+1
+-1
+1
+---
+
+Functions (Methods)
+
+Q6. Can we overload methods with null arguments?
+
+A: The most specific method is chosen.
+
+class Overload {
+    void show(Object o) { System.out.println("Object"); }
+    void show(String s) { System.out.println("String"); }
+
+    public static void main(String[] args) {
+        new Overload().show(null);
+    }
+}
+
+Output:
+
+String
+---
+
+Q7. What happens if finally block has return statement?
+
+A: It overrides try/catch return.
+
+class FinallyTest {
+    static int test() {
+        try { return 1; }
+        finally { return 2; }
+    }
+    public static void main(String[] args) {
+        System.out.println(test());
+    }
+}
+
+Output:
+
+2
+---
+
+Q8. Can we overload the main() method?
+
+A: Yes, but JVM always calls main(String[] args).
+
+public class MainOverload {
+    public static void main(String[] args) {
+        System.out.println("Main with String[]");
+    }
+    public static void main(int[] args) {
+        System.out.println("Main with int[]");
+    }
+}
+
+Output:
+
+Main with String[]
+---
+
+Q9. Is Java pass by value or reference?
+
+A: Always pass by value (object reference itself is passed by value).
+
+class Demo {
+    int x = 10;
+}
+public class PassByValue {
+    static void change(Demo d) {
+        d = new Demo(); // new object
+        d.x = 20;
+    }
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        change(d1);
+        System.out.println(d1.x);
+    }
+}
+
+Output:
+
+10
+
+
+VARIABLE :
+==========
+	1.What is variable shadowing?
+		Answer ==> When a local variable hides an instance/class variable of the same name.
+		Explanation ==> In that scope, the local variable takes precedence,
+		but you can still access the hidden one with this or ClassName.var.
+		
+	2.Can a local variable name match an instance variable name?
+		Answer ==> Yes.
+		Explanation==> Allowed, but it causes shadowing — local variable will be used inside the method.
+		  class Student {
+				String name = "John";   // instance variable
+
+				void display() {
+					String name = "Alice";   // local variable (same name)
+					System.out.println("Local variable: " + name);         // prints Alice
+					System.out.println("Instance variable: " + this.name); // prints John
+				}
+			}
+		
+	3. Can a local variable be declared as static?
+		Answer: No.
+		Explanation: static means stored once per class, 
+		but local variables live on the stack and vanish when the method exits.
+		
+	4. Can a variable be volatile and final together?
+		Answer: No.
+		Explanation: final means can’t change, volatile means it may change across threads — they conflict.
+		
+	5.Can var be used for method parameters?
+		Answer: No.
+		Explanation: It only works for local variables inside methods.
+					Method parameters must have a clear type in their signature (like String name or int id).
+					The compiler cannot "guess" types of parameters because no value is assigned at that time.
+	
+	6. What if a final variable isn’t initialized in the constructor?
+		Answer: Compile-time error.
+		Explanation: Every final variable must have a value before object is ready.
+		
+	7.Can we declare a variable with name same as method name?
+		Answer: Yes.
+		Explanation: Java allows it, but it reduces readability and is not recommended.
+		
+	8.Can we declare a variable with a reserved keyword?
+		Answer: No.
+		Explanation: Keywords like class, int, static can’t be variable names.
+			
+	
+	9. What happens if you try to use a local variable before initialization?
+		Answer: Compile-time error.
+		Explanation: Java does not assign default values to local variables.
+	
+	10. Can a local variable hide a static variable of the same name?
+		Answer: Yes.
+		Explanation: Local variables take precedence over class/static variables inside the method. Access the static variable with ClassName.variableName.
+				
+	
+OPERATORS :
+===========
+	1. What’s the result of 10.0/0 with double?
+		Answer: Infinity.
+		Explanation: Floating-point(double/float) division by zero is allowed, result is special value(Infinity).
+	
+	2. What happens if you add 1 to Integer.MAX_VALUE?
+		Answer: It causes Overflow so, becomes Integer.MIN_VALUE.
+		Explanation: java integers are fixed 32-bit. When they go beyond the max, they “wrap around” instead of erroring.
+		
+	   What happens if you asubtracting 1 from Integer.MIN_VALUE?
+			Subtracting 1 from Integer.MIN_VALUE → becomes Integer.MAX_VALUE
+		
+	3. What happens with x = x++?
+		Answer: x remains unchanged.
+		Explanation: x++ means “use the old value, then increase by 1”.
+					But since you assign back to x, the increase is lost.
+	4. Difference between == on primitives and objects?
+		Answer: Primitives compare values, objects compare memory addresses.
+		
+5. Can unary operators be overloaded in java?
+		Answer: No.
+		Explanation: Unlike C++, java does not allow operator overloading.
+		
+	6. What happens when true + false is compiled?
+		Answer: Compilation error.
+		Explanation: + is not defined for boolean values in java.
+		
+	7. What happens if you compare NaN (Not a Number) with itself?
+		Answer: false.
+		Explanation: Special rule: NaN != NaN. NaN is never equal to anything, even itself.
+		
+	8. What’s the difference between & and &&?
+		Answer: & checks both sides always, && stops if first is false.
+		Explanation: && is “short-circuit AND.”
+
+Storage:
+===========
+						JVM Memory:
+		------------------------------------------
+		Heap:       Objects & instance variables
+		Stack:      Local variables & method calls
+		Method Area: Class info + static variables + constants
+		-------------------------------------------------------
+		
+		Storage Location :
+			* Static variables are stored in the Method Area (part of JVM memory), not on the stack or heap like local variables.
+			* They exist once per class, no matter how many objects of the class are created.
+			* All instances of the class share the same copy of the static variable.
+
+Method :
+=========
+	1. Can two methods have the same name but different return types?
+			Answer: Yes, but only if their parameter lists are different.
+			Explanation:
+			In Java, method overloading is determined by parameters (number, type, or order), not by return type.
+			If two methods have the same name and same parameters, but only differ in return type, the compiler cannot decide which one to call, so it’s an error.
+
+			Example 1 (Valid Overloading):
+					class Calculator {
+						int add(int a, int b) {
+							return a + b;
+						}
+
+						double add(double a, double b) { // different parameter types → valid
+							return a + b;
+						}
+
+						int add(int a, int b, int c) { // different number of parameters → valid
+							return a + b + c;
+						}
+					}
+
+			Example 2 (Invalid Overloading — same parameters, different return type):
+					class Calculator {
+						int multiply(int a, int b) {
+							return a * b;
+						}
+
+						double multiply(int a, int b) { // ❌ error: same parameters  	Compiler cannot choose which one to call → compile-time error.
+							return a * b;
+						}
+					}
+
+	2.  Two methods with same name, different return type, and different parameters
+				
+			Explanation:
+				Method names are the same → process
+				Parameter types/order are different → (int, String) vs (String, int)
+				Return types are different → int vs String
+			Answer:	✅ This is valid overloading because parameters differ. The compiler can distinguish which method to call.
+	
+					class Example {
+					int process(int a, String b) {  // Method 1
+						return a + b.length();
+					}
+
+					String process(String a, int b) {  // Method 2
+						return a.repeat(b);
+					}
+				}
+
+	3. is return type matter
+		Answer:	method overloading in Java is determined only by the method name and parameter list — return type does not matter.
+
+Variables 
+
+Q1. Can local variables have access modifiers (public/private/protected)?
+  Answer: No. Local variables cannot have access modifiers. They can only have final.
+
+Q2. What happens if you declare a local variable with the same name as an instance variable?
+  Answer: The local variable shadows the instance variable. To access the instance variable, use this.variableName.
+
+Q3. What is the difference between instance variables and class (static) variables?
+  Answer:
+
+Instance variables → belong to objects, each object has its own copy.
+
+Static variables → belong to the class, shared across all objects.
+
+Q4. Can a final variable be left uninitialized?
+  Answer: Yes, but only if it is a blank final. It must be initialized exactly once inside the constructor or initializer block.
+
+Q5. What is a static final variable?
+  Answer: A constant. Declared as static final. Value must be assigned once (at declaration or in a static block).
+
+Q6. What is a transient variable?
+  Answer: Variables declared with transient are not serialized when the object is written to a file or stream.
+
+Q7. What is a volatile variable?
+  Answer: A volatile variable ensures that every thread reads its latest value from main memory, not from CPU cache.
+
+Q8. Can static variables be inherited?
+  Answer: Yes. Static variables are inherited but shared across all subclasses.
+
+Q9. What is variable hiding in Java?
+  Answer: If a subclass defines a variable with the same name as the parent class, the subclass variable hides the parent’s variable.
+
+Q10. Can we declare static local variables in Java?
+  Answer: No. Java does not allow static local variables.
+
+Q11. What is the lifetime of local, instance, and static variables?
+  Answer:
+
+Local → till method execution ends.
+
+Instance → till object is referenced.
+
+Static → till class is loaded in JVM.
+
+Q12. What is the default value of primitives, objects, and boolean?
+  Answer:
+
+byte, short, int, long → 0
+
+float, double → 0.0
+
+boolean → false
+
+char → '\u0000'
+
+objects → null
+
+Q13. Can you declare a variable inside an interface?
+  Answer: Yes. All variables in an interface are public static final by default.
+
+Q14. Difference between declaring a variable inside a method vs inside a class?
+  Answer:
+
+Inside a method → local variable, no default value, must be initialized before use.
+
+Inside a class → instance/static variable, has default values.
+
+Q15. Can a constructor initialize static variables?
+  Answer: Yes, but usually they are initialized in a static block.
+
+Q16. What happens if you mark an instance variable as both final and transient?
+  Answer: Allowed. The variable must be initialized once, but it won’t be serialized.
+
+Q17. Can you reassign a reference variable after initialization?
+  Answer: Yes, unless it’s final.
+
+Q18. Can variables in Java be abstract?
+  Answer: No. Only classes and methods can be abstract.
+
+Q19. What is the scope of variables declared inside a for-loop?
+  Answer: Only within the loop block. They are destroyed after the loop ends.
+
+Q20. Can static variables be accessed using objects?
+  Answer: Yes, but not recommended. Best practice is via the class name.
+
+ Operators
+ ===============
+
+Q1. Difference between == and equals() in Java?
+  Answer:
+
+== → compares references for objects, values for primitives.
+
+equals() → compares content (if overridden).
+
+Q2. Difference between & and &&?
+  Answer:
+
+& → Bitwise AND / Logical AND (always checks both).
+
+&& → Logical AND (short-circuit).
+
+Q3. Difference between | and ||?
+  Answer:
+
+| → Bitwise OR / Logical OR (always checks both).
+
+|| → Logical OR (short-circuit).
+
+Q4. Difference between ++i and i++?
+  Answer:
+
+++i → increments first.
+
+i++ → increments after returning old value.
+
+Q5. Output of:
+
+System.out.println(10 + 20 + "30" + 40);
+
+
+  Answer: 303040
+
+Q6. Output of:
+
+System.out.println("10" + 20 + 30); // 102030
+System.out.println(10 + 20 + "30"); // 3030
+
+
+Q7. What happens when dividing by zero?
+  Answer:
+
+Integer division → ArithmeticException.
+
+Floating division → Infinity / NaN.
+
+Q8. Result of true ^ false?
+  Answer: true
+
+Q9. Precedence of * and +?
+  Answer: * > +.
+
+Q10. Output of:
+
+System.out.println(1 + 2 + "3" + (4 + 5));
+
+
+  Answer: 339
+
+Q11. Difference between >> and >>>?
+  Answer:
+
+>> → signed shift.
+
+>>> → unsigned shift.
+
+Q12. Can relational operators be applied to boolean?
+  Answer: No. Only == and !=.
+
+Q13. Output of:
+
+System.out.println('A' + 1);
+
+
+  Answer: 66
+
+Q14. Output of:
+
+System.out.println('A' + "B");
+
+
+  Answer: AB
+
+Q15. What happens if both operands in % are negative?
+  Answer: Result takes the sign of the dividend.
+
+Q16. What is the result of ++a + a++ when a=5?
+  Answer: 12
+
+Q17. What happens if you concatenate null with a string?
+  Answer: "null" is added.
+
+Q18. Can operators be overloaded in Java?
+  Answer: No. Only + for Strings.
+
+Q19. Output:
+
+int a = 5, b = 2;
+System.out.println(a / b);       // 2
+System.out.println((double)a/b); // 2.5
+
+
+Q20. Difference between == and compareTo() in String comparison?
+  Answer:
+
+== → compares references.
+
+compareTo() → compares lexicographically.
+
+ Functions 
+ =============
+
+Q1. Can you overload the main method in Java?
+  Answer: Yes. JVM only calls main(String[] args).
+
+Q2. Can you override a static method?
+  Answer: No. They can only be hidden.
+
+Q3. Can you override a private method?
+  Answer: No. They are not inherited.
+
+Q4. Can two methods in a class differ only by return type?
+  Answer: No. Compilation error.
+
+Q5. Can you declare a method as both static and abstract?
+  Answer: No.
+
+Q6. Can constructors be overridden in Java?
+  Answer: No. They are not inherited.
+
+Q7. Can constructors be overloaded in Java?
+  Answer: Yes. With different parameter lists.
+
+Q8. Can a constructor be final, static, or abstract?
+  Answer: No.
+
+Q9. What is method overloading?
+  Answer: Multiple methods with same name, different parameters.
+
+Q10. What is method overriding?
+  Answer: Redefining parent’s method in subclass.
+
+Q11. Can an overriding method throw fewer exceptions than the parent?
+  Answer: Yes.
+
+Q12. Can we overload methods based on return type alone?
+  Answer: No.
+
+Q13. What is the return type of the main method?
+  Answer: Always void.
+
+Q14. Can a method return multiple values in Java?
+  Answer: Not directly. But arrays, collections, or wrapper objects can be used.
+
+Q15. What is recursion?
+  Answer: A function calling itself.
+
+Q16. What happens if you call a recursive function without a base case?
+  Answer: StackOverflowError.
+
+Q17. Can we declare a method inside another method?
+  Answer: No. But local classes/lambdas are allowed.
+
+Q18. Can a method be synchronized?
+  Answer: Yes. Only one thread can execute at a time.
+
+Q19. Can a method be both final and abstract?
+  Answer: No. Contradiction.
+
+Q20. Can the main method be declared private?
+  Answer: Yes, but JVM won’t find it → runtime error.
+
+
+VARIABLES AND OPERATORS
+=======================
+VARIABLES
+=========
+1.what are variables in java?
+=>a variable is a name given to a memory location that stores a value.
+
+2.What are the types of variables in Java and differences?
+a.Local Variable → declared inside a method, accessible only within it.
+b.Instance Variable → declared inside a class but outside methods, each object gets its copy.
+c.Static Variable → declared with static, shared among all objects.
+
+3.Can a local variable have a default value in Java?
+=>No. Local variables must be initialized before use. Only instance and static variables get default values.
+
+4.Where are variables stored in memory in Java?
+Local variables → Stack
+Instance variables → Heap
+Static variables → Method area (class area)
+
+5.what is the default of value of object in an static/instance variables?
+=>null
+
+6.Can a variable name be the same as a Java keyword?
+=>No,keywords cannot be used as variable names.
+
+7.What is the difference between static and final variables?
+static: One copy shared among all objects.
+final: Value cannot be changed once assigned.
+Together static final = Constant.
+
+8.Is access modifiers are allowed for local variables or not?
+=>No,Access modifiers (public, protected, private) are not allowed for local variables in Java.
+
+9.Can we declare variables inside an interface?
+=>Yes,Variables inside an interface are by default.
+
+10.What is the difference between int x; and int x = 0; for an instance variable?
+int x; → gets default value 0 from JVM (implicit).
+int x = 0; → explicitly initialized by programmer.
+
+
+
+
+OPERATORS
+=========
+1.What are operators in Java?
+=>Operators are special symbols used to perform operations on variables and values.
+
+2.What is the difference between && and & operators in Java?
+&& (Logical AND) → Short-circuit (second condition checked only if needed).
+& (Bitwise AND) → Works on bits (and also boolean but always checks both conditions).
+
+3.Explain pre-increment and post-increment operators.
+++x (pre-increment): increases value first, then uses it.
+x++ (post-increment): uses value first, then increases it.
+
+4.What is the ternary operator in Java?
+A shorthand if-else.
+syntax:variable = (condition=a>b) ? value_if_true(a) : value_if_false(b);
+
+5.What is operator precedence in Java?
+Defines the order in which operators are evaluated.
+Example: * / % > + - > relational > logical.
+
+6.Can we overload operators in Java?
+=> No,Unlike C++, Java does not allow operator overloading (except + for String concatenation).
+
+7.Why is the + operator special in Java?
+=>Because it is used for both arithmetic addition and String concatenation. If either operand is a String, concatenation happens.
+
+8.What is the difference between unary, binary, and ternary operators?
+Unary → Works on one operand (++x, --x).
+Binary → Works on two operands (a + b, x > y).
+Ternary → Works on three operands (condition ? trueVal : falseVal).
+
+9.Can we apply arithmetic operators on booleans?
+=> No,Unlike C, Java does not allow arithmetic on boolean. Only logical (&& || !) and bitwise (& | ^) are allowed.
+
+10.Why is division by zero different for int and double?
+For int: Throws ArithmeticException (/ by zero).
+For double: Returns Infinity or NaN (follows IEEE 754 floating-point rules)
+
+
+questions:
+can we var as method patrameter
+can we assign final keyword for construtor
+can a variavle store in bytecode
+by using reflection api can we change final variable
+can local variable gide the static variables
+integer.maxvalue
+compile time and runtime constat in variables
+1*mohan whT IS THE OUTPUT IN JAVA
+x==x++
+what happenes if nan compares itself=false
+o/p=sysout(true+false)==false cannot assign value to booleanvalues
+can local variable have default values.==no,it is cakked when method is created.
+relational operators can assign with boolean==no,only = and == have
+varaiable shadowing
+transient varaiable
+can we declare varaiableinside a interface
+can a variables in java be abstract
+can we overloadthe methodswith null argumennts
+can we overload the method
+
+
+Variables in java
+==================
+
+1. What are variables in Java? Explain with an example.
+A variable is a named memory location that stores data during program execution.
+Example: int age = 20; → Here age is a variable of type int.
+
+2. What are the different types of variables in Java?
+Local Variable → Declared inside method, no default value.
+Instance Variable → Declared in a class but outside methods, gets default values.
+Static Variable → Declared with static, shared across all objects.
+
+3. What is the default value of instance variables in Java?
+
+Numbers → 0
+Floating-point → 0.0
+Boolean → false
+Object references → null
+
+In Java, when you create an object using new, you don’t directly hold the object itself.
+Instead, you get a reference (address pointer) to that object in memory.
+Example:
+Student s = new Student();
+
+Here:
+new Student() → creates the object in heap memory.
+s → is the reference variable that stores the memory address of that object.
+So, s is not the object itself, it’s a reference to the object.
+
+4. Why do local variables not have default values?
+Because they are created only when method is called.
+To avoid logical errors, Java forces programmer to initialize them manually.
+
+6. What is the difference between final variable and normal variable?
+Normal variable → Value can be changed.
+Final variable → Value assigned once and cannot be changed.
+,:
+Can be combined (static final) for constants.
+
+7. Can we reassign values to final variables?
+No, final variables cannot be reassigned after initialization because they act like constants.
+
+8. What is variable shadowing in Java?
+When a local variable has the same name as an instance variable, the local one hides the instance variable.
+
+9.Can we declare a variable without initializing it?
+Instance/Static variable → Yes (they get default values).
+Local variable → No (must be initialized before use).
+
+10. Why are instance variables initialized with default values but local variables are not?
+Instance variables are stored in heap memory → JVM assigns defaults.
+Local variables are in stack → JVM requires explicit initialization to avoid errors.
+
+11. Can we use reserved keywords as variable names?
+No, reserved words (like class, int, static) cannot be variable names.
+
+17. Can two variables have the same name in different scopes?
+Yes, one can be local and another can be instance variable.
+
+18. What is a class variable in OOP? Is it the same as a static variable?
+Yes, in Java, a class variable is the same as a static variable.
+It is called a class variable because it belongs to the class rather than any particular object.
+
+-> stack variable value stored in the method area(special memory for class-level data).
+
+Operators
+==========
+
+1. What are operators in Java and types?
+Operators are symbols that perform operations on operands.
+Types: Arithmetic, Relational, Logical, Bitwise, Assignment, Ternary, Unary.
+
+2. Difference between = and ==
+= → Assignment operator.
+== → Comparison operator.
+
+3. Difference between ++i and i++
+++i → Pre-increment (increment first, then use).
+i++ → Post-increment (use first, then increment).
+
+4. Difference between logical (&&) and bitwise (&)
+&& → Works on boolean, short-circuits (stops if result is known).
+& → Works on bits and boolean, evaluates both sides always.
+
+6. What is the ternary operator?
+Shortcut for if-else.
+condition ? value1 : value2;
+
+8. Can we use + operator with strings?
+Yes. + works as string concatenation when one operand is a string.
+
+9. Can we use relational operators with boolean?
+No, only == and != are valid with booleans.
+
+10. What happens with floating-point division by 0.0?
+No error, result is Infinity or NaN.
+
+If you divide a float or double by 0.0, no exception occurs.
+Instead, Java follows IEEE 754 floating-point rules:
+Positive number ÷ 0.0 → Infinity
+Negative number ÷ 0.0 → -Infinity
+0.0 ÷ 0.0 → NaN (Not a Number)
+
+
+
+Functions:
+==========
+
+1. Can we overload main() method?
+Yes, but JVM calls only the standard main(String[] args).
+
+When you run the program, JVM always calls only:
+public static void main(String[] args)
+
+The other versions (main(int x), main(double d)) will not be called automatically by JVM.
+But inside the standard main, you can call them yourself (like main(10);).
+
+2. Method overloading vs overriding ?.
+Overloading → Same method name, different parameters (compile-time).
+Overriding → Same method name and parameters in subclass (runtime).
+
+3. Can we declare a method inside another method?
+No, Java does not allow method inside method.
+
+4. What is return type? Can method return multiple values?
+Return type defines type of value returned.
+Java does not allow multiple returns directly, but can return objects/arrays.
+
+In Java, a method can only return one value directly (because return type is single).
+But you can “wrap” multiple values inside:
+
+Array
+Class / Object
+Collection (like List, Map).
+
+
+5. Can a method have same name but different return type only?
+No, because return type 
+alone is not enough to differentiate methods.
+
+6. Call by value vs call by reference.
+
+Call by value → Copy of variable is passed (Java uses this).
+Call by reference → Address is passed (not in Java, but objects behave similarly).
+
+7. Can we define a method without parameters and return type?
+
+Yes. Example:
+
+void display() {
+    System.out.println("Hello");
+}
+
+8. Can we return an array from a method?
+
+Yes, methods can return arrays.
+
+9. Can we declare abstract method in non-abstract class?
+
+No, only abstract classes can have abstract methods.
+
+10. Actual vs formal parameters.
+
+Actual → Values passed at method call.
+
+void display(int x) {   // x → formal parameter
+        System.out.println("Value: " + x);
+    }
+	
+Formal → Variables in method definition.
+
+public static void main(String[] args) {
+        Demo d = new Demo();
+        d.display(10);  // 10 → actual parameter
+    }
+
+
+1.What is the difference between final, static final, and effectively final variables?
+
+ans: final: Cannot be reassigned.
+
+     static final: Constant shared across class. Usually written in UPPERCASE.
+
+     Effectively final: A local variable not modified after initialization, even without final keyword.
+	 
+2. What is variable shadowing in Java?
+
+Ans : When a local variable or method parameter has the same name as a class-level field, it hides the field within that scope.
+
+3.  Can you declare a variable inside an if block and use it outside?
+
+Ans : No. Variables declared inside an if block are block-scoped and cannot be accessed outside.
+
+4. Can static variables be accessed from non-static methods?
+
+Ans : Yes. Static variables belong to the class and can be accessed from both static and non-static methods.
+
+5.  What is the difference between this.variable and variable in a constructor?
+
+Ans : this.variable refers to the instance variable,  while 
+      variable refers to the constructor parameter or local variable.
+
+6.  Can you overload a method by changing only the variable names?
+
+Ans : No. Method overloading requires a change in parameter types or count, not just variable names.
+
+7.  Can a variable be both final and static?
+
+Ans : Yes. It's common for constants: public static final int MAX_SIZE = 100;
+
+8.  What is the difference between null, undefined, and uninitialized in Java?
+Ans :
+- null: Reference points to no object.
+- undefined: Not a Java concept (JavaScript).
+- uninitialized: Local variables not assigned a value; causes compile-time error.
+
+9. What is the difference between stack and heap memory in terms of variables?
+Ans :- Local variables are stored on the stack and have short lifetimes.
+    - Instance and static variables are stored on the heap and persist as long as the object/class exists.
+
+10.What is the difference between primitive and reference variables?
+Ans :
+  - Primitive variables hold actual values (e.g., int, double).
+  
+  - Reference variables hold addresses pointing to objects in memory.
+  
+ 11.What is the output of System.out.println(10 + 20 + "30");?
+ 
+Ans : "3030" — 10 + 20 = 30, then 30 + "30" becomes "3030".
+
+12. Why does Java not support operator overloading?
+
+Ans : To maintain code clarity and simplicity, Java avoids operator overloading, unlike C++. Overloading can lead to ambiguous or misleading expressions.
+
+13. What is operator precedence and how does it affect expression evaluation?
+Ans :
+Operator precedence determines the order in which operators are evaluated in an expression. For example, * has higher precedence than +, so 2 + 3 * 4 evaluates as 2 + (3 * 4) = 14.
+
+14. What happens when you use + with a string and a number?
+Ans :
+Java performs string concatenation.
+Example: "Result: " + 5 + 3 → "Result: 53".
+
+15.  What is the difference between pre-increment and post-increment in expressions?
+Ans:
+- ++i: increments before use.
+- i++: uses the value first, then increments.
+
+16 . Why is System.out.println(1 + 2 + "3" + 4 + 5); evaluated as "3345"?
+Ans :
+Java evaluates left to right:
+- 1 + 2 = 3
+- 3 + "3" = "33"
+- "33" + 4 = "334"
+- "334" + 5 = "3345"
+
+17.  Why does System.out.println(10 / 0.0); not throw an exception?
+Ans :
+Because 0.0 is a floating-point literal, and division by zero in floating-point yields Infinity, not an exception.
+
+18. What is the difference between == and .equals() in Java?
+Ans:
+- == compares primitive values or object references.
+- .equals() compares object content (if overridden properly).
+
+
+imp 
+===
+
+method area.........
+
+singned right and undsigned right shift
+
+volatile variable
+
+reflection api
+
+can we use var for method parameter
+
+what happens final key word assigned to constructor? compile-time  error
+
+== in primitive checks the value
+== in objects  refer to reference
+
+can local variable have default value
+
+transient variable?
+x=x++
+
+variable inside interface?
+
+can we reassigne the reference after initialization
+
+can static accessed by objects
+
+variable java abstract
+
+++1 x++ in loop
+ can we overload key with null operator
+
+
+1. Variables and Scope
+Question: A local variable and an instance variable share the same name within a method. Which variable is accessed when the name is used inside that method? How do you access the other?
+
+Answer: The local variable 🏡 takes precedence and shadows the instance variable. When you use the variable name inside the method, you are always referring to the local one.
+
+To access the shadowed instance variable, you must use the this keyword, for example, this.variableName.
+
+2. Operators and Type Promotion
+Question: Consider the following expression: byte a = 10; byte b = 20; byte c = a + b;. Will this code compile? If not, why?
+
+Answer: No, this code will not compile. ❌
+
+When a and b are added, Java's binary numeric promotion rules automatically promote them to ints before the addition. The result of the addition is therefore an int. You cannot assign an int back to a byte without an explicit cast, as this could lead to a loss of data. To fix it, you would need to write: byte c = (byte)(a + b);.
+
+3. Operator Precedence and Side Effects
+Question: What is the primary theoretical difference between the logical AND operator (
+
+$$&&$$
+) and the bitwise AND operator (
+
+$$&$$
+) when used with boolean values?
+
+Answer: The key difference is short-circuiting.
+
+The logical AND operator (
+
+$$&&$$
+) is a short-circuit operator. If its first operand evaluates to false, it knows the overall result will be false and doesn't bother evaluating the second operand. This is crucial for preventing errors, such as checking if a reference is non-null before accessing its methods (if (obj != null && obj.myMethod())).
+
+The bitwise AND operator (
+
+$$&$$
+), on the other hand, always evaluates both of its operands 💡, regardless of the value of the first. This can be less efficient and may lead to a NullPointerException if the second operand is an object method call and the object is null.
+
+4. Method Overloading vs. Overriding
+Question: Explain the difference between method overloading and method overriding. Which one is a compile-time (static) polymorphism, and which is a runtime (dynamic) polymorphism?
+
+Answer:
+
+Method Overloading allows a single class to have multiple methods with the same name, as long as their parameter lists are different. The correct method to call is determined by the compiler based on the arguments' types and number. This is a form of static (compile-time) polymorphism.
+
+Method Overriding allows a subclass to provide a specific implementation for a method that is already defined in its superclass. The correct method to call is determined at runtime based on the actual object type. This is a form of dynamic (runtime) polymorphism.
+
+5. Initialization of Variables
+Question: What is the fundamental difference in initialization between instance variables and local variables?
+
+Answer:
+
+Instance variables (fields of a class) are automatically initialized to a default value 📊 by the Java Virtual Machine if they are not explicitly initialized by the programmer. For example, int variables default to 0, and object references default to null.
+
+Local variables (declared inside a method) are not initialized ⚠️ by default. The Java compiler enforces a "definite assignment" rule, meaning you must explicitly assign a value to a local variable before it is used. Attempting to use an uninitialized local variable will result in a compile-time error.
+
+6. The final Keyword
+Question: What is the theoretical meaning of the final keyword when applied to a variable? Can a final variable be modified after its first assignment?
+
+Answer: When applied to a variable, the final keyword makes it a constant. 🔒 Its value can be assigned only once. Once a value has been set, you cannot change it. Any subsequent attempt to reassign a final variable will result in a compile-time error. This principle is known as immutability and is key for thread safety and creating robust code.
+
+7. Compound Assignment Operators
+Question: Is the following statement true or false? "The compound assignment operator += is always equivalent to a standard assignment with a cast, for example, x += y is the same as x = (type of x) (x + y)."
+
+Answer: This statement is True. ✅
+
+A compound assignment operator implicitly performs a cast. For example, in byte x = 10; x += 5;, the expression x + 5 first becomes an int due to type promotion. The += operator then implicitly casts the result back to a byte before assigning it, which is the same as writing x = (byte)(x + 5);. This implicit cast can prevent a compilation error.
+
+8. Pass-by-Value vs. Pass-by-Reference
+Question: Does Java pass arguments by value or by reference? Explain how this applies to both primitive types and objects.
+
+Answer: Java is strictly pass-by-value for both primitive and object types. 📜
+
+For primitive types, a copy of the value itself is passed. Changes to the parameter inside the function do not affect the original variable.
+
+For objects, a copy of the reference (the memory address) to the object is passed. This means the parameter inside the function points to the same object in memory as the original variable. While you cannot reassign the parameter to a new object and have that change reflected in the original variable, you can use the passed reference to modify the state of the original object.
+
+9. Return Values
+Question: A method is declared with a void return type. What does this theoretically mean? Can such a method contain a return statement?
+
+Answer: A void return type means the method does not return a value to the caller. 🚫
+
+However, a void method can contain a return statement with no value (e.g., return;). This is used to exit the method early and return control to the caller before reaching the end of the method's code block.
+
+10. static Variables
+Question: What is a static variable, and how does it fundamentally differ from a regular instance variable in terms of memory and ownership?
+
+Answer: A static variable (also known as a class variable) is a variable that belongs to the class itself, not to any specific instance of the class. 🏫
+
+Memory: There is only one copy of a static variable in memory, no matter how many objects of the class are created. This single copy is shared by all instances.
+
+Ownership: A regular instance variable belongs to a specific object, so each object has its own separate copy of the variable.
+
+variables and Operators
+
+Q: What happens if you declare a static variable inside an inner class?
+A: It must be static final; otherwise, compilation error.
+
+
+Q: Can two overloaded methods have the same number of parameters but different return types?
+A: No, return type alone cannot differentiate overloaded methods.
+
+Q: What is the difference between unary + and unary - operators?
+A: Unary + is a no-op (does nothing), unary - negates the value.
+
+Q: What is the difference between instance variables and class (static) variables?
+A: Instance variables are unique to each object, while static variables are shared across all objects of a class.
+
+Q: Can we declare a variable inside an interface?
+A: Yes, but it will always be public static final by default.
+
+Q: What is the difference between a function parameter and an argument?
+A: Parameter is the variable defined in the method signature, argument is the actual value passed when calling it.
+
+Q: What is the difference between a class variable initialized at declaration vs. in a static block?
+A: Both initialize before class loading, but static block allows more complex logic than inline initialization.
+
+Q: Can a method in Java be declared without any return type?
+A: No, every method must have a return type; if nothing is returned, it must be void.
+
+Q: Why are local variables not assigned default values in Java?
+A: To prevent programming errors and force developers to initialize before use.
+
+Q: Can we declare a method synchronized and static together?
+A: Yes, it means the lock is acquired on the class object, not on individual instances. 	  

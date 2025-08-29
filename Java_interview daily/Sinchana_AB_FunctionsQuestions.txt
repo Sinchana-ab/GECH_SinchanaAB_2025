@@ -1,0 +1,416 @@
+Functions Interview Questions
+-------------------------------------
+
+1. What is a function (method) in Java?
+
+Answer: A function (method) is a block of code that performs a specific task.
+        In Java, every method must be inside a class.
+	
+class Demo {
+    int add(int a, int b) {
+        return a + b;
+    }
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        System.out.println(d.add(3, 5));
+    }
+}
+
+Output:
+
+8
+--------
+
+2. Difference between return type and void methods?
+
+return type → returns a value.
+
+void → does not return anything.
+
+Example:
+
+class Test {
+    void sayHello() { System.out.println("Hello"); }
+    int square(int x) { return x * x; }
+    public static void main(String[] args) {
+        Test t = new Test();
+        t.sayHello();
+        System.out.println(t.square(4));
+    }
+}
+
+Output:
+
+Hello
+16
+---------
+
+3. What is Method Overloading?
+
+Answer:
+
+Same method name, different parameter list.
+
+Resolved at compile time (static polymorphism).
+
+
+Example:
+
+class Overload {
+    int sum(int a, int b) { return a + b; }
+    double sum(double a, double b) { return a + b; }
+    public static void main(String[] args) {
+        Overload o = new Overload();
+        System.out.println(o.sum(5, 3));    
+        System.out.println(o.sum(5.5, 2.2));
+    }
+}
+
+Output:
+
+8
+7.7
+------------
+
+4. Can we overload main() method?
+
+Answer: Yes, but JVM only calls public static void main(String[] args) automatically.
+Other main() versions can be called manually.
+
+Example:
+
+class MainTest {
+    public static void main(String[] args) {
+        System.out.println("Main(String[] args)");
+        main(10);
+    }
+    public static void main(int x) {
+        System.out.println("Main(int) called: " + x);
+    }
+}
+
+Output:
+
+Main(String[] args)
+Main(int) called: 10
+-------
+
+5. What is Varargs in Java?
+
+Answer:
+
+Varargs (...) lets you pass a variable number of arguments.
+
+Only one varargs parameter is allowed, and it must be the last parameter.
+
+
+Example:
+
+class VarArgsDemo {
+    static void printNumbers(int... nums) {
+        for (int n : nums) System.out.print(n + " ");
+    }
+    public static void main(String[] args) {
+        printNumbers(1, 2, 3, 4, 5);
+    }
+}
+
+Output:
+
+1 2 3 4 5
+--------------
+
+6. Can we declare a method inside another method?
+
+Answer:
+No, Java does not support nested methods.
+But you can use local inner classes or lambdas instead.
+
+11. What is Method Reference in Java 8?
+
+Answer:
+
+A shorthand for using an existing method with :: operator.
+
+
+Example:
+
+import java.util.*;
+class MethodRef {
+    public static void print(String s) { System.out.println(s); }
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("A", "B", "C");
+        list.forEach(MethodRef::print);
+    }
+}
+
+Output:
+
+A
+B
+C
+
+Question: Can we pass a function as an argument?
+
+Answer:
+
+Before Java 8 → use interfaces.
+
+After Java 8 → use lambdas / functional interfaces.
+
+
+Example:
+
+import java.util.function.Function;
+class HigherOrder {
+    static int compute(Function<Integer, Integer> func, int x) {
+        return func.apply(x);
+    }
+    public static void main(String[] args) {
+        System.out.println(compute(n -> n * n, 5));  
+        System.out.println(compute(n -> n + 10, 7));
+    }
+}
+
+Output:
+
+25
+17
+
+
+
+==================================================================================
+
+1. Can we call a non-static method from a static method directly?
+
+Answer:  No.
+Static methods belong to the class, but non-static methods need an object.
+
+class Trick1 {
+    void instanceMethod() { System.out.println("Instance method"); }
+    static void staticMethod() { 
+        // instanceMethod(); // Error
+        new Trick1().instanceMethod(); 
+    }
+    public static void main(String[] args) { staticMethod(); }
+}
+
+--------
+
+2. Can we overload methods by changing only the return type?
+
+Answer: No.
+Java does not allow overloading by just changing return type, because compiler can’t resolve which method to call.
+
+class Trick2 {
+    int test() { return 1; }
+    // double test() { return 1.1; } //Compile error
+}
+
+-----------
+
+3. Can we override static methods?
+
+Answer: No, static methods are class-level, not object-level.
+
+If you declare same static method in child, it’s method hiding, not overriding.
+
+-----------
+
+class Parent {
+    static void display() { System.out.println("Parent"); }
+}
+class Child extends Parent {
+    static void display() { System.out.println("Child"); }
+}
+public class Trick3 {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.display();   // Output: Parent (not overridden)
+    }
+}
+
+-------------
+
+4. Can we declare two methods with same name and parameters but different throws exceptions?
+
+Answer: No, it will be considered duplicate.
+
+-------------
+
+5. What happens if you call the main() method explicitly?
+
+Answer: It will work like a normal method call.
+
+class Trick5 {
+    public static void main(String[] args) {
+        System.out.println("Main with String[] args");
+        main(10);  
+    }
+    public static void main(int x) {
+        System.out.println("Overloaded main: " + x);
+    }
+}
+
+Output:
+
+Main with String[] args
+Overloaded main: 10
+
+------------------
+
+6. Can we have two methods with same parameters but different access modifiers?
+
+Answer: No.
+Access modifiers don’t count for overloading.
+
+------------------
+
+7. Can we pass a method as parameter in Java?
+
+Answer: Yes, using Functional Interface (Java 8+).
+
+import java.util.function.Function;
+class Trick7 {
+    static int compute(Function<Integer, Integer> func, int x) {
+        return func.apply(x);
+    }
+    public static void main(String[] args) {
+        System.out.println(compute(n -> n * n, 5));  // 25
+    }
+}
+
+----------------
+
+8. Infinite Recursion without Base Condition
+
+Trick Question: What happens if recursion has no base condition?
+Answer: StackOverflowError
+
+class Trick8 {
+    static void recurse() { recurse(); }
+    public static void main(String[] args) { recurse(); }
+}
+
+-----------------
+
+9. What will this output?
+
+class Trick9 {
+    static int fun(int x) {
+        if (x <= 0) return 0;
+        return fun(x - 1) + x;
+    }
+    public static void main(String[] args) {
+        System.out.println(fun(4));
+    }
+}
+
+Answer: 10 (since 1+2+3+4 = 10).
+
+-----------
+
+10. Difference between Pass by Value vs Pass by Reference in Functions?
+
+Trick: Java is always pass by value, but object references can make it look like pass by reference.
+
+class Demo { int val = 5; }
+class Trick10 {
+    static void change(Demo d) { d.val = 20; }
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        change(d);
+        System.out.println(d.val); // 20
+    }
+}
+
+Difference between call by value and call by reference in Java?
+
+Answer:
+
+Java is always call by value.
+
+For objects, the reference is passed by value.
+
+---------
+
+11. Can a function return multiple values in Java?
+
+Answer: Not directly, but you can use an array, object, or Map.
+
+class Pair {
+    int x, y;
+    Pair(int a, int b) { x=a; y=b; }
+}
+class Trick11 {
+    static Pair getPair() { return new Pair(10, 20); }
+    public static void main(String[] args) {
+        Pair p = getPair();
+        System.out.println(p.x + " " + p.y);
+    }
+}
+
+------------
+
+12. Trick Output Question
+
+class Trick12 {
+    static int add(int a, int b) {
+        return a + b;
+    }
+    static double add(double a, int b) {
+        return a - b;
+    }
+    public static void main(String[] args) {
+        System.out.println(add(5, 2));     // ?
+        System.out.println(add(5.0, 2));   // ?
+    }
+}
+
+Answer:
+
+7
+3.0
+
+--------------
+
+13. Can abstract class have concrete methods?
+
+Answer: Yes. Abstract class may have both abstract and non-abstract methods.
+
+-------------------------
+
+14. Can interface have static methods?
+
+Answer:  Yes (Java 8+). But they cannot be overridden.
+
+interface Test {
+    static void show() { System.out.println("Static in interface"); }
+}
+class Trick14 {
+    public static void main(String[] args) {
+        Test.show(); // called with interface name
+    }
+}
+
+------------------------
+What is Recursion in Java?
+
+Answer:	When a method calls itself.
+	Must have a base condition to avoid infinite loop.
+
+
+15. Tail Recursion Trick 
+
+Question: Which recursion is more memory-efficient?
+Answer: Tail Recursion, because function doesn’t need to store intermediate calls.
+
+class TailRec {
+    static int fact(int n, int acc) {
+        if (n==0) return acc;
+        return fact(n-1, acc*n); // Tail recursion
+    }
+    public static void main(String[] args) {
+        System.out.println(fact(5, 1)); // 120
+    }
+}

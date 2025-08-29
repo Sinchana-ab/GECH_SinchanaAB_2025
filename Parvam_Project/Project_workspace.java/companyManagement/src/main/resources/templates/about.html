@@ -5,264 +5,412 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Bricks Byte</title>
     <style>
-        /* Global Styles */
+        /* General Body & Typography */
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #333;
+            background-color: #f4f7f9;
         }
-
         h1, h2, h3 {
-            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #1a1a1a;
         }
-
-        a {
-            text-decoration: none;
+        p {
+            line-height: 1.8;
+            color: #555;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
         }
 
         /* Hero Section */
         .hero {
-            background: url('/images/about-hero-bg.jpg') no-repeat center center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/about-hero-bg.jpg') no-repeat center center/cover;
+            height: 70vh;
             color: white;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
         }
-
         .hero h1 {
             font-size: 3.5rem;
-            font-weight: bold;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
-
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            color: rgba(255, 255, 255, 0.9);
+        }
         .hero .breadcrumb {
-            margin-top: 1rem;
             font-size: 1rem;
+            margin-top: 1rem;
         }
-
         .hero .breadcrumb a {
             color: #fff;
             opacity: 0.8;
-            margin: 0 5px;
+            transition: opacity 0.3s ease;
         }
-
         .hero .breadcrumb a:hover {
             opacity: 1;
         }
-
-        .hero .breadcrumb span {
-            color: #fff;
+        .btn-scroll-down {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+        .btn-scroll-down img {
+            width: 40px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .btn-scroll-down img:hover {
+            opacity: 1;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        .hero .btn-view-work {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: #FF6A00;
-            color: #fff;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+        /* About & Mission Section */
+        .about-section {
+            padding: 5rem 0;
+            background-color: #ffffff;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            text-align: center;
+        }
+        .about-section .container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .about-content {
+            flex: 1;
+        }
+        .about-content h2 {
+            color: #FF6A00;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .about-content h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+        .about-image {
+            flex: 1;
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .mission-section {
+            background-color: #f0f3f6;
+            padding: 4rem 0;
+        }
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .mission-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .mission-card h4 {
             font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FF6A00;
+        }
+        .mission-card p {
+            font-size: 1rem;
         }
 
         /* Timeline Section */
         .timeline-section {
-            display: flex;
-            align-items: center;
-            padding: 4rem 2rem;
-            background: #F8F9FC;
+            padding: 5rem 0;
+            background-color: #ffffff;
         }
-
-        .timeline-section img {
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem 0;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ddd;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
             width: 50%;
-            border-radius: 8px;
         }
-
-        .timeline-content {
-            width: 50%;
-            padding-left: 2rem;
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #FF6A00;
+            border: 4px solid #f4f7f9;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
         }
-
-        .timeline-content h2 {
+        .timeline-left {
+            left: 0;
+        }
+        .timeline-right {
+            left: 50%;
+        }
+        .timeline-right::after {
+            left: -17px;
+        }
+        .timeline-content-card {
+            padding: 20px 30px;
+            background-color: #f8f9fc;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .timeline-content-card h4 {
             font-size: 1.5rem;
             color: #FF6A00;
-            margin-bottom: 1rem;
         }
-
-        .timeline-content h3 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
+        .timeline-content-card p {
             font-size: 1rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .timeline {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .timeline span {
-            font-size: 0.9rem;
-            color: #999;
-        }
-
-        .timeline .active {
-            color: #FF6A00;
-            font-weight: bold;
         }
 
         /* By the Numbers Section */
         .numbers-section {
-            background: #000;
+            background-color: #1a1a1a;
             color: #fff;
-            padding: 4rem 2rem;
+            padding: 5rem 0;
             text-align: center;
         }
-
         .numbers-section h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #FF6A00;
             margin-bottom: 1rem;
         }
-
         .numbers-section p {
             font-size: 1.1rem;
             color: #ccc;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
         .numbers-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
             gap: 2rem;
         }
-
         .number-card {
-            background: #111;
-            padding: 2rem;
-            border-radius: 8px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .number-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            flex: 1 1 200px;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
+            backdrop-filter: blur(5px);
         }
-
         .number-card .number {
-            font-size: 3rem;
-            color: #FF6A00;
+            font-size: 3.5rem;
             font-weight: bold;
-            margin: 1rem 0;
+            color: #FF6A00;
+            margin-bottom: 0.5rem;
         }
-
         .number-card .label {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #ccc;
-            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .timeline-section {
+        @media (max-width: 992px) {
+            .about-section .container {
                 flex-direction: column;
-                text-align: center;
             }
-
-            .timeline-section img {
-                width: 100%;
-            }
-
-            .timeline-content {
-                width: 100%;
-                padding-left: 0;
+            .about-image {
                 margin-top: 2rem;
             }
-
-            .numbers-grid {
-                grid-template-columns: 1fr;
+            .timeline-container::after {
+                left: 31px;
             }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-left::after, .timeline-right::after {
+                left: 15px;
+            }
+            .timeline-right {
+                left: 0%;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .about-content h3 { font-size: 2rem; }
+            .mission-card { padding: 30px; }
+            .numbers-grid { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <div th:fragment="content">
-        <!-- Hero Section -->
         <section class="hero">
-            <div>
-                <h1>About Us</h1>
+            <div class="container">
+                <h1>Our Story, Your Success.</h1>
+                <p>Building a legacy of excellence, one project at a time. We are Bricks Byte, your trusted partner in construction management.</p>
                 <div class="breadcrumb">
                     <a th:href="@{/}">Home</a>
-                    <span>•</span>
+                    <span>/</span>
                     <span>About Us</span>
                 </div>
-                <a href="#work" class="btn-view-work" title="View Our Work">&#8594;</a>
             </div>
         </section>
 
-        <!-- Timeline Section -->
-        <section class="timeline-section">
-            <img src="/images/timeline.jpg" alt="Construction Timeline">
-            <div class="timeline-content">
-                <h2>1980</h2>
-                <h3>From Humble Beginnings</h3>
-                <p>
-                    From humble beginnings, a proud story of growth, vision, commitment, and innovation.
-                    Our roots are deep, our standards are unmatched, and our dedication is timeless.
-                </p>
-                <p>
-                    Our clients cover a wide range of sectors including local, state, and Commonwealth governments, retail,
-                    hospitality, commercial, and industrial projects. We deliver excellence and create impactful landmarks.
-                </p>
-                <div class="timeline">
-                    <span class="active">1980</span>
-                    <span>1995</span>
-                    <span>2000</span>
-                    <span>2010</span>
-                    <span>2021</span>
+        <section class="about-section" id="about-us">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Our Legacy</h2>
+                    <h3>From Humble Beginnings to Industry Leaders</h3>
+                    <p>
+                        Since 1980, Bricks Byte has been a cornerstone of the construction industry. What started as a small, passionate team has grown into a leading force, driven by a commitment to excellence and innovation. Our journey is built on a foundation of integrity, quality, and a relentless pursuit of perfection.
+                    </p>
+                    <p>
+                        We partner with a diverse range of clients, from local governments to major commercial enterprises. No matter the scale, we deliver excellence and create impactful landmarks that shape communities and exceed expectations. Our portfolio spans a wide range of sectors, including retail, hospitality, industrial, and public works.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="/images/timeline.jpg" alt="Construction Timeline">
                 </div>
             </div>
         </section>
 
-        <!-- By the Numbers Section -->
+        <section class="mission-section">
+            <div class="container">
+                <h2>Our Mission & Values</h2>
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <h4>Integrity</h4>
+                        <p>We operate with unwavering honesty and transparency, building trust with our clients, partners, and team members.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h4>Quality</h4>
+                        <p>We are dedicated to delivering superior craftsmanship and using the best materials to ensure every project stands the test of time.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h4>Innovation</h4>
+                        <p>We embrace cutting-edge technology and modern methodologies to deliver efficient, sustainable, and forward-thinking solutions.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h4>Collaboration</h4>
+                        <p>We believe the best results come from working together. We foster strong partnerships and a collaborative environment on every project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section" id="history">
+            <h2>Our Journey Through the Years</h2>
+            <div class="timeline-container">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content-card">
+                        <h4>1980 - Foundation</h4>
+                        <p>Bricks Byte is founded on the principles of quality and hard work, starting with small-scale residential projects.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content-card">
+                        <h4>1995 - Expansion</h4>
+                        <p>We successfully complete our first major commercial project, leading to rapid expansion into new sectors and regions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content-card">
+                        <h4>2000 - Technological Leap</h4>
+                        <p>We introduce advanced construction management software, significantly enhancing project efficiency and client communication.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content-card">
+                        <h4>2010 - Sustainable Practices</h4>
+                        <p>Bricks Byte pioneers the use of sustainable building materials and eco-friendly practices in all new developments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content-card">
+                        <h4>2021 - Next Generation</h4>
+                        <p>We launch our state-of-the-art construction management system, solidifying our position as a leader in tech-driven construction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="numbers-section">
-            <h2>BY THE NUMBERS</h2>
-            <p>
-                Collaborative, driven, and innovative: we're focused on finding the best way forward and elevating your vision of success.
-            </p>
-            <div class="numbers-grid">
-                <div class="number-card">
-                    <div class="number">969</div>
-                    <div class="label">PROJECTS DONE</div>
-                </div>
-                <div class="number-card">
-                    <img src="/images/worker.jpg" alt="Construction Worker">
-                </div>
-                <div class="number-card">
-                    <div class="number">$9B</div>
-                    <div class="label">LAST YEAR REVENUES</div>
-                </div>
-                <div class="number-card">
-                    <div class="number">98%</div>
-                    <div class="label">HAPPY CUSTOMERS</div>
+            <div class="container">
+                <h2>Our Impact, By the Numbers</h2>
+                <p>
+                    Our success is defined by the trust our clients place in us and the tangible results we deliver. Here’s a snapshot of our journey.
+                </p>
+                <div class="numbers-grid">
+                    <div class="number-card">
+                        <div class="number">969+</div>
+                        <div class="label">PROJECTS COMPLETED</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">$9B</div>
+                        <div class="label">REVENUES LAST YEAR</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">98%</div>
+                        <div class="label">CLIENT SATISFACTION</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">40+</div>
+                        <div class="label">YEARS IN BUSINESS</div>
+                    </div>
                 </div>
             </div>
         </section>

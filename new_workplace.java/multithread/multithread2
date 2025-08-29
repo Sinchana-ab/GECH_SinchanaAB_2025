@@ -1,0 +1,29 @@
+ Thread Execution Methods in Java
+1. start() :- Begins execution of the thread by calling its run() method in a new thread
+2. run() :- Contains the code that is executed by the thread (usually overridden).
+3. sleep(long millis)  :- Pauses the thread for a specified time (in milliseconds).
+4. join() :- Waits for the thread to die (i.e., finish execution).
+5. join(long millis) :- Waits for the thread to die or timeout after specified milliseconds.
+6. yield() :- Suggests that the current thread pause and allow other threads to execute.
+7. interrupt() :- Interrupts the thread if it's sleeping, waiting, or otherwise blocked.
+8. isAlive() :-	Checks if the thread is still running (not terminated).
+10. isInterrupted() :- Checks if the thread has been interrupted.
+
+ Utility Methods
+1. getName() :-
+2. setName(String name) :-
+3. getPriority() :-
+4. setPriority(int priority) ;- 
+5. getId() :-
+6. getState() | NEWRUNNABLEBLOCKED | 
+7.  currentThread() |  | 
+
+ Thread Lifecycle States
+ -----------------------------
+Java threads go through these states:
+- NEW: Thread is created but not started.
+- RUNNABLE: Thread is ready to run or running.
+- BLOCKED: Waiting to acquire a lock.
+- WAITING: Waiting indefinitely for another thread.
+- TIMED_WAITING: Waiting for a specified time.
+- TERMINATED: Thread has finished execution

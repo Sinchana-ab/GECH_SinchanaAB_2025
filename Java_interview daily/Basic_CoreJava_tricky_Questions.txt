@@ -1,0 +1,158 @@
+Core Java (Basic / Syntax / Keywords) Theory Trick Questions
+
+-----------------------------------------------------------------
+
+1. What is the default value of local variables?
+
+Ans: They don’t have a default value. You must initialize them before use.
+
+Instance variables do have defaults.
+
+--
+
+2. static variable and local variable lifetime or scope?.
+ans:- 
+
+i)Local varaibale:-
+
+Definition: Declared inside a method, constructor, or block.
+
+Lifetime: Created when method is called, destroyed when method ends.
+
+Scope: Only within that method/block.
+
+Default value: No default value — must be initialized before use.
+
+Cannot be static.
+
+---
+
+ii)Static Variable (Class Variable)
+
+Definition: Declared inside a class but outside any method, using the static keyword.
+
+Lifetime: Created when the class is loaded, destroyed when program ends.
+
+Scope: Shared across all objects of the class.
+
+Has a default value if not initialized (e.g., 0 for int, null for objects).
+
+---
+
+2. Can a Java file have multiple public classes?
+
+Ans: No. Only one public class per file, and file name must match that public class name.
+
+---
+
+3. Can main() method be private or protected?
+
+Ans: Yes, it compiles and runs, but JVM looks for public static void main(String[] args) as the entry point.
+If not found, it throws NoSuchMethodError.
+
+---
+
+4. Can we run a Java program without main() method?
+
+Old trick: Before Java 7, static blocks could run without main. Now, main is mandatory.
+static{
+syso("hello world");
+system.exit(0);
+}
+
+---
+
+5. What is the default value of an uninitialized String instance variable?
+
+Ans: null.
+
+---
+
+6. Can static variables be local to a method?
+
+Ans: No, static variables are always class-level. Local variables cannot be static.
+
+---
+
+7. Can we declare a variable without specifying its type?
+
+Ans: No in normal Java, but yes using var (Java 10+) for local variables — still strongly typed by compiler.
+
+---
+
+8. Can we use a reserved keyword as a variable name?
+
+Ans: No. But you can use keywords in different case (Java is case-sensitive).
+
+---
+
+9. Can a Java class be both final and abstract?
+
+Ans: No, final means cannot be extended, abstract means must be extended.
+
+---
+
+10. What is the size of int in Java?
+
+Ans: Always 4 bytes, regardless of OS (Java is platform-independent in data type size).
+
+---
+
+11. Can we assign a double value to an int variable without casting?
+
+Ans: No — it causes a compile error (possible loss of precision).
+
+---
+
+12. Can we declare an array of size zero in Java?
+
+Ans: Yes. Example: int[] arr = new int[0]; is valid.
+
+---
+
+13. What happens if we divide an integer by zero?
+
+Ans: Throws ArithmeticException. But if we divide a floating-point number by zero, it returns Infinity or NaN.
+
+---
+
+14. Can we use underscores in numeric literals?
+
+Ans: Yes (Java 7+), e.g., int num = 1_000_000;
+But not at start/end or next to decimal point.
+
+---
+
+15. Is null a keyword in Java?
+
+Ans: No, null is a literal, like true and false.
+
+---
+
+16. Can a Java program have two classes with the same name in the same package?
+
+Ans: No, names must be unique in the same package.
+
+---
+
+17. Can we use return in void methods?
+
+Ans: Yes, but without a value — just return;.
+
+---
+
+18. Can we write public static void main(String args[]) without String[]?
+
+Ans: No, but the brackets can be after the variable: String args[].
+
+---
+
+19. Can we reassign a final variable?
+
+Ans: No — once assigned, cannot change. But for final reference variables, object’s internal state can change.
+
+---
+
+20. Can Java use multiple inheritance of classes?
+
+Ans: No, only via interfaces (this is more syntax rule than OOP).

@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.construction.companyManagement.model.Blog;
 import com.construction.companyManagement.model.Project;
 import com.construction.companyManagement.model.Testimonial;
-import com.construction.companyManagement.service.BlogService;     // Import your BlogService
-import com.construction.companyManagement.service.TestimonialService; // Import your TestimonialService
-// import com.construction.companyManagement.service.GalleryService; // Import your GalleryService
-
+import com.construction.companyManagement.service.BlogService;    
+import com.construction.companyManagement.service.TestimonialService; 
 import ch.qos.logback.core.model.Model;
 
 @Controller

@@ -1,0 +1,28 @@
+java 8 features
+after functional programming is introduced 
+Function program:- Model your program as a series of pure functions that transform data
+					. Avoid changing state or using mutable data.
+
+					
+					
+predicates:- holds the condition
+			the method present inside predicate is test()-> which returns boolean value
+			
+util.functionss-> go through here the package tells all the functional interface it present 
+
+Method reference
+constructor reference
+
+Method Reference:- shorthand systax for lamda expression that perform a single action
+
+1. Static method refernce:
+=========================
+Synatx: className:: staticMethodReference
+
+2. Instance method reference of a particular object
+---------------------------------------------------
+syntax: ObjectName :: InstanceMethodReference
+
+3. Instance method refernce of an arbitory object 
+==================================================
+syntax: 

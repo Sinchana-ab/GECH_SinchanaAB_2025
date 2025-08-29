@@ -1,0 +1,124 @@
+Multi Threading:
+================
+Multi Tasking:
+==============
+* The process of executing several tasks simentaniously is called multitasking.
+
+Multitaking is divided into two categories:
+===========================================
+1. process based multi tasking
+2. thread based multi tasking
+
+1. Process based multi tasking:
+===============================
+* Executing several tasks simentaniously where each task  is a seperate independent program or process.
+ex: 1. typing java program in ide
+	2. listen audio 
+	3. downloading a file from net.
+	
+* perform simentaniously but there is no dependent on each other.
+* this kind of multitasking applicable for os level.
+
+2. Thread based multitasking:
+=============================
+* Executing serveral tasks simentaniously where each task is a seperate independent part of the same program or process is called thread based multitasking.
+* Each independent part is called "Thread".
+
+Application areas of multithreading are:
+========================================
+1. to develop animations.
+2. to develop vedio games.
+3. to develop web&application servers.
+
+
+Thread:
+=======
+Thread is a flow of execution for every thread there is a seperate independent job.
+
+ways to define a thread:
+========================
+1. By extending Thread Class.
+2. By implementing Runnable Interface.
+
+1. By extending thread Class:
+=============================
+ex:
+
+case1:Thread Scheduler:
+========================
+* It is responsible for schedule the threads i,e if multiple threads are waiting to get a chance of execution then in which order threads will be executed is decided by thread scheduler
+
+case2: difference between t.start() and t.run():
+================================================
+* In the case of t.start() a new thread is created which is the responsible for execution of run method.
+* but in case of t.run() new thread wont create and run() method will call just like normal methodcall by main thread. Hence o/p will child thread followed by main thread.
+
+case3: importance if thread class start method:
+===============================================
+* Thread class start method is responsible to register with the Thread Scheduler & all other manditary activities hence without executing the Thread class start() method there is no chance of starting a new thread in java
+* due to this thread class "start()" method is considered as heart of multithreading.
+
+case4:
+======
+* overloading run method is always possible but thread class start() method can invoke no-args run method.
+* other will call normall using method call by main thread.
+* same way main method overloading is possibel bu jvm will exucute (String[] args)
+
+case5: if we not override run method:
+=====================================
+class MyThread extends Thread{
+	
+}
+* Thread class run method will be executed which as empty implementation. Hence we won't get any o/p.
+
+
+case6: overriding start() method:
+=================================
+* it will be executed just like normale method call.
+* it si not recomended.
+
+case7: overriding start() method and when we call super.start():
+=================================================
+* o/p nit expected.
+
+case8: life cycle of thread:
+============================
+new/born thread  t.start()   run/runnable state  
+				----------> 					
+if thraed scheduler allocates processor     running state
+----------------------------------------->
+if run() method completed  dead state
+------------------------->  
+
+* this is simple life cycle of thread
+
+case9:Imp
+-========
+* After starting a thread if we are trying to restart same thread then we wil get RE saying illegalThreadStateException. 
+
+
+2. Defining a Thread by implementing Runnable interface:
+========================================================
+* the runnale interface present in java.lang package & it contains only one method run().
+
+					     Runnable
+						^         ^
+						|          |
+						|		implements
+						|			|
+			already implements        MyThread
+				|
+			Thraed
+			^
+			|
+		  extends
+			|
+		MyThread
+		
+		
+* Which Approach is best :
+==========================
+* Amoung two ways of defining a thread implements runnnable approach is recomended.
+
+* In the first approach our class always extends Thread class, there is no chance extending any other class we lost inheritence.
+* but in 2 way we can extend any other class  here we won't misss inheritence benifit so here this is recomended.

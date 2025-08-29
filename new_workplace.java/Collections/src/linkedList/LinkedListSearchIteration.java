@@ -2,6 +2,7 @@ package linkedList;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class LinkedListSearchIteration {
 	public static void main(String[] args) {
@@ -47,5 +48,8 @@ public class LinkedListSearchIteration {
 		for(int i = 0;i< li.size();i++) {
 			System.out.println("the elements are : "+li.get(i));
 		}
+		
+		List<Integer> list = new LinkedList<>();
+		System.out.println(list);
 	}
 }
