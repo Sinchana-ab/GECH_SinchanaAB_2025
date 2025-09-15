@@ -1,0 +1,5 @@
+package com.employeeRelation.model;
+
+public class Department {
+
+}

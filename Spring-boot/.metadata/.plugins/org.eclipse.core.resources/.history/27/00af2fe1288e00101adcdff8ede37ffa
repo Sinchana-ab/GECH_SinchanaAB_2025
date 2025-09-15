@@ -1,0 +1,21 @@
+package com.user.form.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.user.form.models.Users;
+
+
+@Controller
+public class HomeController {
+	@GetMapping({"","/"})
+	public String home(Model model) {
+		List<Users> users ;
+		return "home";
+	}
+	
+}

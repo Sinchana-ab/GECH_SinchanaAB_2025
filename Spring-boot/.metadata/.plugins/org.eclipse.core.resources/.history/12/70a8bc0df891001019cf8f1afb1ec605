@@ -1,0 +1,5 @@
+package com.inheritance.crud.controller;
+
+public class HomeController {
+
+}

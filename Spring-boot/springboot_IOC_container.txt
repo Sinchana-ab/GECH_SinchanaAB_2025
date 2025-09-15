@@ -1,0 +1,114 @@
+Spring:
+=======
+disadvantages:
+==============
+1. xml based configuration
+2. external tomcat
+3. lot of configuration related to web, security and data jpa.
+
+Spring boot:
+============
+Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+
+create a spring boot project:
+=============================
+3 ways to create a spring boot project:
+=======================================
+1. spring initializer.
+2. extention in eclipse.
+3. by using sts.
+
+java object:
+============
+
+
+Bean object:
+============
+* Bean is an java object.
+* when the object is creating and maintained  by the ioc container or sring we called bean
+
+Create Bean Object:
+===================
+1.@Bean:
+========
+* this annotation is used to create a bean
+* This annotation is used on top of method inside the configuration class.
+
+
+configuration class:
+====================
+* if you declare an annotation "@Configuration" then that class called configuration class.
+
+
+2.@Component:
+=============
+* this annotation is used on top of class.
+
+
+
+
+@SpringBootApplication:
+=======================
+It is the combination
+1. @Configuration
+2. @ComponentScan - base package
+3. @EnableAutoConfiguration
+
+
+Spring Boot taking control of creating object by the programmer hence we called it has IOC(Inversion of Control)
+
+IOC Container:
+==============
+* This container will create, manage, and maintain the spring beans.
+
+Creation of Ioc Container:
+==========================
+1. ApplicationContext - we use this to create ioc container.[child interface of bean facyory
+2. BeanFactory
+
+
+Dependancy object:-
+--------------------
+*one object depends on another 
+ex:- employee --> address
+
+3 ways we achive these:-
+----------------------
+1.feild injection
+2)setter injection
+3)constructor injection
+
+
+
+@primary
+@@qualifier
+
+============================
+
+
+Dependancy injection in SpringBoot
+===================================
+
+
+
+Interface as dependence injection
+-=--=-=-=-=-=--=-=-=-=---=-=--=-=--=
+
+we can hold the child object in paret object -> Dynamic polymorophism or runtime polymorphism 
+----------------------------------
+
+
+----------------------=====---------
+primitive value Dependance injection
+======================================
+
+@value:- to insert the default values for primitive types.
+
+@component
+class Student{
+@value("Sinchana")
+String name;
+int age;
+@autowired
+address address;
+}

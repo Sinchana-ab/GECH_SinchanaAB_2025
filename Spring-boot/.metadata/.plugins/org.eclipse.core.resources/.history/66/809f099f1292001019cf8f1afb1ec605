@@ -1,0 +1,28 @@
+package com.inheritance.crud.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.inheritance.crud.dto.UserDTO;
+import com.inheritance.crud.model.Users;
+import com.inheritance.crud.repository.UsersRepository;
+
+@Service
+public class UsersService {
+
+    private final UsersRepository repository;
+
+    public UsersService(UsersRepository repository) {
+        this.repository = repository;
+    }
+
+	public List<Users> getAllUser() {
+		List<Users> users = repository.findAll();
+		return users;
+	}
+	
+	
+    
+}

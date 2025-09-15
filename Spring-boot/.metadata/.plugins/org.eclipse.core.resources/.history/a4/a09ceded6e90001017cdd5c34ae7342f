@@ -1,0 +1,5 @@
+package com.template.inheritance.controller;
+
+public class HomeController {
+
+}

@@ -1,0 +1,5 @@
+package com.employeeRelation.repository;
+
+public class AddressRepository {
+
+}

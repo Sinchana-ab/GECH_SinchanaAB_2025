@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- 🔹 Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">MySite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 🔸 Page Content -->
+<div class="container mt-5">
+    <h1>Welcome to MySite</h1>
+    <p>This is a simple homepage using Bootstrap and Thymeleaf.</p>
+</div>
+<table class="table table-bordered">
+       <thead class="table-dark">
+           <tr>
+               <th>ID</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>age</th>
+               <th>Actions</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr th:each="user : ${users}">
+               <td th:text="${user.id}"></td>
+               <td th:text="${user.name}"></td>
+               <td th:text="${user.email}"></td>
+               <td th:text="${user.age}"></td>
+              <td>
+                   <!--<a th:href="@{/user/edit/{id}(id=${s.id})}" class="btn btn-sm btn-warning">Edit</a>
+                   <a th:href="@{/user/delete/{id}(id=${student.id})}" class="btn btn-sm btn-danger"
+                      onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>-->
+               </td>
+           </tr>
+       </tbody>
+   </table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

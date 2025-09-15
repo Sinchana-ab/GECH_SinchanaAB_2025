@@ -1,0 +1,5 @@
+package com.userRelation.repository;
+
+public interface UserRepository {
+
+}

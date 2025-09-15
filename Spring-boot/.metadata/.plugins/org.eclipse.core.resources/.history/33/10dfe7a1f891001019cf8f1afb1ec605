@@ -1,0 +1,5 @@
+package com.inheritance.crud.repository;
+
+public enum UsersRepository {
+
+}

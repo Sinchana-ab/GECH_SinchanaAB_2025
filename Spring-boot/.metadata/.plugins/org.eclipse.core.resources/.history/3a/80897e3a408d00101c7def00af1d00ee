@@ -1,0 +1,11 @@
+package com.employeeRelation.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="empolyee")
+public class Employee {
+	
+	
+}
