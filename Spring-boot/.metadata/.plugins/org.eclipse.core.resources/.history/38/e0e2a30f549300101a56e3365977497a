@@ -1,0 +1,5 @@
+package com.securityInheritance.model;
+
+public class User {
+
+}

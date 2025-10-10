@@ -427,7 +427,7 @@ Differences:
 Synchronization:
 ================
 * Synchronized is the modifier applicable only for methods & blocks but not for classes and variables.
-* If multiple threads are trying to operate saimentaneously
+* If multiple threads are trying to operate simentaneously
 on the sam java object then thre may be a chance of "data inconsistency problem". to over come we should go for "synchronized" keyword.
 * Internally synchronization concept is implemented by using lock every object in java has a unique lock. when ever we are using synchronized keyword then only lock concept come into picture.
 * If thread wants to execute synchronized method on the given object first it has to get lockof that object once thread got the lock then it is allowed to execute any synchronized method on that object.

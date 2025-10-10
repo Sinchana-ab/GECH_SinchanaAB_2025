@@ -1,0 +1,54 @@
+package com.springSecurity.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.springSecurity.repository.UsersRepository;
+import com.springSecurity.service.CustomeUserDetailsService;
+
+import static org.springframework.security.config.Customizer.withDefaults;
+
+@Configuration
+public class SecurityConfig {
+	
+	private UsersRepository repository;
+	
+	
+	public SecurityConfig(UsersRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
+	@Bean
+	public PasswordEncoder encoder() {
+		return  new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public SecurityFilterChain chain(HttpSecurity http) throws Exception{
+		return http
+				.authorizeHttpRequests(auth->
+				auth.requestMatchers("/").permitAll()
+				.anyRequest().authenticated())
+				.formLogin(withDefaults())
+				.build();
+	}
+	
+	@Bean
+	public UserDetailsService detailsService() {
+		return new CustomeUserDetailsService(repository);
+	}
+	
+	public DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		provider.setPasswordEncoder(encoder());
+		provider.setUserDetailsService(detailsService());
+		return provider;
+	}
+}

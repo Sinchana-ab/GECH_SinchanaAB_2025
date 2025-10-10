@@ -1,0 +1,16 @@
+package com.securityInheritance.model;
+
+import java.util.List;
+
+import jakarta.persistence.OneToMany;
+
+public class User {
+	
+	private Long id;
+	private String username;
+	private String password;
+	private String role;
+	
+	@OneToMany(mappedBy = "owner")
+	private List<Task> tasks;
+}

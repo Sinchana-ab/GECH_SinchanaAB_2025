@@ -1,0 +1,7 @@
+package com.springSecurity.dto;
+
+public class UsersDTO {
+	private String name;
+	private String Email;
+	private String role;
+}

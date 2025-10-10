@@ -1,0 +1,40 @@
+package com.springSecurity.service;
+
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.springSecurity.model.Users;
+
+public class CustomeUserDetails implements UserDetails {
+	private Users users;
+
+
+	public CustomeUserDetails(Users users) {
+		super();
+		this.users = users;
+	}
+
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

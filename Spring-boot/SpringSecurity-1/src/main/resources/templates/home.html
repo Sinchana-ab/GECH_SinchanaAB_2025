@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace = "~layout{layout(~{::title}, ~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Welcome to Task Manager</h1>
+        
+        </header>
+
+        <main>
+            <section>
+                <h2>Organize your tasks efficiently</h2>
+                <p>Track, manage, and complete your daily tasks with ease.</p>
+                <a th:href="@{/dashboard}" class="btn">Go to Dashboard</a>
+            </section>
+        </main>
+    </main>
+</body>
+</html>

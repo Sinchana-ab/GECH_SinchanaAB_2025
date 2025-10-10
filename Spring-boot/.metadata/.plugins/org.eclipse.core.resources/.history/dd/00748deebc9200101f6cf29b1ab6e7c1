@@ -1,0 +1,14 @@
+package com.springSecurity.repository;
+
+import java.lang.foreign.Linker.Option;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.springSecurity.model.Users;
+import java.util.List;
+
+
+public interface UsersRepository extends JpaRepository<Users, Long> {
+	Optional<Users> findByEmail(String email);
+}

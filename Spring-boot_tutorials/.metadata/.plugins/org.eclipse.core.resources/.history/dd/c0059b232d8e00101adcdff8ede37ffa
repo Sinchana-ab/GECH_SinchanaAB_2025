@@ -1,0 +1,5 @@
+package com.user.form.dto;
+
+public class UserDTO {
+
+}

@@ -1,0 +1,9 @@
+package com.securityInheritance;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+public class PasswordEncode {
+	public static void main() {
+		System.out.println("admin password: "+(new BCryptPasswordEncoder().encode("Amin@123"));
+	}
+}

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;TemplateInheritance_crud&apos;" deleteContents="true" description="Delete resource &apos;TemplateInheritance_crud&apos;" element1="/TemplateInheritance_crud" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1757931387088"/>&#x0A;<refactoring comment="Copy Project &apos;UserForm&apos;" description="Copy Project &apos;UserForm&apos;" destination="C:/Users/Admin/Desktop/Parvam/Spring-boot" element="/UserForm" flags="7" id="org.eclipse.ltk.core.refactoring.copyproject.resource" name="UserForm_templateInheritance" stamp="1757931465163"/>
+</session>

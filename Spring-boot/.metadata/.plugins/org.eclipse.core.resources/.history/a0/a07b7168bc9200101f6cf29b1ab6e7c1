@@ -1,0 +1,5 @@
+package com.springSecurity.model;
+
+public class Users {
+
+}

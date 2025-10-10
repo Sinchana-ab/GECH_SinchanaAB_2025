@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title th:fragment="title">Simple Home Page</title>
+</head>
+<body>
+<section th:fragment="section">
+    <main class="flex-grow-1 d-flex align-items-center justify-content-center bg-light">
+        <div class="text-center">
+            <h1>Welcome to MySite</h1>
+            <p class="lead">This is a simple homepage built with Bootstrap.</p>
+        </div>
+    </main>
+</section>
+</body>
+</html>

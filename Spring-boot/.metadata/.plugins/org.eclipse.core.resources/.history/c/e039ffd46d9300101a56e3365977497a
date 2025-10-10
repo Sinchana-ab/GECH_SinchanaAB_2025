@@ -1,0 +1,5 @@
+package com.securityInheritance.config;
+
+public class SecurityConfig {
+
+}

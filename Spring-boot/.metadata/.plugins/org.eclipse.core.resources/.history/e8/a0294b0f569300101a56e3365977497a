@@ -1,0 +1,15 @@
+package com.securityInheritance.dto;
+
+import java.util.List;
+
+import com.securityInheritance.model.Task;
+
+import jakarta.persistence.OneToMany;
+
+public class UserDTO {
+	private String username;
+	private String password;
+	private String role;
+	
+	private List<Task> tasks;
+}

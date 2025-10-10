@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title th:fragment="title">About Us</title>
+</head>
+<body>
+<section th:fragment="section">
+	<h2>User List</h2>
+	        <table border="1">
+	            <tr>
+	                <th>Name</th>
+	                <th>Email</th>
+	                <th>Password</th>
+	                <th>Role</th>
+	            </tr>
+	            <tr th:each="user : ${users}">
+	                <td th:text="${user.name}"></td>
+	                <td th:text="${user.email}"></td>
+	                <td th:text="${user.password}"></td>
+	                <td th:text="${user.role}"></td>
+	            </tr>
+	        </table>
+</section>
+</body>
+</html>

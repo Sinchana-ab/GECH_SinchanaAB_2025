@@ -1,0 +1,11 @@
+package com.springSecurity.model;
+
+public class Users {
+	private Long id;
+	private String name;
+	private String Email;
+	private String password;
+	private String role;
+	
+	
+}

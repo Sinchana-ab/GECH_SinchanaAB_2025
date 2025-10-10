@@ -1,0 +1,37 @@
+package com.springSecurity.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.springSecurity.model.Users;
+import com.springSecurity.service.UsersServices;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@Controller
+@RestController("/admin")
+public class AdminController {
+	
+	private UsersServices services;
+	
+	
+	public AdminController(UsersServices services) {
+		super();
+		this.services = services;
+	}
+
+
+	@GetMapping("/dashboard")
+	public String getMethodName(Model model) {
+		List<Users> users = services.getAllUsers();
+		model.addAttribute("users",users);
+	
+		return "admin-dashboard";
+	}	
+	
+}

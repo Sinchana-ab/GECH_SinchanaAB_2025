@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment = "~layout(title, main)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace = "${title}">Task Manager</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:replace = "fragments/navbar ::navbar "></div>
+    <main th:replace = "${content}"></main>
+    <div th:replace = "fragments/footer ::footer "></div>  
+</body>
+</html>

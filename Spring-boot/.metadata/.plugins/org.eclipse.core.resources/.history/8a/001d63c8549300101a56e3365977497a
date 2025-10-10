@@ -1,0 +1,5 @@
+package com.securityInheritance.repository;
+
+public class UserRepository {
+
+}
