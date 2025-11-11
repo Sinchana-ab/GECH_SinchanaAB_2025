@@ -1,0 +1,222 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.page-header {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-tab {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: #6c757d;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.admin-tab:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: var(--primary);
+}
+
+.admin-tab.active {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.stats-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.stats-card.gradient-primary::before {
+  background: var(--gradient-primary);
+}
+
+.stats-card.gradient-success::before {
+  background: var(--gradient-success);
+}
+
+.stats-card.gradient-info::before {
+  background: var(--gradient-info);
+}
+
+.stats-card.gradient-warning::before {
+  background: var(--gradient-danger);
+}
+
+.stats-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.stats-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-primary .stats-icon {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.gradient-success .stats-icon {
+  background: var(--gradient-success);
+  color: white;
+}
+
+.gradient-info .stats-icon {
+  background: var(--gradient-info);
+  color: white;
+}
+
+.gradient-warning .stats-icon {
+  background: var(--gradient-danger);
+  color: white;
+}
+
+.stats-content {
+  position: relative;
+  z-index: 1;
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #2d3748;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stats-label {
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.card-header-custom {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.modern-table thead th {
+  background: #f8f9fa;
+  color: #2d3748;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.modern-table tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+}
+
+.modern-table tbody tr {
+  transition: var(--transition);
+}
+
+.modern-table tbody tr:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.user-avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.instructor-card {
+  height: 100%;
+}
+
+.instructor-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+}
+
+.modern-input {
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 0.875rem 1.25rem;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.modern-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  outline: none;
+}

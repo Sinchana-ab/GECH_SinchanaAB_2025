@@ -1,5 +1,0 @@
-package com.userRelation.repository;
-
-public interface RolesRepository {
-
-}

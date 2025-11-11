@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;TemplateInheritance/src/main/resources/templates/fragements&apos; to &apos;fragments&apos;" description="Rename resource &apos;fragements&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/templates/fragements" name="fragments" stamp="1757915177569" updateReferences="true"/>
-</session>

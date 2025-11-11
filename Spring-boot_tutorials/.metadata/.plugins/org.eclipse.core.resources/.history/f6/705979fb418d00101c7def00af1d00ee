@@ -1,5 +1,0 @@
-package com.employeeRelation.repository;
-
-public class DepartmentRepository {
-
-}
