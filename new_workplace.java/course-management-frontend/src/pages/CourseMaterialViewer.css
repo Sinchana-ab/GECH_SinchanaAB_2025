@@ -3,6 +3,236 @@
    pages/CourseMaterialViewer.css
    ========================================== */
 
+   /* CourseMaterialViewer.css */
+
+.course-material-viewer {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.materials-sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.materials-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.materials-sidebar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.progress-summary {
+  border: 1px solid #e0e0e0;
+}
+
+.material-item {
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.material-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.material-item.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border-color: #667eea;
+}
+
+.material-item.completed {
+  border-left: 4px solid #28a745;
+}
+
+.material-icon {
+  font-size: 1.2rem;
+}
+
+.content-area {
+  min-height: 100vh;
+}
+
+.material-header {
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+/* PDF Viewer Styling */
+.pdf-viewer-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.pdf-viewer-container iframe {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.pdf-viewer-container iframe:hover {
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+/* Video Container */
+.video-container {
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+.video-progress-info {
+  background: white;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Document Viewer */
+.document-viewer {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Link Content */
+.link-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Image Viewer */
+.image-viewer {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.image-viewer img {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Progress Bar */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+  background: #e9ecef;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+  transition: width 0.3s ease;
+}
+
+/* Buttons */
+.btn-warning {
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 193, 7, 0.4);
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-header .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+/* Alert Styling */
+.alert {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.alert-info {
+  background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+  color: #0c5460;
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+  color: #856404;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .materials-sidebar {
+    height: auto;
+    position: relative;
+  }
+  
+  .pdf-viewer-container iframe {
+    height: 400px !important;
+  }
+}
+
+/* Loading Spinner */
+.spinner-border {
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+
+/* Badge Styling */
+.badge {
+  padding: 0.5em 1em;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+button, a {
+  transition: all 0.2s ease;
+}
+
+button:hover, a:hover {
+  transform: translateY(-1px);
+}
+
 .course-material-viewer {
   min-height: 100vh;
   background: #f8f9fa;

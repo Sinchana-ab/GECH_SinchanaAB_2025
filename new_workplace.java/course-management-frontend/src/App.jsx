@@ -6,11 +6,14 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import ModernNavbar from './components/ModernNavbar';
 import ModernFooter from './components/ModernFooter';
 
-
 // ===== DASHBOARD COMPONENTS =====
 import ImprovedStudentDashboard from './pages/ImprovedStudentDashboard';
 import CompleteInstructorDashboard from './pages/CompleteInstructorDashboard';
 import ImprovedAdminDashboard from './pages/ImprovedAdminDashboard';
+
+// ===== EXAM COMPONENTS =====
+import ExamCreator from './pages/instructor/ExamCreator';
+import ExamList from './pages/instructor/ExamList';
 
 // ===== PUBLIC PAGES =====
 import Home from './pages/Home';
@@ -30,6 +33,7 @@ import MyCourses from './pages/MyCourses';
 import QuizPage from './pages/QuizPage';
 import Certificates from './pages/Certificates';
 import CourseMaterials from './pages/CourseMaterials';
+import ExamPage from './pages/ExamPage';
 
 // ===== STYLES =====
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -75,31 +79,22 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
-          {/* ===== MODERN NAVBAR ===== */}
           <ModernNavbar />
           
-          {/* ===== MAIN CONTENT AREA ===== */}
           <div style={{ minHeight: 'calc(100vh - 200px)' }}>
             <Routes>
-              {/* ========================================
-                  PUBLIC ROUTES (No Authentication Required)
-                  ======================================== */}
+              {/* PUBLIC ROUTES */}
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/courses" element={<CourseList />} />
               <Route path="/courses/:id" element={<CourseDetail />} />
               
-              {/* ========================================
-                  AUTHENTICATION ROUTES
-                  ======================================== */}
+              {/* AUTHENTICATION ROUTES */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              
-              {/* ========================================
-                  MAIN DASHBOARD ROUTER
-                  (Redirects to role-specific dashboard)
-                  ======================================== */}
+             
+              {/* MAIN DASHBOARD ROUTER */}
               <Route 
                 path="/dashboard" 
                 element={
@@ -109,10 +104,7 @@ function App() {
                 } 
               />
 
-              {/* ========================================
-                  STUDENT ROUTES
-                  ======================================== */}
-              {/* Student Dashboard with all sub-routes */}
+              {/* STUDENT ROUTES */}
               <Route 
                 path="/student/*" 
                 element={
@@ -122,7 +114,6 @@ function App() {
                 } 
               />
               
-              {/* Legacy My Courses Route (for backward compatibility) */}
               <Route 
                 path="/my-courses" 
                 element={
@@ -132,7 +123,6 @@ function App() {
                 } 
               />
               
-              {/* Quiz Page */}
               <Route 
                 path="/quiz/:quizId" 
                 element={
@@ -141,16 +131,25 @@ function App() {
                   </ProtectedRoute>
                 } 
               />
+
               <Route 
-                  path="/courses/:courseId/learn" 
-                  element={
-                    <ProtectedRoute allowedRoles={['ROLE_STUDENT']}>
-                      <CourseMaterialViewer />
-                    </ProtectedRoute>
-                  } 
-                />
+                path="/courses/:courseId/exam/:enrollmentId" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_STUDENT']}>
+                    <ExamPage />
+                  </ProtectedRoute>
+                } 
+              />
+
+              <Route 
+                path="/courses/:courseId/learn" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_STUDENT']}>
+                    <CourseMaterialViewer />
+                  </ProtectedRoute>
+                } 
+              />
               
-              {/* Certificates Page */}
               <Route 
                 path="/certificates" 
                 element={
@@ -160,10 +159,7 @@ function App() {
                 } 
               />
 
-              {/* ========================================
-                  INSTRUCTOR ROUTES
-                  ======================================== */}
-              {/* Instructor Dashboard with all sub-routes */}
+              {/* INSTRUCTOR ROUTES */}
               <Route 
                 path="/instructor/*" 
                 element={
@@ -173,20 +169,35 @@ function App() {
                 } 
               />
               
-              {/* Legacy Instructor Dashboard Route (for backward compatibility) */}
+              {/* INSTRUCTOR EXAM ROUTES - STANDALONE */}
               <Route 
-                path="/instructor-dashboard" 
+                path="/instructor/exams" 
                 element={
                   <ProtectedRoute allowedRoles={['ROLE_INSTRUCTOR', 'ROLE_ADMIN']}>
-                    <CompleteInstructorDashboard />
+                    <ExamList />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/instructor/exams/create/:courseId" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_INSTRUCTOR', 'ROLE_ADMIN']}>
+                    <ExamCreator />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/instructor/exams/edit/:examId" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_INSTRUCTOR', 'ROLE_ADMIN']}>
+                    <ExamCreator />
                   </ProtectedRoute>
                 } 
               />
 
-              {/* ========================================
-                  ADMIN ROUTES
-                  ======================================== */}
-              {/* Admin Dashboard with all sub-routes */}
+              {/* ADMIN ROUTES */}
               <Route 
                 path="/admin/*" 
                 element={
@@ -195,12 +206,36 @@ function App() {
                   </ProtectedRoute>
                 } 
               />
+              
+              {/* ADMIN EXAM ROUTES - STANDALONE */}
+              <Route 
+                path="/admin/exams" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_ADMIN']}>
+                    <ExamList />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/admin/exams/create/:courseId" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_ADMIN']}>
+                    <ExamCreator />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/admin/exams/edit/:examId" 
+                element={
+                  <ProtectedRoute allowedRoles={['ROLE_ADMIN']}>
+                    <ExamCreator />
+                  </ProtectedRoute>
+                } 
+              />
 
-              {/* ========================================
-                  SHARED PROTECTED ROUTES
-                  (Accessible by multiple roles)
-                  ======================================== */}
-              {/* Course Materials - Accessible by Students and Instructors */}
+              {/* SHARED ROUTES */}
               <Route 
                 path="/courses/:courseId/materials" 
                 element={
@@ -210,9 +245,7 @@ function App() {
                 } 
               />
 
-              {/* ========================================
-                  404 NOT FOUND ROUTE
-                  ======================================== */}
+              {/* 404 NOT FOUND */}
               <Route 
                 path="*" 
                 element={
@@ -232,7 +265,6 @@ function App() {
             </Routes>
           </div>
           
-          {/* ===== MODERN FOOTER ===== */}
           <ModernFooter />
         </div>
       </Router>

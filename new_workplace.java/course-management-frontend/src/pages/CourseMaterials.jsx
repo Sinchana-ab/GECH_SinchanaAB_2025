@@ -6,6 +6,8 @@ import FileUpload from '../components/FileUpload';
 import VideoPlayer from '../components/VideoPlayer';
 import PDFViewer from '../components/PDFViewer';
 import { useAuth } from '../context/AuthContext';
+// // At the top of CourseMaterials.jsx
+// import { materialAPI } from '../services/materialAPI';
 
 const CourseMaterials = () => {
   const { courseId } = useParams();

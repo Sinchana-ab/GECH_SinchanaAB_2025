@@ -32,6 +32,11 @@ const AdminSidebar = () => {
       path: '/admin/courses'
     },
     {
+      title: 'Exams',
+      icon: 'bi-clipboard-check',
+      path: '/admin/exams'
+    },
+    {
       title: 'Certificates',
       icon: 'bi-award',
       path: '/admin/certificates'

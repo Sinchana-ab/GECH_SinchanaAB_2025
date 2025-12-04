@@ -79,9 +79,13 @@ const MyCourses = () => {
     return Math.round(materialProgress + quizProgress);
   };
 
+  // const handleContinueLearning = (enrollment) => {
+  //   navigate(`/courses/${enrollment.courseId}/materials`);
+  // };
+
   const handleContinueLearning = (enrollment) => {
-    navigate(`/courses/${enrollment.courseId}/materials`);
-  };
+  navigate(`/courses/${enrollment.courseId}/learn`);
+};
 
   const handleViewProgress = (enrollment) => {
     navigate(`/student/progress/${enrollment.courseId}`);
@@ -173,8 +177,22 @@ const MyCourses = () => {
                       >
                         View Detailed Progress
                       </button>
+{progressData.materialsViewed === progressData.totalMaterials &&
+   progressData.quizzesCompleted === progressData.totalQuizzes && (
+    <button
+      className="btn btn-warning btn-sm"
+      onClick={() =>
+        navigate(`/courses/${enrollment.courseId}/exam/${enrollment.id}`)
+      }
+    >
+      <i className="bi bi-pencil-square me-2"></i>
+      Take Final Exam
+    </button>
+   )}
                     </div>
                     
+                    
+
                     {/* Available Quizzes */}
                     {quizzes.length > 0 && (
                       <div className="mt-3">

@@ -9,6 +9,7 @@ import com.coursemanagement.model.User;
 import com.coursemanagement.repository.CourseRepository;
 import com.coursemanagement.repository.EnrollmentRepository;
 import com.coursemanagement.repository.UserRepository;
+import com.coursemanagement.repository.CourseMaterialRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,12 +21,19 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final UserRepository userRepository;
     private final EnrollmentRepository enrollmentRepository;
+    private final CourseMaterialRepository materialRepository;
+    private final FileStorageService fileStorageService;
 
-    public CourseService(CourseRepository courseRepository, UserRepository userRepository,
-                         EnrollmentRepository enrollmentRepository) {
+    public CourseService(CourseRepository courseRepository, 
+                        UserRepository userRepository,
+                        EnrollmentRepository enrollmentRepository,
+                        CourseMaterialRepository materialRepository,
+                        FileStorageService fileStorageService) {
         this.courseRepository = courseRepository;
         this.userRepository = userRepository;
         this.enrollmentRepository = enrollmentRepository;
+        this.materialRepository = materialRepository;
+        this.fileStorageService = fileStorageService;
     }
 
     public CourseDTO createCourse(CourseDTO courseDTO) {
@@ -98,8 +106,32 @@ public class CourseService {
         return convertToDTO(updatedCourse);
     }
 
+    /**
+     * ✅ IMPROVED: Delete course with proper material cleanup
+     */
+    @Transactional
     public void deleteCourse(Long id) {
-        courseRepository.deleteById(id);
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Course not found with id: " + id));
+        
+        try {
+            // Step 1: Delete all physical files for this course's materials
+            course.getMaterials().forEach(material -> {
+                if (!"LINK".equals(material.getMaterialType())) {
+                    try {
+                        fileStorageService.deleteFile(material.getFilePath());
+                    } catch (Exception e) {
+                        System.err.println("Failed to delete file: " + material.getFilePath() + " - " + e.getMessage());
+                    }
+                }
+            });
+            
+            // Step 2: Delete the course (cascade will handle materials, enrollments, etc.)
+            courseRepository.delete(course);
+            
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete course: " + e.getMessage(), e);
+        }
     }
 
     private CourseDTO convertToDTO(Course course) {

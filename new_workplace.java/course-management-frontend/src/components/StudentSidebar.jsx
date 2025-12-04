@@ -63,6 +63,7 @@ const StudentSidebar = () => {
           </div>
         ))}
       </nav>
+{/* Exam Button - Show if materials completed but exam not passed */}
 
       <div className="sidebar-footer">
         <button onClick={() => navigate('/')} className="sidebar-link">

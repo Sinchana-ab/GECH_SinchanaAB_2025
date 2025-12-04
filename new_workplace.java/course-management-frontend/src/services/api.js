@@ -1,32 +1,30 @@
-// services/api.js - Updated for Vite with Rating APIs
+// services/api.js - Updated for Exam system
 import axios from 'axios';
+import { materialAPI } from './materialAPI';
 
-// Add to services/api.js
-export { materialAPI } from './materialAPI';
+// const API_URL = import.meta.env.VITE_API_URL 
+//   ? `${import.meta.env.VITE_API_URL}/api` 
+//   : 'http://localhost:8080/api';
 
-// // Or if you want to keep it in the same file:
-// export const materialAPI = {
-//   uploadMaterial: (courseId, formData) =>
-//     axios.post(`${API_URL}/instructor/courses/${courseId}/materials/upload`, formData, {
-//       ...getAuthHeader(),
-//       headers: { 'Content-Type': 'multipart/form-data' }
-//     }),
-  
-//   addExternalLink: (courseId, data) =>
-//     axios.post(`${API_URL}/instructor/courses/${courseId}/materials/link`, data, getAuthHeader()),
-  
-//   getCourseMaterials: (courseId) =>
-//     axios.get(`${API_URL}/courses/${courseId}/materials`),
-  
-//   updateMaterial: (id, data) =>
-//     axios.put(`${API_URL}/instructor/materials/${id}`, data, getAuthHeader()),
-  
-//   deleteMaterial: (id) =>
-//     axios.delete(`${API_URL}/instructor/materials/${id}`, getAuthHeader()),
-  
-//   getFileUrl: (fileName) => `${API_URL}/courses/materials/download/${fileName}`
+// axios.defaults.withCredentials = true;
+
+// const getAuthHeader = () => {
+//   const user = JSON.parse(localStorage.getItem('user') || '{}');
+//   if (user.email && user.password) {
+//     return {
+//       auth: {
+//         username: user.email,
+//         password: user.password
+//       }
+//     };
+//   }
+//   return {};
 // };
-// Use Vite environment variable or fallback
+
+// Course APIs
+// services/api.js - FIXED COURSE API SECTION
+
+
 const API_URL = import.meta.env.VITE_API_URL 
   ? `${import.meta.env.VITE_API_URL}/api` 
   : 'http://localhost:8080/api';
@@ -40,15 +38,16 @@ const getAuthHeader = () => {
       auth: {
         username: user.email,
         password: user.password
-      }
+      },
+      withCredentials: true
     };
   }
-  return {};
+  return { withCredentials: true };
 };
-// services/api.js - Update certificateAPI
 
-// Course APIs
+// ===== COURSE APIs =====
 export const courseAPI = {
+  // Public - anyone can view
   getAllPublished: () => axios.get(`${API_URL}/public/courses`),
   
   getCourseById: (id) => axios.get(`${API_URL}/public/courses/${id}`),
@@ -56,6 +55,7 @@ export const courseAPI = {
   searchCourses: (keyword) => 
     axios.get(`${API_URL}/public/courses/search`, { params: { keyword } }),
   
+  // Instructor - can only manage their own courses
   getInstructorCourses: (instructorId) => 
     axios.get(`${API_URL}/instructor/courses`, { 
       params: { instructorId },
@@ -68,9 +68,19 @@ export const courseAPI = {
   updateCourse: (id, courseData) => 
     axios.put(`${API_URL}/instructor/courses/${id}`, courseData, getAuthHeader()),
   
+  // Instructor delete - can only delete own courses
   deleteCourse: (id) => 
     axios.delete(`${API_URL}/instructor/courses/${id}`, getAuthHeader()),
+  
+  // Admin - can manage all courses
+  adminGetAllCourses: () =>
+    axios.get(`${API_URL}/admin/courses`, getAuthHeader()),
+  
+  adminDeleteCourse: (id) =>
+    axios.delete(`${API_URL}/admin/courses/${id}`, getAuthHeader()),
 };
+
+// Export the API_URL for use in other files
 
 // Enrollment APIs
 export const enrollmentAPI = {
@@ -96,7 +106,41 @@ export const enrollmentAPI = {
     axios.get(`${API_URL}/student/enrollments/course/${courseId}`, getAuthHeader()),
 };
 
-// Quiz APIs
+// Exam APIs (NEW - Different from Quiz)
+export const examAPI = {
+  // Get final exam for a course
+  getCourseExam: (courseId) =>
+    axios.get(`${API_URL}/public/courses/${courseId}/exam`),
+  
+  // Start exam attempt
+  startExam: (examId, studentId, enrollmentId) => 
+    axios.post(`${API_URL}/student/exams/start`, 
+      { examId, studentId, enrollmentId }, 
+      getAuthHeader()
+    ),
+  
+  // Submit exam
+  submitExam: (attemptId, answers) => 
+    axios.post(`${API_URL}/student/exams/submit/${attemptId}`, 
+      { answers }, 
+      getAuthHeader()
+    ),
+  
+  // Get exam attempts
+  getAttempts: (studentId, examId) => 
+    axios.get(`${API_URL}/student/exams/attempts`, { 
+      params: { studentId, examId },
+      ...getAuthHeader()
+    }),
+  
+  // Get best attempt
+  getBestAttempt: (enrollmentId) =>
+    axios.get(`${API_URL}/student/exams/best-attempt/${enrollmentId}`, 
+      getAuthHeader()
+    ),
+};
+
+// Quiz APIs (Keep existing for practice quizzes)
 export const quizAPI = {
   startQuiz: (quizId, studentId) => 
     axios.post(`${API_URL}/student/quiz/start`, 
@@ -133,7 +177,6 @@ export const userAPI = {
 };
 
 // Certificate APIs
-// services/api.js - Update certificateAPI
 export const certificateAPI = {
   getStudentCertificates: (studentId) =>
     axios.get(`${API_URL}/student/certificates`, {
@@ -141,22 +184,19 @@ export const certificateAPI = {
       ...getAuthHeader()
     }),
   
-  generateCertificate: (studentId, courseId, finalScore) =>
-    axios.post(`${API_URL}/student/certificates/generate`,
-      { studentId, courseId, finalScore },
+  checkEligibility: (enrollmentId) =>
+    axios.get(`${API_URL}/student/enrollments/${enrollmentId}/certificate-eligibility`, 
       getAuthHeader()
     ),
   
-  // FIXED: Added proper syntax
+  requestCertificate: (enrollmentId) =>
+    axios.post(`${API_URL}/student/enrollments/${enrollmentId}/request-certificate`, 
+      {}, 
+      getAuthHeader()
+    ),
+  
   downloadCertificate: (id) =>
     axios.get(`${API_URL}/student/certificates/download/${id}`, {
-      ...getAuthHeader(),
-      responseType: 'blob' // IMPORTANT: This ensures proper PDF handling
-    }),
-  
-  // NEW: Preview certificate endpoint
-  previewCertificate: (id) =>
-    axios.get(`${API_URL}/student/certificates/preview/${id}`, {
       ...getAuthHeader(),
       responseType: 'blob'
     }),
@@ -165,28 +205,27 @@ export const certificateAPI = {
     axios.get(`${API_URL}/public/certificates/verify/${certificateNumber}`)
 };
 
+// Progress Tracking APIs
 export const progressAPI = {
   markMaterialComplete: (materialId, studentId, enrollmentId) =>
-    axios.post(`/api/student/materials/${materialId}/complete`, null, {
-      params: { studentId, enrollmentId }
+    axios.post(`${API_URL}/student/materials/${materialId}/complete`, null, {
+      params: { studentId, enrollmentId },
+      ...getAuthHeader()
     }),
     
   updateVideoProgress: (materialId, data) =>
-    axios.post(`/api/student/materials/${materialId}/watch-time`, data),
+    axios.post(`${API_URL}/student/materials/${materialId}/watch-time`, data, 
+      getAuthHeader()
+    ),
     
   getMaterialProgress: (studentId, enrollmentId) =>
-    axios.get(`/api/student/materials/progress`, {
-      params: { studentId, enrollmentId }
+    axios.get(`${API_URL}/student/materials/progress`, {
+      params: { studentId, enrollmentId },
+      ...getAuthHeader()
     }),
-    
-  checkCertificateEligibility: (enrollmentId) =>
-    axios.get(`/api/student/enrollments/${enrollmentId}/certificate-eligibility`),
-    
-  requestCertificate: (enrollmentId) =>
-    axios.post(`/api/student/enrollments/${enrollmentId}/request-certificate`)
 };
 
-// Rating APIs (NEW!)
+// Rating APIs
 export const ratingAPI = {
   submitRating: (studentId, courseId, rating, review) =>
     axios.post(`${API_URL}/student/ratings`, 
@@ -216,14 +255,19 @@ export const ratingAPI = {
     axios.delete(`${API_URL}/student/ratings/${ratingId}`, getAuthHeader())
 };
 
-// Export API_URL if needed elsewhere
-export { API_URL };
+export { 
+  materialAPI,
+  API_URL 
+};
 
 export default {
   courseAPI,
   enrollmentAPI,
+  examAPI,    // NEW
   quizAPI,
   userAPI,
   certificateAPI,
-  ratingAPI
+  ratingAPI,
+  progressAPI,
+  materialAPI
 };

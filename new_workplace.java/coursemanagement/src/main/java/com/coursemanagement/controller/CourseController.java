@@ -3,11 +3,15 @@ package com.coursemanagement.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.coursemanagement.dto.ApiResponse;
 import com.coursemanagement.dto.CourseDTO;
 import com.coursemanagement.service.CourseService;
+import com.coursemanagement.service.CustomUserDetails;
+import com.coursemanagement.model.Course;
+import com.coursemanagement.repository.CourseRepository;
 
 import java.util.List;
 
@@ -17,12 +21,17 @@ import java.util.List;
 public class CourseController {
 
     private final CourseService courseService;
+    private final CourseRepository courseRepository;
 
-    public CourseController(CourseService courseService) {
+    public CourseController(CourseService courseService, CourseRepository courseRepository) {
         this.courseService = courseService;
+        this.courseRepository = courseRepository;
     }
 
-    // Public endpoints
+    // ========================================
+    // PUBLIC ENDPOINTS (No Authentication)
+    // ========================================
+    
     @GetMapping("/public/courses")
     public ResponseEntity<ApiResponse> getPublishedCourses() {
         try {
@@ -56,7 +65,10 @@ public class CourseController {
         }
     }
 
-    // Instructor endpoints
+    // ========================================
+    // INSTRUCTOR ENDPOINTS
+    // ========================================
+    
     @PostMapping("/instructor/courses")
     @PreAuthorize("hasAnyRole('INSTRUCTOR', 'ADMIN')")
     public ResponseEntity<ApiResponse> createCourse(@RequestBody CourseDTO courseDTO) {
@@ -84,8 +96,17 @@ public class CourseController {
 
     @PutMapping("/instructor/courses/{id}")
     @PreAuthorize("hasAnyRole('INSTRUCTOR', 'ADMIN')")
-    public ResponseEntity<ApiResponse> updateCourse(@PathVariable Long id, @RequestBody CourseDTO courseDTO) {
+    public ResponseEntity<ApiResponse> updateCourse(
+            @PathVariable Long id, 
+            @RequestBody CourseDTO courseDTO,
+            Authentication authentication) {
         try {
+            // Authorization check
+            if (!canAccessCourse(id, authentication)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new ApiResponse(false, "You don't have permission to update this course", null));
+            }
+
             CourseDTO updatedCourse = courseService.updateCourse(id, courseDTO);
             return ResponseEntity.ok(new ApiResponse(true, "Course updated successfully", updatedCourse));
         } catch (Exception e) {
@@ -96,26 +117,48 @@ public class CourseController {
 
     @DeleteMapping("/instructor/courses/{id}")
     @PreAuthorize("hasAnyRole('INSTRUCTOR', 'ADMIN')")
-    public ResponseEntity<ApiResponse> deleteCourse(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> deleteCourse(
+            @PathVariable Long id,
+            Authentication authentication) {
         try {
+            // Authorization check - instructors can only delete their own courses
+            if (!canAccessCourse(id, authentication)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new ApiResponse(false, "You don't have permission to delete this course", null));
+            }
+
             courseService.deleteCourse(id);
             return ResponseEntity.ok(new ApiResponse(true, "Course deleted successfully", null));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new ApiResponse(false, e.getMessage(), null));
+                    .body(new ApiResponse(false, "Failed to delete course: " + e.getMessage(), null));
         }
     }
 
-    // Admin endpoints
-    //@GetMapping("/admin/courses")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ApiResponse> getAllCourses() {
-        try {
-            List<CourseDTO> courses = courseService.getAllCourses();
-            return ResponseEntity.ok(new ApiResponse(true, "All courses retrieved successfully", courses));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse(false, e.getMessage(), null));
+    // ========================================
+    // HELPER METHODS
+    // ========================================
+    
+    /**
+     * Check if user can access course
+     * - Admin can access all courses
+     * - Instructor can only access their own courses
+     */
+    private boolean canAccessCourse(Long courseId, Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        
+        // Admin has full access
+        if (userDetails.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+            return true;
         }
+        
+        // Check if instructor owns the course
+        Course course = courseRepository.findById(courseId).orElse(null);
+        if (course == null) {
+            return false;
+        }
+        
+        return course.getInstructor().getId().equals(userDetails.getUserId());
     }
 }

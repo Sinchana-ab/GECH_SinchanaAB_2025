@@ -17,6 +17,11 @@ public class Certificate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    // ADD THIS - needed for eligibility checking
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "enrollment_id", nullable = false, unique = true)
+    private Enrollment enrollment;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
     private User student;
@@ -45,72 +50,77 @@ public class Certificate {
             certificateNumber = "CERT-" + System.currentTimeMillis();
         }
     }
-
-	public void setFinalScore(Double finalScore2) {
-		// TODO Auto-generated method stub
-		
-	
-}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public User getStudent() {
-		return student;
-	}
-
-	public void setStudent(User student) {
-		this.student = student;
-	}
-
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
-	public String getCertificateNumber() {
-		return certificateNumber;
-	}
-
-	public void setCertificateNumber(String certificateNumber) {
-		this.certificateNumber = certificateNumber;
-	}
-
-	public LocalDateTime getIssuedAt() {
-		return issuedAt;
-	}
-
-	public void setIssuedAt(LocalDateTime issuedAt) {
-		this.issuedAt = issuedAt;
-	}
-
-	public String getPdfUrl() {
-		return pdfUrl;
-	}
-
-	public void setPdfUrl(String pdfUrl) {
-		this.pdfUrl = pdfUrl;
-	}
-
-	public String getSkills() {
-		return skills;
-	}
-
-	public void setSkills(String skills) {
-		this.skills = skills;
-	}
-
-	public Double getFinalScore() {
-		return finalScore;
-	}
-	
-	
+    
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public Enrollment getEnrollment() {
+        return enrollment;
+    }
+    
+    public void setEnrollment(Enrollment enrollment) {
+        this.enrollment = enrollment;
+    }
+    
+    public User getStudent() {
+        return student;
+    }
+    
+    public void setStudent(User student) {
+        this.student = student;
+    }
+    
+    public Course getCourse() {
+        return course;
+    }
+    
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+    
+    public String getCertificateNumber() {
+        return certificateNumber;
+    }
+    
+    public void setCertificateNumber(String certificateNumber) {
+        this.certificateNumber = certificateNumber;
+    }
+    
+    public LocalDateTime getIssuedAt() {
+        return issuedAt;
+    }
+    
+    public void setIssuedAt(LocalDateTime issuedAt) {
+        this.issuedAt = issuedAt;
+    }
+    
+    public String getPdfUrl() {
+        return pdfUrl;
+    }
+    
+    public void setPdfUrl(String pdfUrl) {
+        this.pdfUrl = pdfUrl;
+    }
+    
+    public String getSkills() {
+        return skills;
+    }
+    
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
+    
+    public Double getFinalScore() {
+        return finalScore;
+    }
+    
+    public void setFinalScore(Double finalScore) {
+        this.finalScore = finalScore;
+    }
 }

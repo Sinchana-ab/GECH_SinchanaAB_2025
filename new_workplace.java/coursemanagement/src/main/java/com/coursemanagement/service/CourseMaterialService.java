@@ -108,8 +108,12 @@ public class CourseMaterialService {
         CourseMaterial material = materialRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Material not found"));
 
-        material.setTitle(title);
-        material.setDescription(description);
+        if (title != null && !title.isEmpty()) {
+            material.setTitle(title);
+        }
+        if (description != null) {
+            material.setDescription(description);
+        }
         if (orderIndex != null) {
             material.setOrderIndex(orderIndex);
         }
@@ -119,17 +123,23 @@ public class CourseMaterialService {
     }
 
     /**
-     * Delete material
+     * Delete material - WITH FILE DELETION
      */
     public void deleteMaterial(Long id) {
         CourseMaterial material = materialRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Material not found"));
+                .orElseThrow(() -> new RuntimeException("Material not found with id: " + id));
 
-        // Delete file if not external link
-        if (!material.getMaterialType().equals("LINK")) {
-            fileStorageService.deleteFile(material.getFilePath());
+        // Delete physical file if not external link
+        if (!"LINK".equals(material.getMaterialType())) {
+            try {
+                fileStorageService.deleteFile(material.getFilePath());
+            } catch (Exception e) {
+                // Log error but continue with database deletion
+                System.err.println("Failed to delete file: " + material.getFilePath() + " - " + e.getMessage());
+            }
         }
 
+        // Delete from database
         materialRepository.deleteById(id);
     }
 
@@ -139,13 +149,10 @@ public class CourseMaterialService {
     public void deleteCourseMaterials(Long courseId) {
         List<CourseMaterial> materials = materialRepository.findByCourseIdOrderByOrderIndexAsc(courseId);
         
+        // Delete each material (will also delete files)
         for (CourseMaterial material : materials) {
-            if (!material.getMaterialType().equals("LINK")) {
-                fileStorageService.deleteFile(material.getFilePath());
-            }
+            deleteMaterial(material.getId());
         }
-        
-        materialRepository.deleteByCourseId(courseId);
     }
 
     private CourseMaterialDTO convertToDTO(CourseMaterial material) {

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -21,6 +20,11 @@ const InstructorSidebar = () => {
       title: 'My Courses', 
       icon: 'bi-book', 
       path: '/instructor/courses' 
+    },
+    { 
+      title: 'Exams', 
+      icon: 'bi-clipboard-check', 
+      path: '/instructor/exams' 
     },
     { 
       title: 'Students', 

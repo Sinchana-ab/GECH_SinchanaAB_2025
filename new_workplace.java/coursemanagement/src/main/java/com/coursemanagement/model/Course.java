@@ -49,6 +49,10 @@ public class Course {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
     
+    // ✅ FIXED: Added cascade and orphanRemoval for materials
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CourseMaterial> materials = new HashSet<>();
+    
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Module> modules = new HashSet<>();
     
@@ -78,143 +82,156 @@ public class Course {
         updatedAt = LocalDateTime.now();
     }
 
-	public Long getId() {
-		return id;
-	}
+    // Getters and Setters (keep existing ones)
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public User getInstructor() {
-		return instructor;
-	}
+    public User getInstructor() {
+        return instructor;
+    }
 
-	public void setInstructor(User instructor) {
-		this.instructor = instructor;
-	}
+    public void setInstructor(User instructor) {
+        this.instructor = instructor;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public String getLevel() {
-		return level;
-	}
+    public String getLevel() {
+        return level;
+    }
 
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
-	public String getThumbnail() {
-		return thumbnail;
-	}
+    public String getThumbnail() {
+        return thumbnail;
+    }
 
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
-	}
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 
-	public Integer getDurationHours() {
-		return durationHours;
-	}
+    public Integer getDurationHours() {
+        return durationHours;
+    }
 
-	public void setDurationHours(Integer durationHours) {
-		this.durationHours = durationHours;
-	}
+    public void setDurationHours(Integer durationHours) {
+        this.durationHours = durationHours;
+    }
 
-	public Double getPrice() {
-		return price;
-	}
+    public Double getPrice() {
+        return price;
+    }
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-	public LocalDateTime getStartDate() {
-		return startDate;
-	}
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
 
-	public void setStartDate(LocalDateTime startDate) {
-		this.startDate = startDate;
-	}
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
 
-	public LocalDateTime getEndDate() {
-		return endDate;
-	}
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
 
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
-	}
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
 
-	public boolean isPublished() {
-		return published;
-	}
+    public boolean isPublished() {
+        return published;
+    }
 
-	public void setPublished(boolean published) {
-		this.published = published;
-	}
+    public void setPublished(boolean published) {
+        this.published = published;
+    }
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
-	public Set<Module> getModules() {
-		return modules;
-	}
+    public Set<Module> getModules() {
+        return modules;
+    }
 
-	public void setModules(Set<Module> modules) {
-		this.modules = modules;
-	}
+    public void setModules(Set<Module> modules) {
+        this.modules = modules;
+    }
 
-	public Set<Enrollment> getEnrollments() {
-		return enrollments;
-	}
+    public Set<Enrollment> getEnrollments() {
+        return enrollments;
+    }
 
-	public void setEnrollments(Set<Enrollment> enrollments) {
-		this.enrollments = enrollments;
-	}
+    public void setEnrollments(Set<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
 
-	public Set<Quiz> getQuizzes() {
-		return quizzes;
-	}
+    public Set<Quiz> getQuizzes() {
+        return quizzes;
+    }
 
-	public void setQuizzes(Set<Quiz> quizzes) {
-		this.quizzes = quizzes;
-	}
+    public void setQuizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
+    }
 
-	
+    public Set<CourseMaterial> getMaterials() {
+        return materials;
+    }
 
-	
+    public void setMaterials(Set<CourseMaterial> materials) {
+        this.materials = materials;
+    }
+
+    public Set<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
+    }
 }

@@ -6,14 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Optional;
+
 @Repository
 public interface QuizAttemptRepository extends JpaRepository<QuizAttempt, Long> {
-   List<QuizAttempt> findByStudentIdAndQuizId(Long studentId, Long quizId);
+    List<QuizAttempt> findByStudentIdAndQuizId(Long studentId, Long quizId);
     List<QuizAttempt> findByQuizId(Long quizId);
-    
-  // List<QuizAttempt> findByStudentIdAndQuizCourseId(Long studentId, Long courseId);
-    //List<QuizAttempt> findByStudentIdAndQuizCourseId1(Long studentId, Long courseId);
+   
     @Query("SELECT COUNT(qa) FROM QuizAttempt qa WHERE qa.student.id = :studentId AND qa.quiz.id = :quizId")
     Long countByStudentIdAndQuizId(@Param("studentId") Long studentId, @Param("quizId") Long quizId);
     
@@ -22,4 +20,7 @@ public interface QuizAttemptRepository extends JpaRepository<QuizAttempt, Long> 
         @Param("studentId") Long studentId, 
         @Param("courseId") Long courseId
     );
+    
+    // ✅ ADDED: Find attempts by student ID and status
+    List<QuizAttempt> findByStudentIdAndStatus(Long studentId, String status);
 }

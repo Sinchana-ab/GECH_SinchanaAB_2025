@@ -1,4 +1,3 @@
-// context/AuthContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
@@ -20,10 +19,6 @@ export const AuthProvider = ({ children }) => {
 
   // Configure axios defaults
   axios.defaults.withCredentials = true;
-  axios.defaults.auth = user ? {
-    username: user.email,
-    password: user.password
-  } : null;
 
   useEffect(() => {
     checkAuth();
@@ -34,6 +29,8 @@ export const AuthProvider = ({ children }) => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       setUser(userData);
+      
+      // Set auth header for all requests
       axios.defaults.auth = {
         username: userData.email,
         password: userData.password
@@ -44,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      // Set auth for this request
+      // FIXED: Use Basic Auth properly
       const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password
@@ -52,7 +49,8 @@ export const AuthProvider = ({ children }) => {
         auth: {
           username: email,
           password: password
-        }
+        },
+        withCredentials: true
       });
 
       if (response.data.success) {
@@ -64,7 +62,7 @@ export const AuthProvider = ({ children }) => {
         setUser(userData);
         localStorage.setItem('user', JSON.stringify(userData));
         
-        // Set default auth
+        // Set default auth for all future requests
         axios.defaults.auth = {
           username: email,
           password: password
@@ -74,9 +72,10 @@ export const AuthProvider = ({ children }) => {
       }
       return { success: false, message: response.data.message };
     } catch (error) {
+      console.error('Login error:', error);
       return { 
         success: false, 
-        message: error.response?.data?.message || 'Login failed' 
+        message: error.response?.data?.message || 'Login failed. Please check your credentials.' 
       };
     }
   };
@@ -96,10 +95,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-    axios.defaults.auth = null;
+  const logout = async () => {
+    try {
+      await axios.post(`${API_URL}/auth/logout`, {}, {
+        withCredentials: true
+      });
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      setUser(null);
+      localStorage.removeItem('user');
+      axios.defaults.auth = null;
+    }
   };
 
   const value = {
@@ -114,5 +121,5 @@ export const AuthProvider = ({ children }) => {
     isStudent: user?.role === 'ROLE_STUDENT'
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 };

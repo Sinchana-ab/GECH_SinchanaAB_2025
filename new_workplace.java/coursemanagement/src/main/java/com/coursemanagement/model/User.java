@@ -43,13 +43,16 @@ public class User {
     
     private boolean enabled = true;
     
-    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
+    // ✅ FIXED: Changed cascade type to prevent automatic deletion issues
+    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Course> coursesCreated = new HashSet<>();
     
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    // ✅ FIXED: Changed cascade type - enrollments should be deleted manually
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Enrollment> enrollments = new HashSet<>();
     
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    // ✅ FIXED: Changed cascade type
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<QuizAttempt> quizAttempts = new HashSet<>();
     
     @PrePersist
@@ -63,117 +66,116 @@ public class User {
         updatedAt = LocalDateTime.now();
     }
 
-	public Long getId() {
-		return id;
-	}
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getBio() {
-		return bio;
-	}
+    public String getBio() {
+        return bio;
+    }
 
-	public void setBio(String bio) {
-		this.bio = bio;
-	}
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
-	public String getProfileImage() {
-		return profileImage;
-	}
+    public String getProfileImage() {
+        return profileImage;
+    }
 
-	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
-	}
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
-	public boolean isEnabled() {
-		return enabled;
-	}
+    public boolean isEnabled() {
+        return enabled;
+    }
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	public Set<Course> getCoursesCreated() {
-		return coursesCreated;
-	}
+    public Set<Course> getCoursesCreated() {
+        return coursesCreated;
+    }
 
-	public void setCoursesCreated(Set<Course> coursesCreated) {
-		this.coursesCreated = coursesCreated;
-	}
+    public void setCoursesCreated(Set<Course> coursesCreated) {
+        this.coursesCreated = coursesCreated;
+    }
 
-	public Set<Enrollment> getEnrollments() {
-		return enrollments;
-	}
+    public Set<Enrollment> getEnrollments() {
+        return enrollments;
+    }
 
-	public void setEnrollments(Set<Enrollment> enrollments) {
-		this.enrollments = enrollments;
-	}
+    public void setEnrollments(Set<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
 
-	public Set<QuizAttempt> getQuizAttempts() {
-		return quizAttempts;
-	}
+    public Set<QuizAttempt> getQuizAttempts() {
+        return quizAttempts;
+    }
 
-	public void setQuizAttempts(Set<QuizAttempt> quizAttempts) {
-		this.quizAttempts = quizAttempts;
-	}
-    
-    
+    public void setQuizAttempts(Set<QuizAttempt> quizAttempts) {
+        this.quizAttempts = quizAttempts;
+    }
 }
